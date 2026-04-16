@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Judy Lee — Creative Strategist</title>
+
+  <!-- 디자인 토큰 (폰트 포함) -->
+  <link rel="stylesheet" href="styles/tokens.css" />
+
+  <style>
+    /* ============================================
+       index.html — Page Styles
+       ============================================ */
+
+    /* ─── Nav ─────────────────────────────────── */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-height);
+      background-color: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--content-padding-x);
+    }
+
+    .nav__logo {
+      font-size: var(--text-small);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-primary);
+    }
+
+    .nav__links {
+      display: flex;
+      gap: var(--space-6);
+    }
+
+    .nav__links a {
+      font-size: var(--text-small);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-secondary);
+      transition: color var(--transition-fast);
+    }
+
+    .nav__links a:hover {
+      color: var(--color-text-primary);
+    }
+
+    /* ─── Hero ────────────────────────────────── */
+
+    .hero {
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: var(--space-10) var(--content-padding-x) var(--space-8);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .hero__label {
+      display: block;
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-5);
+    }
+
+    .hero__title {
+      font-size: var(--text-display);
+      font-weight: var(--weight-light);
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      max-width: 860px;
+    }
+
+    .hero__title em {
+      font-style: italic;
+      font-weight: var(--weight-light);
+    }
+
+    .hero__sub {
+      margin-top: var(--space-5);
+      font-size: var(--text-body);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+      max-width: 520px;
+    }
+
+    /* ─── Impact Numbers ─────────────────────── */
+
+    .impact-strip {
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: var(--space-7) var(--content-padding-x);
+      border-bottom: 1px solid var(--color-border);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+    }
+
+    .impact-item__number {
+      display: block;
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: var(--weight-light);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      line-height: 1;
+    }
+
+    .impact-item__label {
+      display: block;
+      margin-top: var(--space-2);
+      font-size: var(--text-small);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+    }
+
+    /* ─── Projects Section ────────────────────── */
+
+    .projects-section {
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--content-padding-x);
+    }
+
+    #projects {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── Project Card ────────────────────────── */
+
+    .project-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+      align-items: start;
+      padding: var(--space-8) 0;
+      border-bottom: 1px solid var(--color-border);
+      cursor: default;
+    }
+
+    .project-card:first-child {
+      padding-top: var(--space-8);
+    }
+
+    /* ─── Card Left ───────────────────────────── */
+
+    .project-card__left {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      padding-right: var(--space-6);
+    }
+
+    .project-card__year {
+      display: block;
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+    }
+
+    .project-card__title {
+      font-size: var(--text-h1);
+      font-weight: var(--weight-light);
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+    }
+
+    .project-card__title-link {
+      display: inline-block;
+      color: inherit;
+      text-decoration: none;
+      transition: opacity var(--transition-fast);
+    }
+
+    .project-card__title-link:hover .project-card__title {
+      opacity: 0.6;
+    }
+
+    .project-card__image-link {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .project-card__description {
+      font-size: var(--text-body);
+      font-weight: var(--weight-regular);
+      line-height: var(--leading-loose);
+      color: var(--color-text-secondary);
+    }
+
+    /* ─── Accordion ───────────────────────────── */
+
+    .project-card__accordion {
+      margin-top: var(--space-5);
+      border-top: 1px solid var(--color-border);
+    }
+
+    .accordion-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--color-border);
+      cursor: pointer;
+      user-select: none;
+      transition: color var(--transition-fast);
+    }
+
+    .accordion-row:hover .accordion-label {
+      color: var(--color-text-primary);
+    }
+
+    .accordion-label {
+      font-size: var(--text-small);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-secondary);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      transition: color var(--transition-fast);
+    }
+
+    .plus-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--color-text-tertiary);
+      font-size: 18px;
+      line-height: 1;
+      padding: 0;
+      transition: color var(--transition-fast), transform var(--transition-fast);
+      flex-shrink: 0;
+    }
+
+    .plus-btn:hover {
+      color: var(--color-text-primary);
+    }
+
+    .icon-minus {
+      display: none;
+    }
+
+    .plus-btn.is-open .icon-plus {
+      display: none;
+    }
+
+    .plus-btn.is-open .icon-minus {
+      display: block;
+    }
+
+    /* 아코디언 패널 */
+
+    .accordion-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows var(--transition-expand);
+    }
+
+    .accordion-content.is-open {
+      grid-template-rows: 1fr;
+    }
+
+    .accordion-content-inner {
+      overflow: hidden;
+    }
+
+    .accordion-value {
+      display: block;
+      font-size: var(--text-small);
+      color: var(--color-text-primary);
+      line-height: var(--leading-normal);
+      padding: var(--space-3) 0 var(--space-4);
+    }
+
+    /* ─── Card Right (Image) ──────────────────── */
+
+    .project-card__right {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-sm);
+      background-color: var(--color-bg-subtle);
+      aspect-ratio: 4 / 3;
+    }
+
+    .project-card__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform var(--transition-slow);
+    }
+
+    .project-card:hover .project-card__image {
+      transform: scale(1.02);
+    }
+
+    .project-card__placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-card__placeholder span {
+      font-size: var(--text-small);
+      color: var(--color-text-tertiary);
+    }
+
+    /* ─── Case Study Link ─────────────────────── */
+
+    .project-card__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-top: var(--space-5);
+      font-size: var(--text-small);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-primary);
+      text-decoration: none;
+      border-bottom: 1px solid var(--color-text-primary);
+      padding-bottom: 2px;
+      transition: opacity var(--transition-fast);
+      align-self: flex-start;
+    }
+
+    .project-card__cta:hover {
+      opacity: 0.5;
+    }
+
+    /* ─── Footer ──────────────────────────────── */
+
+    .footer {
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: var(--space-7) var(--content-padding-x);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer__copy {
+      font-size: var(--text-caption);
+      color: var(--color-text-tertiary);
+    }
+
+    .footer__links {
+      display: flex;
+      gap: var(--space-5);
+    }
+
+    .footer__links a {
+      font-size: var(--text-caption);
+      color: var(--color-text-tertiary);
+      transition: color var(--transition-fast);
+    }
+
+    .footer__links a:hover {
+      color: var(--color-text-primary);
+    }
+
+    /* ─── Responsive — Mobile ─────────────────── */
+
+    @media (max-width: 768px) {
+      .hero {
+        padding-top: var(--space-8);
+        padding-bottom: var(--space-7);
+      }
+
+      .hero__title {
+        font-size: clamp(32px, 8vw, 48px);
+      }
+
+      .impact-strip {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-5);
+      }
+
+      .project-card {
+        grid-template-columns: 1fr;
+        gap: var(--space-5);
+      }
+
+      /* 모바일에서 이미지가 텍스트 위로 */
+      .project-card__right {
+        order: -1;
+        aspect-ratio: 16 / 9;
+      }
+
+      .project-card__left {
+        padding-right: 0;
+      }
+
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-4);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── Nav ──────────────────────────────────── -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">Judy Lee</a>
+      <div class="nav__links">
+        <a href="about.html">About</a>
+        <a href="mailto:jihyunlee719@gmail.com">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── Hero ─────────────────────────────────── -->
+  <header class="hero">
+    <span class="hero__label">Creative Strategist</span>
+    <h1 class="hero__title">Turning behavioral insights into<br><em>creative that performs.</em></h1>
+    <p class="hero__sub">Data-driven experimentation and AI-powered workflows — scaling creative performance for global brands across social, brand, and product.</p>
+  </header>
+
+  <!-- ─── Impact Numbers ───────────────────────── -->
+  <div class="impact-strip">
+    <div class="impact-item">
+      <span class="impact-item__number">69K</span>
+      <span class="impact-item__label">Total Reels views<br>from 181 followers</span>
+    </div>
+    <div class="impact-item">
+      <span class="impact-item__number">20M+</span>
+      <span class="impact-item__label">Impressions driven<br>at Edelman</span>
+    </div>
+    <div class="impact-item">
+      <span class="impact-item__number">~$1M</span>
+      <span class="impact-item__label">Revenue impact across<br>Samsung global campaigns</span>
+    </div>
+    <div class="impact-item">
+      <span class="impact-item__number">46%</span>
+      <span class="impact-item__label">Quiz completion rate<br>Winners Big Black Bag</span>
+    </div>
+  </div>
+
+  <!-- ─── Projects ─────────────────────────────── -->
+  <section class="projects-section">
+    <div id="projects">
+      <!-- scripts/main.js 에서 렌더링 -->
+    </div>
+  </section>
+
+  <!-- ─── Footer ───────────────────────────────── -->
+  <footer class="footer">
+    <span class="footer__copy">© 2026 Judy Lee</span>
+    <div class="footer__links">
+      <a href="https://linkedin.com/in/judyleedesign" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="mailto:jihyunlee719@gmail.com">Email ↗</a>
+    </div>
+  </footer>
+
+  <!-- ─── Scripts ──────────────────────────────── -->
+  <script src="projects/data.js"></script>
+  <script src="scripts/main.js"></script>
+
+  <!-- 카드 렌더링 후 "View Case Study" CTA 주입 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.project-card').forEach(card => {
+        const id = card.dataset.id;
+        const project = projects.find(p => p.id === id);
+        if (!project || !project.caseStudyUrl) return;
+
+        const cta = document.createElement('a');
+        cta.href = `projects/${project.caseStudyUrl}`;
+        cta.className = 'project-card__cta';
+        cta.textContent = 'View Case Study →';
+
+        card.querySelector('.project-card__left').appendChild(cta);
+      });
+    });
+  </script>
+
+</body>
+</html>

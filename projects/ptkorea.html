@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PTKorea Rebranding — Judy Lee</title>
+
+  <link rel="stylesheet" href="../styles/tokens.css" />
+
+  <style>
+    /* ============================================
+       Case Study — PTKorea Rebranding & Website
+       ============================================ */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-height);
+      background-color: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--content-padding-x);
+    }
+
+    .nav__logo {
+      font-size: var(--text-small);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-primary);
+    }
+
+    .nav__links {
+      display: flex;
+      gap: var(--space-6);
+    }
+
+    .nav__links a {
+      font-size: var(--text-small);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-secondary);
+      transition: color var(--transition-fast);
+    }
+
+    .nav__links a:hover {
+      color: var(--color-text-primary);
+    }
+
+    .cs-page {
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--content-padding-x);
+    }
+
+    .cs-header {
+      padding: var(--space-10) 0 var(--space-8);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .cs-header__back {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-small);
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-6);
+      transition: color var(--transition-fast);
+    }
+
+    .cs-header__back:hover {
+      color: var(--color-text-primary);
+    }
+
+    .cs-header__label {
+      display: block;
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-4);
+    }
+
+    .cs-header__title {
+      font-size: var(--text-display);
+      font-weight: var(--weight-light);
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      max-width: 800px;
+      margin-bottom: var(--space-5);
+    }
+
+    .cs-header__title em {
+      font-style: italic;
+    }
+
+    .cs-header__description {
+      font-size: var(--text-body);
+      line-height: var(--leading-loose);
+      color: var(--color-text-secondary);
+      max-width: 600px;
+    }
+
+    .cs-impact {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+      padding: var(--space-8) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .cs-impact__number {
+      display: block;
+      font-size: clamp(36px, 4vw, 52px);
+      font-weight: var(--weight-light);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      line-height: 1;
+    }
+
+    .cs-impact__label {
+      display: block;
+      margin-top: var(--space-2);
+      font-size: var(--text-small);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+    }
+
+    .cs-meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-5);
+      padding: var(--space-6) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .cs-meta__label {
+      display: block;
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-2);
+    }
+
+    .cs-meta__value {
+      font-size: var(--text-small);
+      color: var(--color-text-primary);
+      line-height: var(--leading-normal);
+    }
+
+    .cs-hero-image {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      background-color: var(--color-bg-subtle);
+      display: block;
+      margin-top: var(--space-8);
+    }
+
+    .cs-body {
+      padding: var(--space-9) 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-9);
+    }
+
+    .cs-section__label {
+      display: block;
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-4);
+    }
+
+    .cs-section__text {
+      font-size: var(--text-body);
+      line-height: var(--leading-loose);
+      color: var(--color-text-secondary);
+      max-width: 680px;
+    }
+
+    .cs-section__text + .cs-section__text {
+      margin-top: var(--space-4);
+    }
+
+    .cs-callout {
+      padding: var(--space-6);
+      background-color: var(--color-bg-subtle);
+      border-left: 2px solid var(--color-text-primary);
+      margin-top: var(--space-5);
+      max-width: 680px;
+    }
+
+    .cs-callout__text {
+      font-size: var(--text-body);
+      line-height: var(--leading-loose);
+      color: var(--color-text-primary);
+    }
+
+    /* ─── Results Grid ────────────────────────── */
+
+    .cs-results-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-5);
+      margin-top: var(--space-5);
+      max-width: 680px;
+    }
+
+    .result-item {
+      padding: var(--space-5);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+    }
+
+    .result-item__number {
+      display: block;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: var(--weight-light);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      line-height: 1;
+    }
+
+    .result-item__label {
+      display: block;
+      margin-top: var(--space-2);
+      font-size: var(--text-small);
+      color: var(--color-text-secondary);
+    }
+
+    /* ─── Award Badge ─────────────────────────── */
+
+    .cs-award {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-4) var(--space-5);
+      border: 1px solid var(--color-border-strong);
+      border-radius: var(--radius-sm);
+      margin-top: var(--space-5);
+    }
+
+    .cs-award__icon {
+      font-size: 20px;
+    }
+
+    .cs-award__text {
+      font-size: var(--text-small);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-primary);
+    }
+
+    .cs-award__sub {
+      font-size: var(--text-caption);
+      color: var(--color-text-secondary);
+    }
+
+    .cs-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+
+    .cs-tag {
+      font-size: var(--text-caption);
+      color: var(--color-text-secondary);
+      border: 1px solid var(--color-border);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+    }
+
+    .cs-divider {
+      border: none;
+      border-top: 1px solid var(--color-border);
+    }
+
+    /* ─── Visitor Analysis Table ──────────────── */
+
+    .cs-table-wrap {
+      margin-top: var(--space-6);
+      max-width: 680px;
+      overflow-x: auto;
+    }
+
+    .cs-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-small);
+    }
+
+    .cs-table th {
+      text-align: left;
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      padding: var(--space-3) var(--space-4) var(--space-3) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .cs-table td {
+      padding: var(--space-4) var(--space-4) var(--space-4) 0;
+      color: var(--color-text-secondary);
+      border-bottom: 1px solid var(--color-border);
+      vertical-align: top;
+      line-height: var(--leading-normal);
+    }
+
+    .cs-table td:first-child {
+      color: var(--color-text-primary);
+      font-weight: var(--weight-medium);
+      white-space: nowrap;
+    }
+
+    /* ─── 3-Pillar 카드 그리드 ───────────────────── */
+
+    .cs-pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      margin-top: var(--space-5);
+      max-width: 680px;
+    }
+
+    .cs-pillar-card {
+      padding: var(--space-5);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+    }
+
+    .cs-pillar-card__name {
+      display: block;
+      font-size: var(--text-small);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .cs-pillar-card__audience {
+      display: block;
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-3);
+    }
+
+    .cs-pillar-card__content {
+      font-size: var(--text-caption);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-loose);
+    }
+
+    @media (max-width: 768px) {
+      .cs-pillar-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── IA Comparison ───────────────────────── */
+
+    .cs-ia-compare {
+      display: grid;
+      grid-template-columns: 1fr 32px 1fr;
+      gap: var(--space-5);
+      margin-top: var(--space-6);
+      max-width: 680px;
+    }
+
+    .cs-ia-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 24px; /* label 높이 offset */
+      color: var(--color-text-tertiary);
+      font-size: var(--text-small);
+    }
+
+    .cs-ia-block__label {
+      display: block;
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-3);
+    }
+
+    .cs-ia-block__items {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .cs-ia-block__item {
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--text-small);
+      color: var(--color-text-secondary);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+    }
+
+    .cs-ia-block__item.is-active {
+      color: var(--color-text-primary);
+      border-color: var(--color-text-primary);
+      font-weight: var(--weight-medium);
+    }
+
+    @media (max-width: 768px) {
+      .cs-ia-compare { grid-template-columns: 1fr; }
+      .cs-ia-arrow { display: none; }
+    }
+
+    .cs-pagination {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-7) 0;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .cs-pagination a {
+      font-size: var(--text-small);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-secondary);
+      transition: color var(--transition-fast);
+    }
+
+    .cs-pagination a:hover {
+      color: var(--color-text-primary);
+    }
+
+    .footer {
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: var(--space-7) var(--content-padding-x);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .footer__copy {
+      font-size: var(--text-caption);
+      color: var(--color-text-tertiary);
+    }
+
+    .footer__links {
+      display: flex;
+      gap: var(--space-5);
+    }
+
+    .footer__links a {
+      font-size: var(--text-caption);
+      color: var(--color-text-tertiary);
+      transition: color var(--transition-fast);
+    }
+
+    .footer__links a:hover {
+      color: var(--color-text-primary);
+    }
+
+    @media (max-width: 768px) {
+      .cs-header { padding-top: var(--space-8); }
+      .cs-impact { grid-template-columns: 1fr 1fr; }
+      .cs-meta { grid-template-columns: 1fr 1fr; }
+      .cs-results-grid { grid-template-columns: 1fr 1fr; }
+      .footer { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+    }
+
+    /* ─── 서브섹션 레이블 ────────────────────────── */
+
+    .cs-subsection__label {
+      display: block;
+      font-size: var(--text-small);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-primary);
+      margin-top: var(--space-6);
+      margin-bottom: var(--space-3);
+    }
+
+    /* ─── 이미지 플레이스홀더 ─────────────────────── */
+
+    .cs-image-placeholder {
+      width: 100%;
+      background-color: var(--color-bg-subtle);
+      border: 1px dashed var(--color-border-strong);
+      border-radius: var(--radius-sm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin-top: var(--space-5);
+    }
+
+    .cs-image-placeholder--wide { aspect-ratio: 16 / 7; }
+    .cs-image-placeholder--medium { aspect-ratio: 16 / 9; }
+
+    .cs-image-placeholder__label {
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+    }
+
+    .cs-image-placeholder__sub {
+      font-size: var(--text-caption);
+      color: var(--color-text-tertiary);
+      opacity: 0.6;
+    }
+
+    /* ─── 이미지 로드 시 플레이스홀더 → 실제 이미지로 전환 ─── */
+
+    .cs-placeholder-img {
+      display: none;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+    }
+
+    .cs-image-placeholder.has-image {
+      background: none;
+      border: none;
+      aspect-ratio: unset;
+      padding: 0;
+      flex-direction: column;
+      gap: var(--space-3);
+      align-items: stretch;
+    }
+
+    .cs-image-placeholder.has-image .cs-placeholder-img {
+      display: block;
+    }
+
+    .cs-image-placeholder.has-image .cs-image-placeholder__label,
+    .cs-image-placeholder.has-image .cs-image-placeholder__sub {
+      display: none;
+    }
+
+    /* ─── Survey Chart (Research 섹션) ───────────── */
+
+    .cs-survey-chart {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      margin-top: var(--space-5);
+      max-width: 620px;
+    }
+
+    .cs-survey-bar {
+      display: flex;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      gap: 2px;
+    }
+
+    .cs-survey-segment {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s;
+      cursor: default;
+    }
+
+    /* 호버 시 비활성 세그먼트 흐리게 */
+    .cs-survey-bar.has-hover .cs-survey-segment:not(.is-active) {
+      opacity: 0.25;
+    }
+
+    .cs-survey-bar.has-hover .cs-survey-segment.is-active {
+      opacity: 1;
+    }
+
+    .cs-survey-segment__value {
+      font-size: var(--text-caption);
+      font-weight: var(--weight-semibold);
+      color: #fff;
+      letter-spacing: 0.02em;
+      pointer-events: none;
+    }
+
+    /* 마지막 세그먼트(연한 회색)는 텍스트 색 조정 */
+    .cs-survey-segment:last-child .cs-survey-segment__value {
+      color: #6a6a6a;
+    }
+
+    /* 레전드: 세로 스택 */
+    .cs-survey-legend {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cs-survey-legend__item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--color-border);
+      cursor: default;
+      transition: opacity 0.2s;
+    }
+
+    .cs-survey-legend__item:first-child {
+      border-top: 1px solid var(--color-border);
+    }
+
+    /* 호버 시 비활성 레전드 항목 흐리게 */
+    .cs-survey-legend.has-hover .cs-survey-legend__item:not(.is-active) {
+      opacity: 0.3;
+    }
+
+    .cs-survey-legend.has-hover .cs-survey-legend__item.is-active {
+      opacity: 1;
+    }
+
+    .cs-survey-legend__left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      min-width: 68px;
+    }
+
+    .cs-survey-legend__dot {
+      width: 8px;
+      height: 8px;
+      min-width: 8px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .cs-survey-legend__pct {
+      font-size: var(--text-small);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .cs-survey-legend__label {
+      font-size: var(--text-small);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+      transition: color 0.2s;
+    }
+
+    /* 활성 항목 레이블 색 강조 */
+    .cs-survey-legend__item.is-active .cs-survey-legend__label {
+      color: var(--color-text-primary);
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__logo">Judy Lee</a>
+      <div class="nav__links">
+        <a href="../about.html">About</a>
+        <a href="mailto:jihyunlee719@gmail.com">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="cs-page">
+
+    <header class="cs-header">
+      <a href="../index.html" class="cs-header__back">← All Work</a>
+      <span class="cs-header__label">Case Study 03 · Brand Strategy</span>
+      <h1 class="cs-header__title">PTKorea:<br><em>I treated the brand like a UX problem. Because it was.</em></h1>
+      <p class="cs-header__description">
+        How a 117-person survey, a 3-pillar creative framework, and a low-code CMS
+        cut internal update time by 60% and won a Red Dot Design Award.
+      </p>
+    </header>
+
+    <div class="cs-impact">
+      <div class="cs-impact__item">
+        <span class="cs-impact__number">−60%</span>
+        <span class="cs-impact__label">Internal content update time post-launch</span>
+      </div>
+      <div class="cs-impact__item">
+        <span class="cs-impact__number">7 → 3</span>
+        <span class="cs-impact__label">IA sections consolidated<br><span style="font-size: var(--text-caption); color: var(--color-text-tertiary);">7 disconnected sections → About / Work / Contact</span></span>
+      </div>
+      <div class="cs-impact__item">
+        <span class="cs-impact__number">Red Dot</span>
+        <span class="cs-impact__label">Design Award · Web Design category</span>
+      </div>
+    </div>
+
+    <div class="cs-meta">
+      <div>
+        <span class="cs-meta__label">Role</span>
+        <span class="cs-meta__value">Lead Designer</span>
+      </div>
+      <div>
+        <span class="cs-meta__label">Scope</span>
+        <span class="cs-meta__value">Brand Strategy · IA · Web Design</span>
+      </div>
+      <div>
+        <span class="cs-meta__label">Year</span>
+        <span class="cs-meta__value">2023</span>
+      </div>
+      <div>
+        <span class="cs-meta__label">Tools</span>
+        <span class="cs-meta__value">Figma · Low-code CMS · Internal survey (n=117)</span>
+      </div>
+    </div>
+
+    <img
+      class="cs-hero-image"
+      src="../assets/images/rebrand-website.jpg"
+      alt="PTKorea rebranding and website redesign"
+      onerror="this.style.display='none'"
+    />
+
+    <div class="cs-body">
+
+      <section>
+        <span class="cs-section__label">Problem</span>
+        <p class="cs-section__text">
+          After the rebrand, PTKorea had a new name and a new visual identity. But the website
+          was still running on the old system: seven departments managing content independently,
+          seven disconnected sections, and no one owning the brand end-to-end.
+        </p>
+        <p class="cs-section__text">
+          Three completely different user journeys were broken at the same time.
+        </p>
+        <p class="cs-section__text" style="margin-top: var(--space-5);">
+          <strong>Clients</strong> couldn't find relevant work or figure out which team to contact.<br>
+          <strong>Job applicants</strong> couldn't understand team structure or imagine working there.<br>
+          <strong>Internal employees</strong> spent too long on every update because there was no consistent system.
+        </p>
+        <div class="cs-callout">
+          <p class="cs-callout__text">
+            This wasn't a redesign problem. It was a multi-audience UX problem wearing a brand problem's clothes.
+          </p>
+        </div>
+
+        <!-- 기존 웹사이트 Before 스크린샷 -->
+        <div class="cs-image-placeholder cs-image-placeholder--wide">
+          <img class="cs-placeholder-img" src="../assets/images/ptk-before-website.png"
+               alt="Before — Old Website"
+               onload="this.parentElement.classList.add('has-image')"
+               onerror="this.style.display='none'" />
+          <span class="cs-image-placeholder__label">Before — Old Website</span>
+          <span class="cs-image-placeholder__sub">기존 웹사이트 스크린샷</span>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">Research</span>
+        <p class="cs-section__text">
+          I started with user research: a 117-person internal survey and a website visitor analysis
+          to map who was actually using the site and what was failing them.
+        </p>
+        <p class="cs-section__text" style="margin-top: var(--space-5);">
+          Three distinct audiences. Three completely different needs.
+        </p>
+        <p class="cs-section__text" style="margin-top: var(--space-5);">
+          <strong>Clients</strong> came to evaluate a potential partner. They needed portfolio clarity and a direct path to the right team.<br>
+          <strong>Job applicants</strong> came to assess company culture. They needed vision, team structure, and a reason to apply.<br>
+          <strong>Competitors</strong> came to benchmark. A fragmented, outdated site was a credibility problem.
+        </p>
+        <p class="cs-section__text" style="margin-top: var(--space-5);">
+          The internal survey (n=117) confirmed what the visitor analysis surfaced.
+          Every job applicant surveyed (100%) had visited the website during their application process —
+          a non-optional touchpoint, yet full of friction. The top pain points:
+          <strong>82.8%</strong> cited insufficient role and team information,
+          <strong>72.4%</strong> flagged slow content updates as their primary barrier.
+        </p>
+        <p class="cs-section__text" style="margin-top: var(--space-3);">
+          The survey also asked which sections were most useful. Work ranked first at 62.1% —
+          a finding that would directly shape the new structure.
+        </p>
+
+        <!-- 설문 결과 시각화: 스택 바 + 세로 레전드 -->
+        <div class="cs-survey-chart">
+          <!-- 비율 바: data-idx로 레전드 항목과 연결 -->
+          <div class="cs-survey-bar">
+            <div class="cs-survey-segment" data-idx="0" style="width: 42.9%; background: var(--color-text-primary);">
+              <span class="cs-survey-segment__value">42.9%</span>
+            </div>
+            <div class="cs-survey-segment" data-idx="1" style="width: 35.8%; background: var(--color-text-secondary);">
+              <span class="cs-survey-segment__value">35.8%</span>
+            </div>
+            <div class="cs-survey-segment" data-idx="2" style="width: 21.3%; background: var(--color-text-tertiary);">
+              <span class="cs-survey-segment__value">21.3%</span>
+            </div>
+          </div>
+          <!-- 레전드: 퍼센트 + 레이블 세로 배열 -->
+          <div class="cs-survey-legend">
+            <div class="cs-survey-legend__item" data-idx="0">
+              <span class="cs-survey-legend__left">
+                <span class="cs-survey-legend__dot" style="background: var(--color-text-primary);"></span>
+                <span class="cs-survey-legend__pct">42.9%</span>
+              </span>
+              <span class="cs-survey-legend__label">Requested more frequent content updates</span>
+            </div>
+            <div class="cs-survey-legend__item" data-idx="1">
+              <span class="cs-survey-legend__left">
+                <span class="cs-survey-legend__dot" style="background: var(--color-text-secondary);"></span>
+                <span class="cs-survey-legend__pct">35.8%</span>
+              </span>
+              <span class="cs-survey-legend__label">Wanted clearer team and role information</span>
+            </div>
+            <div class="cs-survey-legend__item" data-idx="2">
+              <span class="cs-survey-legend__left">
+                <span class="cs-survey-legend__dot" style="background: var(--color-text-tertiary);"></span>
+                <span class="cs-survey-legend__pct">21.3%</span>
+              </span>
+              <span class="cs-survey-legend__label">Cited inconsistent brand expression as a trust issue</span>
+            </div>
+          </div>
+        </div>
+        <div class="cs-table-wrap">
+          <table class="cs-table">
+            <thead>
+              <tr>
+                <th>Target</th>
+                <th>Purpose of Visit</th>
+                <th>Core Need</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Client</td>
+                <td>Project requests, competitive analysis</td>
+                <td>Portfolio access and direct team contact</td>
+              </tr>
+              <tr>
+                <td>Competitor</td>
+                <td>Benchmarking, research</td>
+                <td>Understanding business through portfolio</td>
+              </tr>
+              <tr>
+                <td>Job Applicant</td>
+                <td>Company information</td>
+                <td>Team structure, culture, and open roles</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cs-callout" style="margin-top: var(--space-6);">
+          <p class="cs-callout__text">
+            The root cause was structural. Seven departments owned content independently,
+            which made brand consistency impossible without a dedicated designer on every update.
+            Fixing the visual layer without fixing the system would guarantee failure within six months.
+          </p>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">Hypothesis</span>
+        <p class="cs-section__text">
+          I approached the solution the same way I would approach a design system project.
+          If I could consolidate the architecture into three clear pillars and build a visual
+          system that non-designers could execute from, brand consistency would become the
+          default, not the exception.
+        </p>
+        <p class="cs-section__text" style="margin-top: var(--space-4);">
+          The obvious alternative was a department-led structure — mirroring the old model.
+          It failed the same test: the AS-IS user journey showed applicants leaving the site
+          mid-session to search for team information on external blogs.
+          Organizing by department would have reproduced that gap,
+          because it maps content to internal teams, not to what each audience came to find.
+        </p>
+        <!-- 3-pillar 카드 그리드 -->
+        <div class="cs-pillar-grid">
+          <div class="cs-pillar-card">
+            <span class="cs-pillar-card__name">About</span>
+            <span class="cs-pillar-card__audience">For job applicants</span>
+            <span class="cs-pillar-card__content">Vision · Service · Brand Story · Culture</span>
+          </div>
+          <div class="cs-pillar-card">
+            <span class="cs-pillar-card__name">Work</span>
+            <span class="cs-pillar-card__audience">For clients</span>
+            <span class="cs-pillar-card__content">Department contacts · Portfolio</span>
+            <span class="cs-pillar-card__content" style="margin-top: var(--space-2); color: var(--color-text-tertiary);">Most accessed · 62.1%</span>
+          </div>
+          <div class="cs-pillar-card">
+            <span class="cs-pillar-card__name">Contact</span>
+            <span class="cs-pillar-card__audience">For credibility</span>
+            <span class="cs-pillar-card__content">Blog · Behance · Social</span>
+          </div>
+        </div>
+
+        <!-- "The bet" callout -->
+        <div class="cs-callout" style="margin-top: var(--space-5);">
+          <p class="cs-callout__text">The bet: a creative framework that is hard to use will not be used.</p>
+        </div>
+
+        <div class="cs-ia-compare">
+          <div>
+            <span class="cs-ia-block__label">Before · 7 sections</span>
+            <div class="cs-ia-block__items">
+              <div class="cs-ia-block__item">Company</div>
+              <div class="cs-ia-block__item">Service</div>
+              <div class="cs-ia-block__item">Work</div>
+              <div class="cs-ia-block__item">Culture</div>
+              <div class="cs-ia-block__item">Career</div>
+              <div class="cs-ia-block__item">Archive</div>
+              <div class="cs-ia-block__item">Contact</div>
+            </div>
+          </div>
+          <!-- 중앙 화살표 -->
+          <div class="cs-ia-arrow">→</div>
+          <div>
+            <span class="cs-ia-block__label">After · 3 sections</span>
+            <div class="cs-ia-block__items">
+              <div class="cs-ia-block__item is-active">About — Vision · Service · Brand Story · Culture</div>
+              <div class="cs-ia-block__item is-active">Work — Department · Portfolio</div>
+              <div class="cs-ia-block__item is-active">Contact — Blog · Behance · Social</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">Approach</span>
+        <p class="cs-section__text">
+          I used the survey data and competitor research as the creative brief.
+          Data-driven persuasion was the only way to get seven departments to agree
+          on a single direction. Opinion alone would not have worked.
+        </p>
+        <p class="cs-section__text" style="margin-top: var(--space-5);">
+          The visual system was built like a component library: keyword hierarchy,
+          color tokens, and BI application rules that any team member could follow
+          without a designer in the room. The low-code CMS gave each department
+          ownership of their section while keeping the brand guardrails in place.
+        </p>
+
+        <!-- 브랜드 가이드라인 · 디자인 시스템 -->
+        <div class="cs-image-placeholder cs-image-placeholder--wide">
+          <img class="cs-placeholder-img" src="../assets/images/ptk-brand-guidelines.png"
+               alt="Brand Guidelines · Design System"
+               onload="this.parentElement.classList.add('has-image')"
+               onerror="this.style.display='none'" />
+          <span class="cs-image-placeholder__label">Brand Guidelines · Design System</span>
+          <span class="cs-image-placeholder__sub">브랜드 가이드라인 · 컴포넌트 시스템</span>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">Results</span>
+
+        <!-- Branding -->
+        <span class="cs-subsection__label" style="margin-top: 0;">Branding</span>
+        <p class="cs-section__text">
+          The Red Dot Design Award (Web Design category) confirmed that the new identity
+          held up against global design standards. At the first physical touchpoint —
+          the business card — the brand received consistent, unsolicited praise from
+          clients and employees alike.
+        </p>
+
+        <!-- 브랜드 아이덴티티 결과물: 명함 · 로고 · 컬러 시스템 -->
+        <div class="cs-image-placeholder cs-image-placeholder--medium">
+          <img class="cs-placeholder-img" src="../assets/images/ptk-brand-identity_1.png"
+               alt="Brand Identity 1"
+               onload="this.parentElement.classList.add('has-image')"
+               onerror="this.style.display='none'" />
+          <img class="cs-placeholder-img" src="../assets/images/ptk-brand-identity_2.png"
+               alt="Brand Identity 2"
+               onload="this.parentElement.classList.add('has-image')"
+               onerror="this.style.display='none'" />
+          <span class="cs-image-placeholder__label">Brand Identity — Business Card · Logo · Color System</span>
+          <span class="cs-image-placeholder__sub">브랜드 아이덴티티 결과물</span>
+        </div>
+
+        <!-- Website -->
+        <span class="cs-subsection__label">Website</span>
+        <div class="cs-results-grid">
+          <div class="result-item">
+            <span class="result-item__number">7 → 3</span>
+            <span class="result-item__label">IA sections consolidated</span>
+          </div>
+          <div class="result-item">
+            <span class="result-item__number">−60%</span>
+            <span class="result-item__label">Internal content update time</span>
+          </div>
+        </div>
+        <p class="cs-section__text" style="margin-top: var(--space-5);">
+          The bet held. Teams that previously needed a designer for every update
+          were now managing content independently within brand guardrails —
+          internal update time dropped by 60%.
+        </p>
+
+        <!-- 리뉴얼된 웹사이트 After 스크린샷 -->
+        <div class="cs-image-placeholder cs-image-placeholder--wide">
+          <img class="cs-placeholder-img" src="../assets/images/ptk-website-after_1.png"
+               alt="Website After 1"
+               onload="this.parentElement.classList.add('has-image')"
+               onerror="this.style.display='none'" />
+          <img class="cs-placeholder-img" src="../assets/images/ptk-website-after_2.png"
+               alt="Website After 2"
+               onload="this.parentElement.classList.add('has-image')"
+               onerror="this.style.display='none'" />
+          <img class="cs-placeholder-img" src="../assets/images/ptk-website-after_3.png"
+               alt="Website After 3"
+               onload="this.parentElement.classList.add('has-image')"
+               onerror="this.style.display='none'" />
+          <span class="cs-image-placeholder__label">Website — After</span>
+          <span class="cs-image-placeholder__sub">리뉴얼된 웹사이트 스크린샷</span>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">Key Learning</span>
+        <p class="cs-section__text">
+          A brand is a product that runs on people. If the people maintaining it
+          cannot execute consistently, the strategy fails regardless of how good it looks.
+        </p>
+        <div class="cs-callout">
+          <p class="cs-callout__text">
+            The same logic that makes a good design system makes a good brand system:
+            reduce friction for the people executing it, and consistency becomes the default.
+          </p>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">What I'd Test Next</span>
+        <p class="cs-section__text">
+          A content performance dashboard for internal teams so maintainers can see
+          which editorial templates drive the most engagement. That feedback loop
+          would turn the brand system from a static set of rules into something
+          that improves itself over time.
+        </p>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">Tools Used</span>
+        <div class="cs-tags">
+          <span class="cs-tag">Figma</span>
+          <span class="cs-tag">Low-code CMS</span>
+          <span class="cs-tag">Internal survey (n=117)</span>
+          <span class="cs-tag">Competitor analysis</span>
+        </div>
+      </section>
+
+      <nav class="cs-pagination">
+        <a href="samsung-engagement.html">← Samsung.com</a>
+        <a href="../index.html">Back to all work →</a>
+      </nav>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <span class="footer__copy">© 2026 Judy Lee</span>
+    <div class="footer__links">
+      <a href="https://linkedin.com/in/judyleedesign" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="mailto:jihyunlee719@gmail.com">Email ↗</a>
+    </div>
+  </footer>
+
+  <script>
+    /* 설문 차트: 바 세그먼트와 레전드 항목 양방향 호버 연동 */
+    (function () {
+      const bar    = document.querySelector('.cs-survey-bar');
+      const legend = document.querySelector('.cs-survey-legend');
+      if (!bar || !legend) return;
+
+      const segs  = [...bar.querySelectorAll('.cs-survey-segment')];
+      const items = [...legend.querySelectorAll('.cs-survey-legend__item')];
+
+      function activate(idx) {
+        bar.classList.add('has-hover');
+        legend.classList.add('has-hover');
+        segs.forEach(s  => s.classList.toggle('is-active', s.dataset.idx === idx));
+        items.forEach(it => it.classList.toggle('is-active', it.dataset.idx === idx));
+      }
+
+      function deactivate() {
+        bar.classList.remove('has-hover');
+        legend.classList.remove('has-hover');
+        segs.forEach(s  => s.classList.remove('is-active'));
+        items.forEach(it => it.classList.remove('is-active'));
+      }
+
+      segs.forEach(s => {
+        s.addEventListener('mouseenter', () => activate(s.dataset.idx));
+        s.addEventListener('mouseleave', deactivate);
+      });
+
+      items.forEach(it => {
+        it.addEventListener('mouseenter', () => activate(it.dataset.idx));
+        it.addEventListener('mouseleave', deactivate);
+      });
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samsung.com Redesign — Judy Lee</title>
+
+  <link rel="stylesheet" href="../styles/tokens.css" />
+
+  <style>
+    /* ============================================
+       Case Study — Samsung.com Redesign
+       ============================================ */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-height);
+      background-color: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--content-padding-x);
+    }
+
+    .nav__logo {
+      font-size: var(--text-small);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-primary);
+    }
+
+    .nav__links {
+      display: flex;
+      gap: var(--space-6);
+    }
+
+    .nav__links a {
+      font-size: var(--text-small);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-secondary);
+      transition: color var(--transition-fast);
+    }
+
+    .nav__links a:hover {
+      color: var(--color-text-primary);
+    }
+
+    .cs-page {
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--content-padding-x);
+    }
+
+    .cs-header {
+      padding: var(--space-10) 0 var(--space-8);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .cs-header__back {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-small);
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-6);
+      transition: color var(--transition-fast);
+    }
+
+    .cs-header__back:hover {
+      color: var(--color-text-primary);
+    }
+
+    .cs-header__label {
+      display: block;
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-4);
+    }
+
+    .cs-header__title {
+      font-size: var(--text-display);
+      font-weight: var(--weight-light);
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      max-width: 800px;
+      margin-bottom: var(--space-5);
+    }
+
+    .cs-header__title em {
+      font-style: italic;
+    }
+
+    .cs-header__description {
+      font-size: var(--text-body);
+      line-height: var(--leading-loose);
+      color: var(--color-text-secondary);
+      max-width: 600px;
+    }
+
+    .cs-impact {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+      padding: var(--space-8) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .cs-painpoints {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+      max-width: 680px;
+    }
+
+    .cs-painpoint {
+      padding: var(--space-4);
+      background-color: var(--color-bg-subtle);
+      border-radius: var(--radius-sm);
+      font-size: var(--text-small);
+      color: var(--color-text-primary);
+      line-height: var(--leading-normal);
+    }
+
+    .cs-quote {
+      margin-top: var(--space-5);
+      padding-left: var(--space-5);
+      border-left: 2px solid var(--color-text-tertiary);
+      max-width: 680px;
+    }
+
+    .cs-quote__text {
+      font-size: var(--text-h2);
+      font-weight: var(--weight-light);
+      font-style: italic;
+      line-height: var(--leading-normal);
+      color: var(--color-text-primary);
+    }
+
+    .cs-quote__source {
+      display: block;
+      margin-top: var(--space-3);
+      font-size: var(--text-caption);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+    }
+
+    .cs-approach-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-5);
+      margin-top: var(--space-5);
+      max-width: 680px;
+    }
+
+    .cs-approach-card {
+      padding: var(--space-5);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+    }
+
+    .cs-approach-card__label {
+      display: block;
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-3);
+    }
+
+    .cs-approach-card__title {
+      display: block;
+      font-size: var(--text-h2);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-3);
+      line-height: var(--leading-normal);
+    }
+
+    .cs-approach-card__desc {
+      font-size: var(--text-small);
+      line-height: var(--leading-loose);
+      color: var(--color-text-secondary);
+    }
+
+    .cs-impact__number {
+      display: block;
+      font-size: clamp(36px, 4vw, 52px);
+      font-weight: var(--weight-light);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      line-height: 1;
+    }
+
+    .cs-impact__label {
+      display: block;
+      margin-top: var(--space-2);
+      font-size: var(--text-small);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+    }
+
+    .cs-meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-5);
+      padding: var(--space-6) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .cs-meta__label {
+      display: block;
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-2);
+    }
+
+    .cs-meta__value {
+      font-size: var(--text-small);
+      color: var(--color-text-primary);
+      line-height: var(--leading-normal);
+    }
+
+    /* ─── Hero Image ──────────────────────────── */
+
+    .cs-hero-image {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      background-color: var(--color-bg-subtle);
+      display: block;
+      margin-top: var(--space-8);
+    }
+
+    .cs-body {
+      padding: var(--space-9) 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-9);
+    }
+
+    .cs-section__label {
+      display: block;
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-4);
+    }
+
+    .cs-section__text {
+      font-size: var(--text-body);
+      line-height: var(--leading-loose);
+      color: var(--color-text-secondary);
+      max-width: 680px;
+    }
+
+    .cs-section__text + .cs-section__text {
+      margin-top: var(--space-4);
+    }
+
+    .cs-callout {
+      padding: var(--space-6);
+      background-color: var(--color-bg-subtle);
+      border-left: 2px solid var(--color-text-primary);
+      margin-top: var(--space-5);
+      max-width: 680px;
+    }
+
+    .cs-callout__text {
+      font-size: var(--text-body);
+      line-height: var(--leading-loose);
+      color: var(--color-text-primary);
+    }
+
+    /* ─── Results Grid ────────────────────────── */
+
+    .cs-results-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-5);
+      margin-top: var(--space-5);
+      max-width: 680px;
+    }
+
+    .result-item {
+      padding: var(--space-5);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+    }
+
+    .result-item__number {
+      display: block;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: var(--weight-light);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      line-height: 1;
+    }
+
+    .result-item__label {
+      display: block;
+      margin-top: var(--space-2);
+      font-size: var(--text-small);
+      color: var(--color-text-secondary);
+    }
+
+    .cs-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+
+    .cs-tag {
+      font-size: var(--text-caption);
+      color: var(--color-text-secondary);
+      border: 1px solid var(--color-border);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+    }
+
+    .cs-divider {
+      border: none;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .cs-pagination {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-7) 0;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .cs-pagination a {
+      font-size: var(--text-small);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-secondary);
+      transition: color var(--transition-fast);
+    }
+
+    .cs-pagination a:hover {
+      color: var(--color-text-primary);
+    }
+
+    .footer {
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: var(--space-7) var(--content-padding-x);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .footer__copy {
+      font-size: var(--text-caption);
+      color: var(--color-text-tertiary);
+    }
+
+    .footer__links {
+      display: flex;
+      gap: var(--space-5);
+    }
+
+    .footer__links a {
+      font-size: var(--text-caption);
+      color: var(--color-text-tertiary);
+      transition: color var(--transition-fast);
+    }
+
+    .footer__links a:hover {
+      color: var(--color-text-primary);
+    }
+
+    .cs-image-placeholder {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      margin-top: var(--space-5);
+      background-color: var(--color-bg-subtle);
+      border: 1px dashed var(--color-border-strong);
+      border-radius: var(--radius-sm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      overflow: hidden;
+    }
+
+    .cs-image-placeholder--wide {
+      aspect-ratio: 16 / 7;
+    }
+
+    .cs-image-placeholder--tall {
+      aspect-ratio: 4 / 5;
+      max-width: 360px;
+    }
+
+    .cs-placeholder-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .cs-image-placeholder.has-image {
+      border: none;
+      background-color: transparent;
+      aspect-ratio: auto;
+    }
+
+    .cs-image-placeholder.has-image .cs-placeholder-img {
+      position: static;
+      height: auto;
+      width: 100%;
+      object-fit: unset;
+    }
+
+    .cs-image-placeholder.has-image .cs-image-placeholder__label,
+    .cs-image-placeholder.has-image .cs-image-placeholder__sub {
+      display: none;
+    }
+
+    .cs-image-placeholder__label {
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+    }
+
+    .cs-image-placeholder__sub {
+      font-size: var(--text-caption);
+      color: var(--color-text-tertiary);
+      max-width: 80%;
+      text-align: center;
+      line-height: var(--leading-normal);
+    }
+
+    .cs-image-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+
+    .cs-image-row .cs-image-placeholder {
+      aspect-ratio: 4 / 5;
+      margin-top: 0;
+    }
+
+    .cs-image-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin-top: var(--space-5);
+    }
+
+    .cs-image-compare .cs-image-placeholder {
+      margin-top: 0;
+      aspect-ratio: 4 / 5;
+    }
+
+    .cs-image-compare__tag {
+      display: inline-block;
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-3);
+    }
+
+    @media (max-width: 768px) {
+      .cs-header { padding-top: var(--space-8); }
+      .cs-impact { grid-template-columns: 1fr 1fr; }
+      .cs-meta { grid-template-columns: 1fr 1fr; }
+      .cs-results-grid { grid-template-columns: 1fr 1fr; }
+      .cs-painpoints { grid-template-columns: 1fr; }
+      .cs-approach-grid { grid-template-columns: 1fr; }
+      .cs-image-row { grid-template-columns: 1fr; }
+      .cs-image-compare { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__logo">Judy Lee</a>
+      <div class="nav__links">
+        <a href="../about.html">About</a>
+        <a href="mailto:jihyunlee719@gmail.com">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="cs-page">
+
+    <header class="cs-header">
+      <a href="../index.html" class="cs-header__back">← All Work</a>
+      <span class="cs-header__label">Case Study 02 — UX Strategy</span>
+      <h1 class="cs-header__title">Samsung.com:<br><em>From 40 seconds to 15.</em></h1>
+      <p class="cs-header__description">
+        How verification-first information design cut task completion time by 62%
+        and lifted CSAT by 33% for millions of Samsung.com users.
+      </p>
+    </header>
+
+    <div class="cs-impact">
+      <div class="cs-impact__item">
+        <span class="cs-impact__number">+19%</span>
+        <span class="cs-impact__label">User engagement</span>
+      </div>
+      <div class="cs-impact__item">
+        <span class="cs-impact__number">+33%</span>
+        <span class="cs-impact__label">CSAT improvement</span>
+      </div>
+      <div class="cs-impact__item">
+        <span class="cs-impact__number">+15%</span>
+        <span class="cs-impact__label">Self-service resolution</span>
+      </div>
+      <div class="cs-impact__item">
+        <span class="cs-impact__number">40s → 15s</span>
+        <span class="cs-impact__label">Manual lookup time</span>
+      </div>
+    </div>
+
+    <div class="cs-meta">
+      <div>
+        <span class="cs-meta__label">Role</span>
+        <span class="cs-meta__value">UI/UX Designer · 70% design contribution</span>
+      </div>
+      <div>
+        <span class="cs-meta__label">Company</span>
+        <span class="cs-meta__value">Cheil Worldwide Pengtai</span>
+      </div>
+      <div>
+        <span class="cs-meta__label">Timeline</span>
+        <span class="cs-meta__value">Q4 2023 – Early 2024</span>
+      </div>
+      <div>
+        <span class="cs-meta__label">Tools</span>
+        <span class="cs-meta__value">Figma · Zeplin · Samsung Design System</span>
+      </div>
+    </div>
+
+    <img
+      class="cs-hero-image"
+      src="../assets/images/samsungmanualpage.jpg"
+      alt="Samsung.com Manuals & Downloads redesign"
+      onerror="this.style.display='none'"
+    />
+
+    <div class="cs-body">
+
+      <section>
+        <span class="cs-section__label">Problem</span>
+        <p class="cs-section__text">
+          Samsung.com's Manuals &amp; Downloads page served millions of users globally ·
+          yet most were abandoning self-service and escalating to support.
+          Every failed lookup converted into a support contact — a downstream cost
+          compounding at scale: support overhead, churn risk, and eroded brand trust
+          at the exact post-purchase moment that determines long-term loyalty.
+        </p>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">Research</span>
+        <p class="cs-section__text">
+          A dedicated UX Research team surfaced the structural mismatch driving abandonment.
+          I partnered with them to translate the findings into design decisions.
+        </p>
+        <div class="cs-callout" style="margin-top: var(--space-5);">
+          <p class="cs-callout__text">
+            The system required a <strong>product code</strong> (e.g. SM-F721BLBGEUB) to surface any manual.
+            Users arrived knowing a <strong>product name</strong> at best — and often only a <strong>category name</strong>.
+            The gap between user vocabulary and system architecture was the real failure.
+          </p>
+        </div>
+        <p class="cs-section__text" style="margin-top: var(--space-5);">
+          This split ran deeper across product lines: mobile users typically arrived
+          with a product name ("Flip4", "A53") and could search directly.
+          TV and appliance users often arrived with only a category name ("Smart TV", "fridge") —
+          a guided selection path the existing UI didn't provide.
+          Both populations were failing, but for structurally different reasons.
+          Four recurring failure modes mapped to this gap:
+        </p>
+        <div class="cs-painpoints">
+          <div class="cs-painpoint">40+ seconds and multiple clicks to reach a single manual</div>
+          <div class="cs-painpoint">Unclear differentiation between near-identical variants</div>
+          <div class="cs-painpoint">Confusing category taxonomy across product lines</div>
+          <div class="cs-painpoint">Thumbnails that failed to confirm the right model</div>
+        </div>
+        <div class="cs-quote">
+          <p class="cs-quote__text">"Each one looks almost the same · I can't tell which is mine."</p>
+          <span class="cs-quote__source">User research · Manuals &amp; Downloads</span>
+        </div>
+        <div class="cs-image-row">
+          <div class="cs-image-placeholder">
+            <img class="cs-placeholder-img" src="../assets/images/samsung-engagement-asis_1.png"
+                 alt="Samsung.com Manuals page — before redesign (landing)"
+                 onload="this.parentElement.classList.add('has-image')"
+                 onerror="this.style.display='none'" />
+            <span class="cs-image-placeholder__label">AS-IS · 01</span>
+            <span class="cs-image-placeholder__sub">기존 Search Samsung Support 랜딩 화면</span>
+          </div>
+          <div class="cs-image-placeholder">
+            <img class="cs-placeholder-img" src="../assets/images/samsung-engagement-asis_2.png"
+                 alt="Samsung.com Manuals page — before redesign (category tabs)"
+                 onload="this.parentElement.classList.add('has-image')"
+                 onerror="this.style.display='none'" />
+            <span class="cs-image-placeholder__label">AS-IS · 02</span>
+            <span class="cs-image-placeholder__sub">Select a Model 화면 · 카테고리 탭 구조</span>
+          </div>
+          <div class="cs-image-placeholder">
+            <img class="cs-placeholder-img" src="../assets/images/samsung-engagement-asis_3.png"
+                 alt="Samsung.com Manuals page — before redesign (model list)"
+                 onload="this.parentElement.classList.add('has-image')"
+                 onerror="this.style.display='none'" />
+            <span class="cs-image-placeholder__label">AS-IS · 03</span>
+            <span class="cs-image-placeholder__sub">거의 동일한 모델명 리스트 · 구분 어려움</span>
+          </div>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">Hypothesis</span>
+        <p class="cs-section__text">
+          The surface story was "navigation is broken." The deeper pattern was different ·
+          every pain point traced back to one moment: users couldn't confirm they were
+          looking at <em>their</em> product.
+        </p>
+        <div class="cs-callout">
+          <p class="cs-callout__text">
+            Users didn't need more options or smarter search ·
+            they needed <strong>confirmation</strong> at the decision moment.
+            Reduce cognitive load there · not before it · and completion should rise.
+          </p>
+        </div>
+        <p class="cs-section__text" style="margin-top: var(--space-5);">
+          Alternatives considered and ruled out: a pure search-only fix (ignores users who
+          don't know the model name) · a deeper taxonomy (adds clicks, worsens the 40s metric).
+          The path forward had to serve both audiences in parallel.
+        </p>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">Approach</span>
+        <p class="cs-section__text">
+          One redesign · three named UI patterns working in parallel. Each pattern targeted
+          a specific failure mode uncovered in research.
+        </p>
+        <div class="cs-approach-grid">
+          <div class="cs-approach-card">
+            <span class="cs-approach-card__label">Pattern 01 · Fast path</span>
+            <span class="cs-approach-card__title">Simplified Search &amp; Predictive Hints</span>
+            <p class="cs-approach-card__desc">
+              Users type a product name · autocomplete surfaces the right model with imagery ·
+              cutting trial-and-error for users who know what they own.
+            </p>
+          </div>
+          <div class="cs-approach-card">
+            <span class="cs-approach-card__label">Pattern 02 · Guided path</span>
+            <span class="cs-approach-card__title">Hierarchical Category Selection</span>
+            <p class="cs-approach-card__desc">
+              Category taxonomy rebuilt so every step narrows confidently · scalable across
+              Samsung's full global catalog without custom work per product line.
+            </p>
+          </div>
+          <div class="cs-approach-card">
+            <span class="cs-approach-card__label">Pattern 03 · Verification</span>
+            <span class="cs-approach-card__title">Quick-Verify UI</span>
+            <p class="cs-approach-card__desc">
+              Product imagery shown at the selection moment · confirming "this is mine"
+              before the user commits · resolving near-identical variants at point of decision.
+            </p>
+          </div>
+          <div class="cs-approach-card">
+            <span class="cs-approach-card__label">Constraint</span>
+            <span class="cs-approach-card__title">Samsung Design Guidelines compliance</span>
+            <p class="cs-approach-card__desc">
+              Reused existing components wherever possible · kept implementation consistent
+              and minimized dev overhead while introducing the new interaction patterns.
+            </p>
+          </div>
+        </div>
+        <p class="cs-section__text" style="margin-top: var(--space-5);">
+          <strong>Collaboration:</strong> partnered with the UX Research team on discovery
+          and validation · handed off final specs to engineering via Zeplin with annotated
+          interaction states and component mappings to the Samsung Design System.
+        </p>
+
+        <div class="cs-image-placeholder cs-image-placeholder--wide">
+          <img class="cs-placeholder-img" src="../assets/images/samsung-engagement-tobe-flow.png"
+               alt="Final redesign — end-to-end user flow"
+               onload="this.parentElement.classList.add('has-image')"
+               onerror="this.style.display='none'" />
+          <span class="cs-image-placeholder__label">TO-BE · Full Flow</span>
+          <span class="cs-image-placeholder__sub">Manuals &amp; Downloads → Enter model code → Select category → Step 2 select product → Additional Information</span>
+        </div>
+
+        <div class="cs-image-placeholder cs-image-placeholder--wide">
+          <img class="cs-placeholder-img" src="../assets/images/samsung-engagement-pattern-search.png"
+               alt="Pattern 01 + 02 — Simplified Search and Hierarchical Category Selection"
+               onload="this.parentElement.classList.add('has-image')"
+               onerror="this.style.display='none'" />
+          <span class="cs-image-placeholder__label">Pattern 01 · 02</span>
+          <span class="cs-image-placeholder__sub">Simplified Search &amp; Predictive Hints · Hierarchical Category Selection</span>
+        </div>
+        <div class="cs-image-placeholder" style="margin-top: var(--space-3);">
+          <img class="cs-placeholder-img" src="../assets/images/samsung-engagement-pattern-verify.png"
+               alt="Pattern 03 — Quick-Verify UI with product imagery"
+               onload="this.parentElement.classList.add('has-image')"
+               onerror="this.style.display='none'" />
+          <span class="cs-image-placeholder__label">Pattern 03</span>
+          <span class="cs-image-placeholder__sub">Quick-Verify UI · 결정 순간의 시각 확인</span>
+        </div>
+
+        <div class="cs-image-placeholder cs-image-placeholder--wide">
+          <img class="cs-placeholder-img" src="../assets/images/samsung-engagement-wireframe.png"
+               alt="Wireframe sketches — early ideation"
+               onload="this.parentElement.classList.add('has-image')"
+               onerror="this.style.display='none'" />
+          <span class="cs-image-placeholder__label">Process · Wireframes</span>
+          <span class="cs-image-placeholder__sub">초기 아이데이션 · 핸드드로잉 와이어프레임</span>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">Results</span>
+        <p class="cs-section__text">
+          Measured post-launch against the live baseline.
+        </p>
+
+        <div class="cs-image-compare">
+          <div>
+            <span class="cs-image-compare__tag">Before · 40+ sec</span>
+            <div class="cs-image-placeholder">
+              <img class="cs-placeholder-img" src="../assets/images/samsung-engagement-result-before.png"
+                   alt="Before redesign — friction and abandonment"
+                   onload="this.parentElement.classList.add('has-image')"
+                   onerror="this.style.display='none'" />
+              <span class="cs-image-placeholder__label">Before</span>
+              <span class="cs-image-placeholder__sub">Friction · Inefficiency · Bottleneck</span>
+            </div>
+          </div>
+          <div>
+            <span class="cs-image-compare__tag">After · 15 sec</span>
+            <div class="cs-image-placeholder">
+              <img class="cs-placeholder-img" src="../assets/images/samsung-engagement-result-after.png"
+                   alt="After redesign — faster, confirmed, self-served"
+                   onload="this.parentElement.classList.add('has-image')"
+                   onerror="this.style.display='none'" />
+              <span class="cs-image-placeholder__label">After</span>
+              <span class="cs-image-placeholder__sub">Redesigned flow · 25s 단축 · 자가해결</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cs-results-grid">
+          <div class="result-item">
+            <span class="result-item__number">+19%</span>
+            <span class="result-item__label">User engagement</span>
+          </div>
+          <div class="result-item">
+            <span class="result-item__number">40s → 15s</span>
+            <span class="result-item__label">Manual lookup time</span>
+          </div>
+          <div class="result-item">
+            <span class="result-item__number">+15%</span>
+            <span class="result-item__label">Self-service resolution</span>
+          </div>
+          <div class="result-item">
+            <span class="result-item__number">+33%</span>
+            <span class="result-item__label">CSAT improvement</span>
+          </div>
+          <div class="result-item">
+            <span class="result-item__number">+45%</span>
+            <span class="result-item__label">NPS improvement · press reported</span>
+          </div>
+        </div>
+        <p class="cs-section__text" style="margin-top: var(--space-5);">
+          Post-launch qualitative feedback cited visual confirmation as the primary driver of increased confidence —
+          users reported navigating with less friction and greater certainty they had selected the right product.
+        </p>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">Key Learning</span>
+        <p class="cs-section__text" style="font-size: var(--text-h2); color: var(--color-text-primary); max-width: 680px; line-height: var(--leading-normal);">
+          Verification-first design outperforms navigation-first design when the user's
+          real problem is identity confirmation · not discovery.
+        </p>
+        <p class="cs-section__text" style="margin-top: var(--space-5);">
+          Small craft decisions — visual hierarchy, instant verification cues — compound into
+          measurable business outcomes when they land at the right moment.
+          The real leverage wasn't restructuring the navigation.
+          It was inserting a confirmation signal at the precise point where users were abandoning.
+        </p>
+        <div class="cs-callout">
+          <p class="cs-callout__text">
+            Observing user behavior and understanding expectations is critical
+            <em>before</em> proposing solutions · not after.
+          </p>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">What I'd Test Next</span>
+        <p class="cs-section__text">
+          <strong>Honest limitation:</strong> validation happened post-launch against
+          behavioral data · not through pre-launch usability testing with real users.
+          Some design choices weren't fully de-risked before ship.
+        </p>
+        <p class="cs-section__text">
+          Next iteration would run moderated usability sessions earlier to validate the
+          taxonomy before implementation · and layer in proactive model-detection (via
+          serial number or purchase history) to collapse selection time toward zero for
+          returning users.
+        </p>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">Tools Used</span>
+        <div class="cs-tags">
+          <span class="cs-tag">Figma</span>
+          <span class="cs-tag">Zeplin</span>
+          <span class="cs-tag">Samsung Design System</span>
+        </div>
+      </section>
+
+      <nav class="cs-pagination">
+        <a href="reels-content-strategy.html">← Reels Content Strategy</a>
+        <a href="ptkorea.html">Next: PTKorea →</a>
+      </nav>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <span class="footer__copy">© 2026 Judy Lee</span>
+    <div class="footer__links">
+      <a href="https://linkedin.com/in/judyleedesign" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="mailto:jihyunlee719@gmail.com">Email ↗</a>
+    </div>
+  </footer>
+
+</body>
+</html>

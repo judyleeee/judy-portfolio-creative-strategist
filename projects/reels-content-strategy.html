@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reels Content Strategy — Judy Lee</title>
+
+  <link rel="stylesheet" href="../styles/tokens.css" />
+
+  <style>
+    /* ============================================
+       Case Study — Reels Content Strategy
+       ============================================ */
+
+    /* ─── Nav ─────────────────────────────────── */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-height);
+      background-color: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--content-padding-x);
+    }
+
+    .nav__logo {
+      font-size: var(--text-small);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-primary);
+    }
+
+    .nav__links {
+      display: flex;
+      gap: var(--space-6);
+    }
+
+    .nav__links a {
+      font-size: var(--text-small);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-secondary);
+      transition: color var(--transition-fast);
+    }
+
+    .nav__links a:hover {
+      color: var(--color-text-primary);
+    }
+
+    /* ─── Case Study Layout ───────────────────── */
+
+    .cs-page {
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 var(--content-padding-x);
+    }
+
+    /* ─── Header ──────────────────────────────── */
+
+    .cs-header {
+      padding: var(--space-10) 0 var(--space-8);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .cs-header__back {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-small);
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-6);
+      transition: color var(--transition-fast);
+    }
+
+    .cs-header__back:hover {
+      color: var(--color-text-primary);
+    }
+
+    .cs-header__label {
+      display: block;
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-4);
+    }
+
+    .cs-header__title {
+      font-size: var(--text-display);
+      font-weight: var(--weight-light);
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      max-width: 800px;
+      margin-bottom: var(--space-5);
+    }
+
+    .cs-header__title em {
+      font-style: italic;
+    }
+
+    .cs-header__description {
+      font-size: var(--text-body);
+      line-height: var(--leading-loose);
+      color: var(--color-text-secondary);
+      max-width: 600px;
+    }
+
+    /* ─── Impact Numbers (최상단 3개) ────────── */
+
+    .cs-impact {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+      padding: var(--space-8) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .cs-impact__number {
+      display: block;
+      font-size: clamp(36px, 4vw, 52px);
+      font-weight: var(--weight-light);
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      line-height: 1;
+    }
+
+    .cs-impact__label {
+      display: block;
+      margin-top: var(--space-2);
+      font-size: var(--text-small);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-normal);
+    }
+
+    /* ─── Meta Row ────────────────────────────── */
+
+    .cs-meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-5);
+      padding: var(--space-6) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .cs-meta__label {
+      display: block;
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-2);
+    }
+
+    .cs-meta__value {
+      font-size: var(--text-small);
+      color: var(--color-text-primary);
+      line-height: var(--leading-normal);
+    }
+
+    /* ─── Content Sections ────────────────────── */
+
+    .cs-body {
+      padding: var(--space-9) 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-9);
+    }
+
+    .cs-section__label {
+      display: block;
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-4);
+    }
+
+    .cs-section__heading {
+      font-size: var(--text-h2);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-4);
+      letter-spacing: var(--tracking-tight);
+    }
+
+    .cs-section__text {
+      font-size: var(--text-body);
+      line-height: var(--leading-loose);
+      color: var(--color-text-secondary);
+      max-width: 680px;
+    }
+
+    .cs-section__text + .cs-section__text {
+      margin-top: var(--space-4);
+    }
+
+    /* ─── Two-column layout for section + aside ─ */
+
+    .cs-two-col {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: var(--space-8);
+      align-items: start;
+    }
+
+    /* ─── Data Table ──────────────────────────── */
+
+    .cs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: var(--space-5);
+    }
+
+    .cs-table th {
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      text-align: left;
+      padding: var(--space-3) var(--space-4) var(--space-3) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .cs-table td {
+      font-size: var(--text-small);
+      color: var(--color-text-primary);
+      padding: var(--space-3) var(--space-4) var(--space-3) 0;
+      border-bottom: 1px solid var(--color-border);
+      line-height: var(--leading-normal);
+    }
+
+    .cs-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* 하이라이트 행 */
+    .cs-table tr.highlight td {
+      color: var(--color-text-primary);
+      font-weight: var(--weight-medium);
+    }
+
+    /* ─── Callout Box ─────────────────────────── */
+
+    .cs-callout {
+      padding: var(--space-6);
+      background-color: var(--color-bg-subtle);
+      border-left: 2px solid var(--color-text-primary);
+      margin-top: var(--space-5);
+    }
+
+    .cs-callout__text {
+      font-size: var(--text-body);
+      line-height: var(--leading-loose);
+      color: var(--color-text-primary);
+    }
+
+    /* ─── Tag List ────────────────────────────── */
+
+    .cs-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+
+    .cs-tag {
+      font-size: var(--text-caption);
+      color: var(--color-text-secondary);
+      border: 1px solid var(--color-border);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+    }
+
+    /* ─── Divider ─────────────────────────────── */
+
+    .cs-divider {
+      border: none;
+      border-top: 1px solid var(--color-border);
+    }
+
+    /* ─── Nav Pagination ──────────────────────── */
+
+    .cs-pagination {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-7) 0;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .cs-pagination a {
+      font-size: var(--text-small);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-secondary);
+      transition: color var(--transition-fast);
+    }
+
+    .cs-pagination a:hover {
+      color: var(--color-text-primary);
+    }
+
+    /* ─── Footer ──────────────────────────────── */
+
+    .footer {
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: var(--space-7) var(--content-padding-x);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .footer__copy {
+      font-size: var(--text-caption);
+      color: var(--color-text-tertiary);
+    }
+
+    .footer__links {
+      display: flex;
+      gap: var(--space-5);
+    }
+
+    .footer__links a {
+      font-size: var(--text-caption);
+      color: var(--color-text-tertiary);
+      transition: color var(--transition-fast);
+    }
+
+    .footer__links a:hover {
+      color: var(--color-text-primary);
+    }
+
+    /* ─── Responsive ──────────────────────────── */
+
+    @media (max-width: 768px) {
+      .cs-header {
+        padding-top: var(--space-8);
+      }
+
+      .cs-impact {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cs-impact .cs-impact__item:last-child {
+        grid-column: 1 / -1;
+      }
+
+      .cs-meta {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cs-two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-4);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── Nav ──────────────────────────────────── -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__logo">Judy Lee</a>
+      <div class="nav__links">
+        <a href="../about.html">About</a>
+        <a href="mailto:jihyunlee719@gmail.com">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="cs-page">
+
+    <!-- ─── Header ─────────────────────────────── -->
+    <header class="cs-header">
+      <a href="../index.html" class="cs-header__back">← All Work</a>
+      <span class="cs-header__label">Case Study 01 — Content Strategy</span>
+      <h1 class="cs-header__title">Reels Content Strategy:<br><em>69K views in 30 days, zero paid.</em></h1>
+      <p class="cs-header__description">
+        How I built 160x organic reach for a hyper-niche audience on Instagram
+        through hypothesis-driven hook engineering and save-rate optimization.
+      </p>
+    </header>
+
+    <!-- ─── Impact Numbers ───────────────────────── -->
+    <div class="cs-impact">
+      <div class="cs-impact__item">
+        <span class="cs-impact__number">69K</span>
+        <span class="cs-impact__label">Total views in 30 days</span>
+      </div>
+      <div class="cs-impact__item">
+        <span class="cs-impact__number">160x</span>
+        <span class="cs-impact__label">Organic reach beyond existing audience</span>
+      </div>
+      <div class="cs-impact__item">
+        <span class="cs-impact__number">4.9%</span>
+        <span class="cs-impact__label">Peak engagement rate (vs. 0.9% baseline)</span>
+      </div>
+    </div>
+
+    <!-- ─── Meta Row ─────────────────────────────── -->
+    <div class="cs-meta">
+      <div>
+        <span class="cs-meta__label">Role</span>
+        <span class="cs-meta__value">Solo — Strategy, Hook Engineering, Analysis</span>
+      </div>
+      <div>
+        <span class="cs-meta__label">Platform</span>
+        <span class="cs-meta__value">Instagram Reels (@in2weeks.ca)</span>
+      </div>
+      <div>
+        <span class="cs-meta__label">Timeline</span>
+        <span class="cs-meta__value">Mar 2026 – Present</span>
+      </div>
+      <div>
+        <span class="cs-meta__label">Budget</span>
+        <span class="cs-meta__value">$0 — 100% organic</span>
+      </div>
+    </div>
+
+    <!-- ─── Body ──────────────────────────────────── -->
+    <div class="cs-body">
+
+      <!-- Problem -->
+      <section>
+        <span class="cs-section__label">Problem</span>
+        <p class="cs-section__text">
+          How do you build meaningful reach with zero paid budget, zero existing audience,
+          and a hyper-niche target — Korean professionals navigating Canadian work life?
+        </p>
+        <p class="cs-section__text">
+          The challenge wasn't just awareness. It was reaching people who would
+          actually act on the content — save it, share it, return to it.
+          Passive reach is noise. High-intent signals are signal.
+        </p>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <!-- Audience Insight -->
+      <section>
+        <span class="cs-section__label">Audience Insight</span>
+        <p class="cs-section__text">
+          Target: Korean working holiday and immigration professionals in Canada.
+          Primary behavior signal: they <strong>save</strong> content for later action, not just scroll.
+        </p>
+        <div class="cs-callout">
+          <p class="cs-callout__text">
+            High-intent audience = save rate and share rate matter more than likes.
+            If someone saves a Reel, they've made a decision. That's the signal worth optimizing for.
+          </p>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <!-- Hypothesis -->
+      <section>
+        <span class="cs-section__label">Hypothesis</span>
+        <p class="cs-section__text">
+          Content embedding a concrete monetary or social value in the first 3 seconds —
+          e.g., "$6,000 in annual benefits you're missing" — will generate significantly
+          higher save and share behavior than comparison-format content
+          (e.g., "Canada vs Korea"), because it triggers immediate utility, not curiosity.
+        </p>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <!-- Experiment -->
+      <section>
+        <span class="cs-section__label">Experiment</span>
+        <p class="cs-section__text">
+          Ran 5 Reels over a 3-week period. Tested two creative formats head-to-head:
+        </p>
+
+        <table class="cs-table" style="margin-top: var(--space-6);">
+          <thead>
+            <tr>
+              <th>Format</th>
+              <th>Hook Type</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>A — Utility-first</strong></td>
+              <td>Number-led + actionable takeaway</td>
+              <td>Benefits $6K / Show discounts 30–50%</td>
+            </tr>
+            <tr>
+              <td>B — Comparison</td>
+              <td>Cultural contrast</td>
+              <td>Canada vs Korea holidays / work culture</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="cs-tags">
+          <span class="cs-tag">Video length: 28–46 sec</span>
+          <span class="cs-tag">Bilingual KR/EN text overlay</span>
+          <span class="cs-tag">100% organic distribution</span>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <!-- Results -->
+      <section>
+        <span class="cs-section__label">Results</span>
+
+        <table class="cs-table">
+          <thead>
+            <tr>
+              <th>Content</th>
+              <th>Format</th>
+              <th>Views</th>
+              <th>Saves</th>
+              <th>Shares</th>
+              <th>Eng. Rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Benefits $6,000</td>
+              <td>Utility-first</td>
+              <td>29K</td>
+              <td>293</td>
+              <td>174</td>
+              <td>2.1%</td>
+            </tr>
+            <tr class="highlight">
+              <td>Show Discounts</td>
+              <td>Utility-first</td>
+              <td>18K</td>
+              <td><strong>438</strong></td>
+              <td><strong>252</strong></td>
+              <td><strong>4.9%</strong></td>
+            </tr>
+            <tr>
+              <td>Canada Holidays</td>
+              <td>Comparison</td>
+              <td>6.3K</td>
+              <td>9</td>
+              <td>11</td>
+              <td>0.9%</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="cs-impact" style="padding-top: var(--space-7); border-bottom: none;">
+          <div class="cs-impact__item">
+            <span class="cs-impact__number">909</span>
+            <span class="cs-impact__label">Total saves in 30 days</span>
+          </div>
+          <div class="cs-impact__item">
+            <span class="cs-impact__number">483</span>
+            <span class="cs-impact__label">Total shares in 30 days</span>
+          </div>
+          <div class="cs-impact__item">
+            <span class="cs-impact__number">34K</span>
+            <span class="cs-impact__label">Unique viewers reached</span>
+          </div>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <!-- Key Learning -->
+      <section>
+        <span class="cs-section__label">Key Learning</span>
+        <p class="cs-section__text">
+          Utility-first hooks outperform comparison formats by <strong>4x on saves</strong> and
+          <strong>23x on shares</strong>. The algorithm rewards save/share behavior —
+          high-intent signals — over passive engagement like likes or views alone.
+        </p>
+        <div class="cs-callout">
+          <p class="cs-callout__text">
+            Applied immediately: all subsequent content leads with a concrete value hook
+            in the first 3 seconds. Format is secondary to the promise in the opening frame.
+          </p>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <!-- What I'd Test Next -->
+      <section>
+        <span class="cs-section__label">What I'd Test Next</span>
+        <p class="cs-section__text">
+          Testing personal narrative format layered onto utility hook.
+        </p>
+        <p class="cs-section__text">
+          Hypothesis: adding human identity to information content will increase
+          follower-conversion rate from non-follower viewers — because the utility
+          hook earns the click, and the identity earns the follow.
+        </p>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <!-- Tools -->
+      <section>
+        <span class="cs-section__label">Tools Used</span>
+        <div class="cs-tags">
+          <span class="cs-tag">Instagram Insights</span>
+          <span class="cs-tag">Meta Edits</span>
+          <span class="cs-tag">Claude AI</span>
+          <span class="cs-tag">Figma</span>
+        </div>
+      </section>
+
+      <!-- Pagination -->
+      <nav class="cs-pagination">
+        <span></span>
+        <a href="samsung-engagement.html">Next: Samsung.com →</a>
+      </nav>
+
+    </div>
+  </div>
+
+  <!-- ─── Footer ───────────────────────────────── -->
+  <footer class="footer">
+    <span class="footer__copy">© 2026 Judy Lee</span>
+    <div class="footer__links">
+      <a href="https://linkedin.com/in/judyleedesign" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="mailto:jihyunlee719@gmail.com">Email ↗</a>
+    </div>
+  </footer>
+
+</body>
+</html>
