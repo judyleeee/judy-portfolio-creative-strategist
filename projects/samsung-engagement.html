@@ -431,15 +431,16 @@
 
     .cs-image-placeholder.has-image {
       border: none;
-      background-color: transparent;
-      aspect-ratio: auto;
+      background-color: var(--color-bg);
+      aspect-ratio: 16 / 9;
     }
 
     .cs-image-placeholder.has-image .cs-placeholder-img {
-      position: static;
-      height: auto;
+      position: absolute;
+      inset: 0;
       width: 100%;
-      object-fit: unset;
+      height: 100%;
+      object-fit: contain;
     }
 
     .cs-image-placeholder.has-image .cs-image-placeholder__label,
@@ -477,14 +478,26 @@
 
     .cs-image-compare {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-4);
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
       margin-top: var(--space-5);
     }
 
     .cs-image-compare .cs-image-placeholder {
       margin-top: 0;
-      aspect-ratio: 4 / 5;
+      aspect-ratio: auto;
+    }
+
+    .cs-image-compare .cs-image-placeholder.has-image {
+      aspect-ratio: auto;
+      padding: 0;
+    }
+
+    .cs-image-compare .cs-image-placeholder.has-image .cs-placeholder-img {
+      position: static;
+      width: 100%;
+      height: auto;
+      object-fit: unset;
     }
 
     .cs-image-compare__tag {
@@ -626,31 +639,13 @@
           <p class="cs-quote__text">"Each one looks almost the same · I can't tell which is mine."</p>
           <span class="cs-quote__source">User research · Manuals &amp; Downloads</span>
         </div>
-        <div class="cs-image-row">
-          <div class="cs-image-placeholder">
-            <img class="cs-placeholder-img" src="../assets/images/samsung-engagement-asis_1.png"
-                 alt="Samsung.com Manuals page — before redesign (landing)"
-                 onload="this.parentElement.classList.add('has-image')"
-                 onerror="this.style.display='none'" />
-            <span class="cs-image-placeholder__label">AS-IS · 01</span>
-            <span class="cs-image-placeholder__sub">기존 Search Samsung Support 랜딩 화면</span>
-          </div>
-          <div class="cs-image-placeholder">
-            <img class="cs-placeholder-img" src="../assets/images/samsung-engagement-asis_2.png"
-                 alt="Samsung.com Manuals page — before redesign (category tabs)"
-                 onload="this.parentElement.classList.add('has-image')"
-                 onerror="this.style.display='none'" />
-            <span class="cs-image-placeholder__label">AS-IS · 02</span>
-            <span class="cs-image-placeholder__sub">Select a Model 화면 · 카테고리 탭 구조</span>
-          </div>
-          <div class="cs-image-placeholder">
-            <img class="cs-placeholder-img" src="../assets/images/samsung-engagement-asis_3.png"
-                 alt="Samsung.com Manuals page — before redesign (model list)"
-                 onload="this.parentElement.classList.add('has-image')"
-                 onerror="this.style.display='none'" />
-            <span class="cs-image-placeholder__label">AS-IS · 03</span>
-            <span class="cs-image-placeholder__sub">거의 동일한 모델명 리스트 · 구분 어려움</span>
-          </div>
+        <div class="cs-image-placeholder cs-image-placeholder--wide">
+          <img class="cs-placeholder-img" src="../assets/images/samsung-engagement-asis.png"
+               alt="Samsung.com Manuals page — before redesign"
+               onload="this.parentElement.classList.add('has-image')"
+               onerror="this.style.display='none'" />
+          <span class="cs-image-placeholder__label">AS-IS</span>
+          <span class="cs-image-placeholder__sub">기존 Search Samsung Support 화면</span>
         </div>
       </section>
 
@@ -741,14 +736,6 @@
                onerror="this.style.display='none'" />
           <span class="cs-image-placeholder__label">Pattern 01 · 02</span>
           <span class="cs-image-placeholder__sub">Simplified Search &amp; Predictive Hints · Hierarchical Category Selection</span>
-        </div>
-        <div class="cs-image-placeholder" style="margin-top: var(--space-3);">
-          <img class="cs-placeholder-img" src="../assets/images/samsung-engagement-pattern-verify.png"
-               alt="Pattern 03 — Quick-Verify UI with product imagery"
-               onload="this.parentElement.classList.add('has-image')"
-               onerror="this.style.display='none'" />
-          <span class="cs-image-placeholder__label">Pattern 03</span>
-          <span class="cs-image-placeholder__sub">Quick-Verify UI · 결정 순간의 시각 확인</span>
         </div>
 
         <div class="cs-image-placeholder cs-image-placeholder--wide">
