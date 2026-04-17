@@ -746,6 +746,71 @@
       line-height: var(--leading-normal);
     }
 
+    /* ─── 3-Pillar Grid ──────────────────────── */
+
+    .cs-pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      margin-top: var(--space-5);
+    }
+
+    .cs-pillar-card {
+      padding: var(--space-5);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .cs-pillar-card--core {
+      border-color: var(--color-text-primary);
+      background-color: var(--color-bg-subtle);
+    }
+
+    .cs-pillar-card__num {
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      color: var(--color-text-tertiary);
+    }
+
+    .cs-pillar-card__name {
+      font-size: var(--text-h2);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-primary);
+      letter-spacing: var(--tracking-tight);
+    }
+
+    .cs-pillar-card__role {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 10px;
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      padding: 2px var(--space-2);
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-full);
+      margin-top: var(--space-1);
+    }
+
+    .cs-pillar-card--core .cs-pillar-card__role {
+      background-color: var(--color-text-primary);
+      color: var(--color-bg);
+      border-color: var(--color-text-primary);
+    }
+
+    .cs-pillar-card__desc {
+      font-size: var(--text-small);
+      line-height: var(--leading-loose);
+      color: var(--color-text-secondary);
+      margin-top: var(--space-2);
+    }
+
     /* ─── Prompt Snippet Block ───────────────── */
 
     .cs-snippet {
@@ -892,6 +957,7 @@
       }
 
       .cs-pipeline { grid-template-columns: 1fr; }
+      .cs-pillar-grid { grid-template-columns: 1fr; }
       .cs-reel-showcase { grid-template-columns: 1fr; }
       .cs-reel-player-wrap { max-width: 280px; margin: 0 auto; }
       .cs-efficiency { grid-template-columns: 1fr; }
@@ -930,8 +996,9 @@
       <h1 class="cs-header__title">In 30 days,<br><em>I ran a 1-person AI-native content studio.</em></h1>
       <p class="cs-header__description">
         A small-scale personal lab · not a case for scale claims.
-        The point is the pipeline · 69K organic views, 160x reach beyond 181 followers,
-        built with Claude + Meta Edits in ~10 hours of human work.
+        The point is the pipeline · 69K organic views · 34K unique viewers ·
+        a ~188x reach multiplier on a 181-follower base · built with Claude + Meta Edits
+        in ~10 hours of human work.
       </p>
     </header>
 
@@ -942,8 +1009,8 @@
         <span class="cs-impact__label">Total views in 30 days</span>
       </div>
       <div class="cs-impact__item">
-        <span class="cs-impact__number">160x</span>
-        <span class="cs-impact__label">Organic reach beyond existing audience</span>
+        <span class="cs-impact__number">~188x</span>
+        <span class="cs-impact__label">Unique reach multiplier<br>(34K unique / 181 followers)</span>
       </div>
       <div class="cs-impact__item">
         <span class="cs-impact__number">4.9%</span>
@@ -982,9 +1049,12 @@
           not in abstract, but on a live platform with real audiences and measurable signals.
         </p>
         <p class="cs-section__text">
-          For the lab, I picked the community I know best · Korean working-holiday and
-          immigration professionals in Canada. I'm one of them · which meant insider
-          access to real questions, real vocabulary, and real demand.
+          <strong>Korea-market insight applied to a diaspora niche.</strong>
+          The lab community · Korean working-holiday and immigration professionals in Canada ·
+          shares the save-heavy, decision-before-scroll behavior common in Korean
+          information-seeking audiences. I'm a member of this community · which gave me
+          insider access to vocabulary, questions, and the exact moment a saved piece of
+          content gets acted on.
         </p>
         <p class="cs-section__text">
           The account has 8 Reels total · 3 early pieces published without AI, and
@@ -1086,7 +1156,7 @@
           <div class="cs-pipeline__step">
             <span class="cs-pipeline__num">02</span>
             <span class="cs-pipeline__title">Content pillars</span>
-            <span class="cs-pipeline__desc">Prompted Claude as a content creator · derived 3 pillars aligned to account positioning.</span>
+            <span class="cs-pipeline__desc">Prompted Claude as a content strategist · derived 3 pillars from CLAUDE.md context. Every Reel maps to one. No pillar, no publish.</span>
             <span class="cs-pipeline__tool">Claude</span>
           </div>
           <div class="cs-pipeline__step">
@@ -1106,6 +1176,43 @@
             <span class="cs-pipeline__title">Post-mortem analysis</span>
             <span class="cs-pipeline__desc">Fed Insights data back to Claude · derived the next hypothesis and the next hook.</span>
             <span class="cs-pipeline__tool">Claude · Insights</span>
+          </div>
+        </div>
+
+        <!-- 3 Content Pillars · derived in Step 02 -->
+        <p class="cs-section__text" style="margin-top: var(--space-7);">
+          <strong>The 3 pillars derived in Step 02.</strong>
+          Every Reel maps to one. The Core pillar is the account's heart · where growth
+          and identity compound. Entry and Utility are gateways that pull new viewers
+          toward Core.
+        </p>
+        <div class="cs-pillar-grid">
+          <div class="cs-pillar-card">
+            <span class="cs-pillar-card__num">Pillar 01</span>
+            <span class="cs-pillar-card__name">Entry</span>
+            <span class="cs-pillar-card__role">Gateway · awareness</span>
+            <span class="cs-pillar-card__desc">
+              Overseas careers for Koreans · the topic that pulls outsiders in.
+              High search intent, broad reach, low commitment.
+            </span>
+          </div>
+          <div class="cs-pillar-card cs-pillar-card--core">
+            <span class="cs-pillar-card__num">Pillar 02</span>
+            <span class="cs-pillar-card__name">Core</span>
+            <span class="cs-pillar-card__role">Growth · the heart</span>
+            <span class="cs-pillar-card__desc">
+              Self-development and personal growth as a Korean living abroad.
+              Where the account's voice is. Where loyal audience forms.
+            </span>
+          </div>
+          <div class="cs-pillar-card">
+            <span class="cs-pillar-card__num">Pillar 03</span>
+            <span class="cs-pillar-card__name">Utility</span>
+            <span class="cs-pillar-card__role">Save-bait · retention</span>
+            <span class="cs-pillar-card__desc">
+              Freelance income, immigrant benefits, tax season survival.
+              Information that gets saved for later. Drives the save rate signal.
+            </span>
           </div>
         </div>
 
@@ -1511,6 +1618,13 @@ one list-led, one number-led. Isolates variable 1.</div>
           Hypothesis · adding human identity to information content will increase
           follower-conversion from non-follower viewers. The utility hook earns the click ·
           the identity earns the follow.
+        </p>
+        <p class="cs-section__text">
+          <strong>3 · Extend the pipeline across Meta surfaces.</strong>
+          The CLAUDE.md + 5-step loop is format-agnostic. Next variant tests apply the
+          same pipeline to Stories (15-sec snackable) and Feed carousels (multi-slide
+          save-bait) · holding audience constant to isolate surface-hook fit, not
+          channel effect.
         </p>
       </section>
 

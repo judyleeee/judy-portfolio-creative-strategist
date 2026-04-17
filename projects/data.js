@@ -56,7 +56,7 @@ const projects = [
   {
     id: "ptkorea",
     title: "PTKorea — Rebranding & Website",
-    description: "Won the Red Dot Design Award by solving a brand-ops misalignment — reducing internal update time by 60% through IA consolidation and editorial system design.",
+    description: "Won Red Dot and IF Design Awards by solving a brand-ops misalignment · consolidating 7 fragmented sections into a 3-pillar system that non-designers could execute.",
     role: "Lead Designer",
     context: "Brand Strategy · Web Design · Internal Systems",
     timeline: "2023",
