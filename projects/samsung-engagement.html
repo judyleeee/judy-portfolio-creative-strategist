@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Samsung.com Redesign — Judy Lee</title>
+  <title>Samsung.com Redesign · Judy Lee</title>
 
   <link rel="stylesheet" href="../styles/tokens.css" />
 
   <style>
     /* ============================================
-       Case Study — Samsung.com Redesign
+       Case Study · Samsung.com Redesign
        ============================================ */
 
     .nav {
@@ -432,15 +432,18 @@
     .cs-image-placeholder.has-image {
       border: none;
       background-color: var(--color-bg);
-      aspect-ratio: 16 / 9;
+      aspect-ratio: unset;
+      height: auto;
+      overflow: visible;
+      display: block;
     }
 
     .cs-image-placeholder.has-image .cs-placeholder-img {
-      position: absolute;
-      inset: 0;
+      position: static;
+      inset: auto;
       width: 100%;
-      height: 100%;
-      object-fit: contain;
+      height: auto;
+      object-fit: unset;
     }
 
     .cs-image-placeholder.has-image .cs-image-placeholder__label,
@@ -530,6 +533,11 @@
     <div class="nav__inner">
       <a href="../index.html" class="nav__logo">Judy Lee</a>
       <div class="nav__links">
+        <div class="nav__lang">
+          <a href="/projects/samsung-engagement.html" class="nav__lang-btn is-active">EN</a>
+          <span class="nav__lang-divider">·</span>
+          <a href="/kr/projects/samsung-engagement.html" class="nav__lang-btn">KR</a>
+        </div>
         <a href="../about.html">About</a>
         <a href="mailto:jihyunlee719@gmail.com">Contact</a>
       </div>
@@ -540,7 +548,7 @@
 
     <header class="cs-header">
       <a href="../index.html" class="cs-header__back">← All Work</a>
-      <span class="cs-header__label">Case Study 02 — UX Strategy</span>
+      <span class="cs-header__label">Case Study 03 · UX Strategy</span>
       <h1 class="cs-header__title">Samsung.com:<br><em>From 40 seconds to 15.</em></h1>
       <p class="cs-header__description">
         How verification-first information design cut task completion time by 62%
@@ -621,15 +629,14 @@
         <div class="cs-callout" style="margin-top: var(--space-5);">
           <p class="cs-callout__text">
             The system required a <strong>product code</strong> (e.g. SM-F721BLBGEUB) to surface any manual.
-            Users arrived knowing a <strong>product name</strong> at best — and often only a <strong>category name</strong>.
+            Users arrived knowing a <strong>product name</strong> at best · often only a <strong>category name</strong>.
             The gap between user vocabulary and system architecture was the real failure.
           </p>
         </div>
         <p class="cs-section__text" style="margin-top: var(--space-5);">
           This split ran deeper across product lines: mobile users typically arrived
           with a product name ("Flip4", "A53") and could search directly.
-          TV and appliance users often arrived with only a category name ("Smart TV", "fridge") —
-          a guided selection path the existing UI didn't provide.
+          TV and appliance users often arrived with only a category name ("Smart TV", "fridge"). The existing UI didn't provide a guided selection path.
           Both populations were failing, but for structurally different reasons.
           Four recurring failure modes mapped to this gap:
         </p>
@@ -645,7 +652,7 @@
         </div>
         <div class="cs-image-placeholder cs-image-placeholder--wide">
           <img class="cs-placeholder-img" src="../assets/images/samsung-engagement-asis.png"
-               alt="Samsung.com Manuals page — before redesign"
+               alt="Samsung.com Manuals page · before redesign"
                onload="this.parentElement.classList.add('has-image')"
                onerror="this.style.display='none'" />
           <span class="cs-image-placeholder__label">AS-IS</span>
@@ -726,7 +733,7 @@
 
         <div class="cs-image-placeholder cs-image-placeholder--wide">
           <img class="cs-placeholder-img" src="../assets/images/samsung-engagement-tobe-flow.png"
-               alt="Final redesign — end-to-end user flow"
+               alt="Final redesign · end-to-end user flow"
                onload="this.parentElement.classList.add('has-image')"
                onerror="this.style.display='none'" />
           <span class="cs-image-placeholder__label">TO-BE · Full Flow</span>
@@ -735,7 +742,7 @@
 
         <div class="cs-image-placeholder cs-image-placeholder--wide">
           <img class="cs-placeholder-img" src="../assets/images/samsung-engagement-pattern-search.png"
-               alt="Pattern 01 + 02 — Simplified Search and Hierarchical Category Selection"
+               alt="Pattern 01 + 02 · Simplified Search and Hierarchical Category Selection"
                onload="this.parentElement.classList.add('has-image')"
                onerror="this.style.display='none'" />
           <span class="cs-image-placeholder__label">Pattern 01 · 02</span>
@@ -744,7 +751,7 @@
 
         <div class="cs-image-placeholder cs-image-placeholder--wide">
           <img class="cs-placeholder-img" src="../assets/images/samsung-engagement-wireframe.png"
-               alt="Wireframe sketches — early ideation"
+               alt="Wireframe sketches · early ideation"
                onload="this.parentElement.classList.add('has-image')"
                onerror="this.style.display='none'" />
           <span class="cs-image-placeholder__label">Process · Wireframes</span>
@@ -765,7 +772,7 @@
             <span class="cs-image-compare__tag">Before · 40+ sec</span>
             <div class="cs-image-placeholder">
               <img class="cs-placeholder-img" src="../assets/images/samsung-engagement-result-before.png"
-                   alt="Before redesign — friction and abandonment"
+                   alt="Before redesign · friction and abandonment"
                    onload="this.parentElement.classList.add('has-image')"
                    onerror="this.style.display='none'" />
               <span class="cs-image-placeholder__label">Before</span>
@@ -776,7 +783,7 @@
             <span class="cs-image-compare__tag">After · 15 sec</span>
             <div class="cs-image-placeholder">
               <img class="cs-placeholder-img" src="../assets/images/samsung-engagement-result-after.png"
-                   alt="After redesign — faster, confirmed, self-served"
+                   alt="After redesign · faster, confirmed, self-served"
                    onload="this.parentElement.classList.add('has-image')"
                    onerror="this.style.display='none'" />
               <span class="cs-image-placeholder__label">After</span>
@@ -808,8 +815,7 @@
           </div>
         </div>
         <p class="cs-section__text" style="margin-top: var(--space-5);">
-          Post-launch qualitative feedback cited visual confirmation as the primary driver of increased confidence —
-          users reported navigating with less friction and greater certainty they had selected the right product.
+          Post-launch qualitative feedback cited visual confirmation as the primary driver of increased confidence. Users reported navigating with less friction and greater certainty they had selected the right product.
         </p>
       </section>
 
@@ -867,8 +873,8 @@
       </section>
 
       <nav class="cs-pagination">
-        <a href="reels-content-strategy.html">← Reels Content Strategy</a>
-        <a href="ptkorea.html">Next: PTKorea →</a>
+        <a href="big-black-bag.html">← Winners Big Black Bag</a>
+        <a href="../index.html">Back to all work →</a>
       </nav>
 
     </div>

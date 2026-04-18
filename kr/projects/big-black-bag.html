@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Winners Big Black Bag · Judy Lee</title>
+
+  <link rel="stylesheet" href="../../styles/tokens.css" />
+
+  <style>
+    /* Case Study · Winners Big Black Bag (KR) */
+
+    .nav { position: sticky; top: 0; z-index: 100; height: var(--nav-height); background-color: var(--color-bg); border-bottom: 1px solid var(--color-border); }
+    .nav__inner { display: flex; align-items: center; justify-content: space-between; height: 100%; max-width: var(--content-max-width); margin: 0 auto; padding: 0 var(--content-padding-x); }
+    .nav__logo { font-size: var(--text-small); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-primary); }
+    .nav__links { display: flex; gap: var(--space-6); align-items: center; }
+    .nav__links > a { font-size: var(--text-small); font-weight: var(--weight-medium); color: var(--color-text-secondary); transition: color var(--transition-fast); }
+    .nav__links > a:hover { color: var(--color-text-primary); }
+
+    .cs-page { max-width: var(--content-max-width); margin: 0 auto; padding: 0 var(--content-padding-x); }
+    .cs-header { padding: var(--space-10) 0 var(--space-8); border-bottom: 1px solid var(--color-border); }
+    .cs-header__back { display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--text-small); color: var(--color-text-tertiary); margin-bottom: var(--space-6); transition: color var(--transition-fast); }
+    .cs-header__back:hover { color: var(--color-text-primary); }
+    .cs-header__label { display: block; font-size: var(--text-caption); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: var(--space-4); }
+    .cs-header__title { font-size: var(--text-display); font-weight: var(--weight-light); line-height: var(--leading-tight); letter-spacing: var(--tracking-tight); color: var(--color-text-primary); max-width: 880px; margin-bottom: var(--space-5); }
+    .cs-header__title em { font-style: italic; }
+    .cs-header__description { font-size: var(--text-body); line-height: var(--leading-loose); color: var(--color-text-secondary); max-width: 640px; }
+
+    .cs-impact { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); padding: var(--space-8) 0; border-bottom: 1px solid var(--color-border); }
+    .cs-impact__number { display: block; font-size: clamp(32px, 3.6vw, 48px); font-weight: var(--weight-light); letter-spacing: var(--tracking-tight); color: var(--color-text-primary); line-height: 1; }
+    .cs-impact__label { display: block; margin-top: var(--space-2); font-size: var(--text-small); color: var(--color-text-secondary); line-height: var(--leading-normal); }
+
+    .cs-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-5); padding: var(--space-6) 0; border-bottom: 1px solid var(--color-border); }
+    .cs-meta__label { display: block; font-size: var(--text-caption); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: var(--space-2); }
+    .cs-meta__value { font-size: var(--text-small); color: var(--color-text-primary); line-height: var(--leading-normal); }
+
+    .cs-hero-image { width: 100%; aspect-ratio: 16 / 7; object-fit: cover; border-radius: var(--radius-sm); background-color: var(--color-bg-subtle); display: block; margin-top: var(--space-8); }
+
+    .cs-body { padding: var(--space-9) 0; display: flex; flex-direction: column; gap: var(--space-9); }
+    .cs-section__label { display: block; font-size: var(--text-caption); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: var(--space-4); }
+    .cs-subsection__label { display: block; font-size: var(--text-caption); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: var(--space-3); }
+    .cs-section__heading { font-size: var(--text-h1); font-weight: var(--weight-light); letter-spacing: var(--tracking-tight); line-height: var(--leading-tight); color: var(--color-text-primary); max-width: 760px; margin-bottom: var(--space-5); }
+    .cs-section__text { font-size: var(--text-body); line-height: var(--leading-loose); color: var(--color-text-secondary); max-width: 680px; }
+    .cs-section__text + .cs-section__text { margin-top: var(--space-4); }
+    .cs-section__text strong { color: var(--color-text-primary); font-weight: var(--weight-medium); }
+
+    .cs-callout { padding: var(--space-6); background-color: var(--color-bg-subtle); border-left: 2px solid var(--color-text-primary); margin-top: var(--space-5); max-width: 680px; }
+    .cs-callout__text { font-size: var(--text-body); line-height: var(--leading-loose); color: var(--color-text-primary); }
+
+    .cs-context { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-7); padding: var(--space-6); background-color: var(--color-bg-subtle); border-radius: var(--radius-sm); }
+    .cs-context__block + .cs-context__block { border-top: none; }
+    .cs-context__heading { font-size: var(--text-h2); font-weight: var(--weight-medium); color: var(--color-text-primary); margin-bottom: var(--space-3); padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-border); }
+    .cs-context__text { font-size: var(--text-small); line-height: var(--leading-loose); color: var(--color-text-secondary); }
+    .cs-context__text + .cs-context__text { margin-top: var(--space-3); }
+
+    .cs-problem { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-7); align-items: start; }
+    .cs-problem__tag { display: inline-block; font-size: var(--text-caption); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-wide); color: #c0392b; margin-bottom: var(--space-3); }
+    .cs-problem__title { font-size: var(--text-h1); font-weight: var(--weight-medium); line-height: var(--leading-tight); letter-spacing: var(--tracking-tight); color: var(--color-text-primary); margin-bottom: var(--space-5); }
+    .cs-problem__evidence { padding: var(--space-4) var(--space-5); background-color: #fdf2f0; border-radius: var(--radius-sm); font-size: var(--text-small); font-weight: var(--weight-medium); line-height: var(--leading-normal); color: #7a3a2f; margin-bottom: var(--space-4); }
+    .cs-problem__body { font-size: var(--text-small); line-height: var(--leading-loose); color: var(--color-text-secondary); }
+
+    .cs-hypothesis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); margin-top: var(--space-5); }
+    .cs-hypothesis { display: flex; flex-direction: column; gap: var(--space-4); }
+    .cs-hypothesis__problem { padding: var(--space-3) var(--space-4); background-color: #fdf2f0; border-radius: var(--radius-sm); font-size: var(--text-caption); line-height: var(--leading-normal); color: #7a3a2f; }
+    .cs-hypothesis__problem strong { display: block; font-weight: var(--weight-semibold); margin-bottom: var(--space-1); }
+    .cs-hypothesis__statement { font-size: var(--text-body); font-weight: var(--weight-medium); line-height: var(--leading-normal); color: var(--color-text-primary); padding-bottom: var(--space-4); border-bottom: 1px solid var(--color-border); }
+    .cs-hypothesis__statement em { font-style: normal; color: var(--color-text-secondary); font-weight: var(--weight-regular); }
+    .cs-hypothesis__result { padding: var(--space-3) var(--space-4); background-color: #eef7ef; border-radius: var(--radius-sm); font-size: var(--text-small); font-weight: var(--weight-semibold); color: #2d6a3e; }
+    .cs-hypothesis__proof { font-size: var(--text-caption); line-height: var(--leading-loose); color: var(--color-text-secondary); }
+    .cs-hypothesis__proof em { font-style: normal; color: var(--color-text-primary); }
+
+    .cs-findings { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); margin-top: var(--space-5); }
+    .cs-finding { padding: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
+    .cs-finding__title { display: block; font-size: var(--text-small); font-weight: var(--weight-semibold); color: var(--color-text-primary); margin-bottom: var(--space-3); }
+    .cs-finding__text { font-size: var(--text-caption); line-height: var(--leading-loose); color: var(--color-text-secondary); }
+
+    .cs-reflect { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-7); }
+    .cs-reflect__heading { font-size: var(--text-h2); font-weight: var(--weight-medium); color: var(--color-text-primary); margin-bottom: var(--space-3); }
+    .cs-reflect__text { font-size: var(--text-small); line-height: var(--leading-loose); color: var(--color-text-secondary); }
+    .cs-reflect__list { list-style: none; display: flex; flex-direction: column; gap: var(--space-4); }
+    .cs-reflect__list li { font-size: var(--text-small); line-height: var(--leading-loose); color: var(--color-text-secondary); padding-left: var(--space-4); position: relative; }
+    .cs-reflect__list li::before { content: "·"; position: absolute; left: 0; color: var(--color-text-primary); font-weight: var(--weight-semibold); }
+    .cs-reflect__list strong { color: var(--color-text-primary); font-weight: var(--weight-medium); }
+
+    .cs-image-placeholder { width: 100%; min-height: 200px; background-color: var(--color-bg-subtle); border: 1px dashed var(--color-border-strong); border-radius: var(--radius-sm); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-2); margin-top: var(--space-5); overflow: hidden; position: relative; }
+    .cs-image-placeholder.has-image { min-height: unset; display: block; }
+    .cs-placeholder-img { width: 100%; height: auto; display: block; }
+    .cs-image-placeholder.has-image .cs-image-placeholder__label,
+    .cs-image-placeholder.has-image .cs-image-placeholder__sub { display: none; }
+    .cs-image-placeholder__label { font-size: var(--text-caption); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-tertiary); }
+    .cs-image-placeholder__sub { font-size: var(--text-caption); color: var(--color-text-tertiary); max-width: 320px; text-align: center; line-height: var(--leading-normal); }
+
+    .cs-tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
+    .cs-tag { font-size: var(--text-caption); color: var(--color-text-secondary); border: 1px solid var(--color-border); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); }
+
+    .cs-divider { border: none; border-top: 1px solid var(--color-border); }
+    .cs-pagination { display: flex; justify-content: space-between; align-items: center; padding: var(--space-7) 0; border-top: 1px solid var(--color-border); }
+    .cs-pagination a { font-size: var(--text-small); font-weight: var(--weight-medium); color: var(--color-text-secondary); transition: color var(--transition-fast); }
+    .cs-pagination a:hover { color: var(--color-text-primary); }
+    .footer { max-width: var(--content-max-width); margin: 0 auto; padding: var(--space-7) var(--content-padding-x); display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--color-border); }
+    .footer__copy { font-size: var(--text-caption); color: var(--color-text-tertiary); }
+    .footer__links { display: flex; gap: var(--space-5); }
+    .footer__links a { font-size: var(--text-caption); color: var(--color-text-tertiary); transition: color var(--transition-fast); }
+    .footer__links a:hover { color: var(--color-text-primary); }
+
+    @media (max-width: 768px) {
+      .cs-header { padding-top: var(--space-8); }
+      .cs-impact { grid-template-columns: 1fr 1fr; }
+      .cs-meta { grid-template-columns: 1fr 1fr; }
+      .cs-context { grid-template-columns: 1fr; gap: var(--space-5); }
+      .cs-problem { grid-template-columns: 1fr; }
+      .cs-hypothesis-grid { grid-template-columns: 1fr; }
+      .cs-findings { grid-template-columns: 1fr; }
+      .cs-reflect { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__logo">Judy Lee</a>
+      <div class="nav__links">
+        <div class="nav__lang">
+          <a href="/projects/big-black-bag.html" class="nav__lang-btn">EN</a>
+          <span class="nav__lang-divider">·</span>
+          <a href="/kr/projects/big-black-bag.html" class="nav__lang-btn is-active">KR</a>
+        </div>
+        <a href="../about.html">About</a>
+        <a href="mailto:jihyunlee719@gmail.com">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="cs-page">
+
+    <header class="cs-header">
+      <a href="../index.html" class="cs-header__back">← All Work</a>
+      <span class="cs-header__label">Case Study 02 · Interactive Quiz UX</span>
+      <h1 class="cs-header__title">Winners Big Black Bag ·<br><em>완료율 46%. 인센티브 없음. e-commerce 없음.</em></h1>
+      <p class="cs-header__description">
+        Toronto 크리스마스 2일 pop-up에서 운영한 kiosk 기반 선물 추천 quiz.
+        자발적 참여 · 보상 없음 · 구매 경로 없음 · 오로지 UX가 다음 탭을 벌어야 했다.
+      </p>
+    </header>
+
+    <div class="cs-impact">
+      <div class="cs-impact__item">
+        <span class="cs-impact__number">46%</span>
+        <span class="cs-impact__label">완료율<br>자발적 · 인센티브 없음</span>
+      </div>
+      <div class="cs-impact__item">
+        <span class="cs-impact__number">300+</span>
+        <span class="cs-impact__label">Unique 세션<br>2일간</span>
+      </div>
+      <div class="cs-impact__item">
+        <span class="cs-impact__number">1,225</span>
+        <span class="cs-impact__label">페이지 뷰<br>플로우 전체</span>
+      </div>
+      <div class="cs-impact__item">
+        <span class="cs-impact__number">25%</span>
+        <span class="cs-impact__label">결과 이메일 전송<br>opt-in CRM 수집</span>
+      </div>
+    </div>
+
+    <div class="cs-meta">
+      <div>
+        <span class="cs-meta__label">Role</span>
+        <span class="cs-meta__value">Branding · Quiz UX/UI · Site · Pop-up signage &amp; labels</span>
+      </div>
+      <div>
+        <span class="cs-meta__label">Context</span>
+        <span class="cs-meta__value">Kiosk + QR-to-mobile · Toronto · 2-day pop-up</span>
+      </div>
+      <div>
+        <span class="cs-meta__label">Year</span>
+        <span class="cs-meta__value">2024 · Christmas season</span>
+      </div>
+      <div>
+        <span class="cs-meta__label">Tools</span>
+        <span class="cs-meta__value">Figma · On-site observation · Internal QA</span>
+      </div>
+    </div>
+
+    <img
+      class="cs-hero-image"
+      src="../../assets/images/winnersmain.jpg"
+      alt="Winners Big Black Bag kiosk experience"
+      onerror="this.style.display='none'"
+    />
+
+    <div class="cs-body">
+
+      <!-- Context -->
+      <section>
+        <span class="cs-section__label">Context</span>
+        <h2 class="cs-section__heading">Winners Big Black Bag을 위한 인터랙티브 선물 추천 Quiz UX</h2>
+        <div class="cs-context">
+          <div class="cs-context__block">
+            <h3 class="cs-context__heading">Background</h3>
+            <p class="cs-context__text">
+              Winners는 캐나다에서 손꼽히는 off-price 패션 리테일러 중 하나다 ·
+              그리고 e-commerce가 없다. 그래서 모든 디지털 접점이 실제 이상의
+              무게를 가진다 · 이 브랜드에서 디지털 행동을 테스트하거나 의도를
+              수집하거나 CRM을 쌓을 다른 방법이 없기 때문이다.
+              Christmas Big Black Bag 캠페인을 위해 Toronto에서 열린 2일짜리
+              pop-up에 kiosk 기반 인터랙티브 선물 quiz를 디자인했다.
+              이 kiosk는 캠페인 자산 하나가 아니었다 · 브랜드가 가진 유일한
+              디지털 피드백 루프였다.
+            </p>
+            <p class="cs-context__text">
+              <strong>비즈니스 목표 ·</strong> 브랜드 engagement · 매장 방문 ·
+              이메일 수집 · 직접 구매 전환이 아니다.
+            </p>
+          </div>
+          <div class="cs-context__block">
+            <h3 class="cs-context__heading">The Experience</h3>
+            <p class="cs-context__text">
+              5개 질문이 사용자를 개인화된 선물 아이디어로 안내한다.
+              결과 화면은 세 갈래 경로를 준다 · 이메일로 결과 받기 ·
+              가까운 매장 찾기 · 다시 시작하기. 현장 kiosk와 QR-to-mobile
+              두 방식으로 배포되어 · 같은 플로우가 두 맥락에서 모두 버텨야 했다.
+            </p>
+            <p class="cs-context__text">
+              내 범위는 <strong>브랜딩</strong>(먼저 잡아서 pop-up 사이니지와
+              제품 라벨도 이걸로 정의됨) · <strong>인터랙티브 quiz UX/UI</strong> ·
+              <strong>지원 사이트</strong>였다. 물리적 부스 제작은 별도 팀 담당.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <!-- Problem 1 -->
+      <section>
+        <span class="cs-section__label">Design Challenge · Problem 1</span>
+        <div class="cs-problem">
+          <div class="cs-problem__text">
+            <span class="cs-problem__tag">Problem 1</span>
+            <h2 class="cs-problem__title">플로우가 헷갈려서 진입 자체를 못 한다</h2>
+            <div class="cs-problem__evidence">
+              양쪽 kiosk 위치에서 현장 관찰한 결과 · 일관된 패턴이 드러났다.
+            </div>
+            <p class="cs-problem__body">
+              사용자들은 화면에 눈을 마주친 뒤 3초 안에 지나쳐 갔다.
+              스태프 안내 없이 사람이 몰리는 pop-up 환경에서 · 화면은 이 경험이
+              뭔지 · 왜 멈춰 볼 가치가 있는지 즉각적인 신호를 주지 못했다.
+              진입이 첫 이탈 지점이었다.
+            </p>
+          </div>
+          <div class="cs-image-placeholder">
+            <img class="cs-placeholder-img" src="../../assets/images/bbb-problem-1.png"
+                 alt="Pop-up kiosk placement and on-site observation"
+                 onload="this.parentElement.classList.add('has-image')"
+                 onerror="this.style.display='none'" />
+            <span class="cs-image-placeholder__label">Problem 1 · Site Observation</span>
+            <span class="cs-image-placeholder__sub">키오스크 배치도 + 현장 관찰 사진 (양쪽 위치)</span>
+          </div>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <!-- Problem 2 -->
+      <section>
+        <span class="cs-section__label">Design Challenge · Problem 2</span>
+        <div class="cs-problem">
+          <div class="cs-problem__text">
+            <span class="cs-problem__tag">Problem 2</span>
+            <h2 class="cs-problem__title">플로우 중간 이탈 리스크</h2>
+            <div class="cs-problem__evidence">
+              <strong>내부 참여자 20명 대상 2차 QA</strong>를 거치면서 ·
+              두 가지 마찰 지점이 반복됐다.
+            </div>
+            <p class="cs-problem__body">
+              "뒤로 갈 수 있나요?" · "얼마나 걸리나요?" · 이건 혼란이 아니라
+              불안의 신호였다. 진행 표시도 없고 답을 수정할 방법도 없으니 ·
+              사용자는 끝을 모르는 플로우에 갇힌 느낌을 받았다.
+              <strong style="color: var(--color-text-primary);">어려움이 아니라 불안이 이탈 의도를 만들었다.</strong>
+            </p>
+            <p class="cs-problem__body" style="margin-top: var(--space-4);">
+              세부 이슈 두 가지 · <em>안내가 불명확하고 얼마나 걸릴지 모르는 점</em> ·
+              <em>잘못된 선택을 되돌릴 방법이 없는 점</em>.
+            </p>
+          </div>
+          <div class="cs-image-placeholder">
+            <img class="cs-placeholder-img" src="../../assets/images/bbb-problem-2.png"
+                 alt="Mid-flow friction points from internal QA"
+                 onload="this.parentElement.classList.add('has-image')"
+                 onerror="this.style.display='none'" />
+            <span class="cs-image-placeholder__label">Problem 2 · Mid-Flow Friction</span>
+            <span class="cs-image-placeholder__sub">QA 피드백 문서 + As-Is 화면 (진행상태/뒤로가기 부재)</span>
+          </div>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <!-- Problem 3 -->
+      <section>
+        <span class="cs-section__label">Design Challenge · Problem 3</span>
+        <div class="cs-problem">
+          <div class="cs-problem__text">
+            <span class="cs-problem__tag">Problem 3</span>
+            <h2 class="cs-problem__title">완료 후 액션의 우선순위가 불명확하다</h2>
+            <div class="cs-problem__evidence">
+              같은 <strong>2차 QA (참여자 20명)</strong>가 이 문제를 직접 지적했다.
+            </div>
+            <p class="cs-problem__body">
+              "가입하라는 게 부담이다" · "다른 결과도 보고 싶다" ·
+              사용자는 헷갈린 게 아니라 · 압도됐다.
+              결과 화면은 비즈니스 목표 세 개를 동시에 내밀었다 ·
+              이메일 수집 · 매장 안내 · 재참여.
+            </p>
+            <p class="cs-problem__body" style="margin-top: var(--space-4);">
+              <strong style="color: var(--color-text-primary);">명확한 우선순위가 없으니 · 모든 액션이 똑같이 무게감 있게 느껴졌다.
+              모든 게 우선이면 · 아무것도 선택되지 않는다.</strong>
+            </p>
+          </div>
+          <div class="cs-image-placeholder">
+            <img class="cs-placeholder-img" src="../../assets/images/bbb-problem-3.png"
+                 alt="Unclear action hierarchy on result screen"
+                 onload="this.parentElement.classList.add('has-image')"
+                 onerror="this.style.display='none'" />
+            <span class="cs-image-placeholder__label">Problem 3 · Result Screen CTAs</span>
+            <span class="cs-image-placeholder__sub">As-Is 결과 화면 · 세 개 CTA가 동등하게 경쟁</span>
+          </div>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <!-- Hypothesis -->
+      <section>
+        <span class="cs-section__label">Hypothesis</span>
+        <h2 class="cs-section__heading">문제 하나당 가설 하나 · 병렬 3개 베팅</h2>
+        <p class="cs-section__text">
+          마찰 지점 하나하나를 행동 가설 하나씩에 매핑했다 ·
+          디자인 전에 가설을 세웠고 · 실제 행동과 내부 QA로 검증했다.
+        </p>
+        <div class="cs-hypothesis-grid">
+
+          <div class="cs-hypothesis">
+            <div class="cs-hypothesis__problem">
+              <strong>Problem 1</strong>
+              플로우가 헷갈려서 진입 자체를 못 한다
+            </div>
+            <p class="cs-hypothesis__statement">
+              <em>H1 ·</em> 진입 화면이 액션을 요청하기 전에 가치를 먼저 전달하면 ·
+              질문 먼저 던지는 방식보다 engagement rate가 높아진다.
+            </p>
+            <div class="cs-hypothesis__result">완료율 46%</div>
+            <p class="cs-hypothesis__proof">
+              완료율 46% · 워크바이 pop-up에서 인센티브 구조 없이 달성했다.
+              로열티 리워드 없음 · 구매 경로 없음 · 스태프 안내 없음 ·
+              UX가 다음 탭 하나하나를 벌어야 했다. 시작과 완료가 거의 비슷하게
+              나왔다는 건 진입 장벽이 실질적으로 해소됐다는 뜻이다.
+              세분화된 start rate는 측정하지 못했다 · 이 측정 공백은 Reflection에서 다룬다.
+            </p>
+          </div>
+
+          <div class="cs-hypothesis">
+            <div class="cs-hypothesis__problem">
+              <strong>Problem 2</strong>
+              퀴즈 중간 이탈 리스크
+            </div>
+            <p class="cs-hypothesis__statement">
+              <em>H2 ·</em> 사용자가 자기 진행을 통제한다고 느끼면 · 완료율이 올라간다.
+            </p>
+            <div class="cs-hypothesis__result">Internal QA 피드백</div>
+            <p class="cs-hypothesis__proof">
+              <em>"뒤로 갈 수 있어서 좋다"</em> · <em>"따라가기 쉽다"</em> · 불안 해소 확인.
+            </p>
+          </div>
+
+          <div class="cs-hypothesis">
+            <div class="cs-hypothesis__problem">
+              <strong>Problem 3</strong>
+              완료 후 액션 우선순위가 불명확하다
+            </div>
+            <p class="cs-hypothesis__statement">
+              <em>H3 ·</em> 완료 후 액션의 우선순위가 명확하면 · 사용자는 의미 있는 다음 단계를 밟는다.
+            </p>
+            <div class="cs-hypothesis__result">Internal QA 피드백</div>
+            <p class="cs-hypothesis__proof">
+              <em>"다른 선물도 보기"</em>를 재참여 리드로 추가한 뒤 해소됨.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <!-- Solution 1 -->
+      <section>
+        <span class="cs-section__label">Solution 1 · Entry</span>
+        <h2 class="cs-section__heading">커버 화면 & 진행 UX</h2>
+        <p class="cs-section__text">
+          <strong>핵심 망설임 · 이게 뭔지 모른다는 것.</strong>
+          한 줄 카피가 목적을 즉시 전달한다. CTA 하나로 시작 부담을 낮춘다.
+        </p>
+        <p class="cs-section__text">
+          진입 이탈을 겨냥한 세 가지 디자인 결정 ·
+          <strong>EN/FR 토글</strong>로 캐나다 이중 언어 맥락 반영 ·
+          <strong>UX writing</strong>으로 목적과 가치를 한 줄에 담기 ·
+          <strong>새 탭이 아닌 popup 방식</strong> · kiosk 하드웨어에서 창이 닫히는 이슈를 막기 위해.
+        </p>
+        <div class="cs-image-placeholder cs-image-placeholder--wide">
+          <img class="cs-placeholder-img" src="../../assets/images/bbb-solution-1.png"
+               alt="As-Is to To-Be cover screen and progress UX"
+               onload="this.parentElement.classList.add('has-image')"
+               onerror="this.style.display='none'" />
+          <span class="cs-image-placeholder__label">Solution 1 · Cover &amp; Progress</span>
+          <span class="cs-image-placeholder__sub">As-Is / To-Be 비교 + 3가지 디자인 결정 어노테이션</span>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <!-- Solution 2, 3 -->
+      <section>
+        <span class="cs-section__label">Solution 2 &amp; 3 · Flow &amp; Result</span>
+        <h2 class="cs-section__heading">CTA 우선순위 · 사용자 니즈가 먼저 · 비즈니스 목표는 그다음</h2>
+        <p class="cs-section__text">
+          <strong>"나에게 보내기"</strong>가 primary CTA로 앞에 선다 ·
+          사용자가 원하는 그것이기 때문이다.
+          이메일 입력이 구독 프롬프트를 자연스럽게 연다 · 비즈니스 목표가
+          가치의 결과로 따라오는 구조 · 게이트 방식이 아니다.
+          <strong>"다른 선물 찾기"</strong>는 플로우를 막다른 길로 만들지 않고
+          재참여를 이끈다.
+        </p>
+        <p class="cs-section__text">
+          퀴즈 중간에 진행 바와 뒤로가기가 사용자에게 통제권을 돌려줬다 ·
+          QA에서 드러난 불안("뒤로 갈 수 있나요?")을 해소했다.
+          플로우 자체도 6단계에서 5단계로 줄었다 ·
+          줄어든 단계 하나하나가 이탈 기회 하나를 없앴다.
+        </p>
+        <div class="cs-image-placeholder cs-image-placeholder--wide">
+          <img class="cs-placeholder-img" src="../../assets/images/bbb-solution-2.png"
+               alt="CTA hierarchy across result and email screens"
+               onload="this.parentElement.classList.add('has-image')"
+               onerror="this.style.display='none'" />
+          <span class="cs-image-placeholder__label">Solution 2, 3 · CTA Hierarchy</span>
+          <span class="cs-image-placeholder__sub">To-Be 4 화면 · primary/secondary CTA 우선순위</span>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <!-- Outcome -->
+      <section>
+        <span class="cs-section__label">Outcome</span>
+        <h2 class="cs-section__heading">완료율 46% · 2일 pop-up · 인센티브 없음</h2>
+        <span class="cs-subsection__label">Quantitative</span>
+        <div class="cs-findings">
+          <div class="cs-finding">
+            <span class="cs-finding__title">완료율 46%</span>
+            <p class="cs-finding__text">
+              자발적 · 인센티브 없음 · 구매 경로 없음.
+              플로우를 6단계에서 5단계로 줄이고 · 시작 부담을 낮춰서 달성했다.
+            </p>
+          </div>
+          <div class="cs-finding">
+            <span class="cs-finding__title">300+ 세션 · 1,225 페이지 뷰</span>
+            <p class="cs-finding__text">
+              2일 동안 · 스태프 안내 없는 워크바이 pop-up에서 ·
+              화면 스스로 모든 탭을 벌어야 했다.
+            </p>
+          </div>
+          <div class="cs-finding">
+            <span class="cs-finding__title">25% 이메일 opt-in</span>
+            <p class="cs-finding__text">
+              완료자 4명 중 1명이 결과를 이메일로 받았다 ·
+              물리적 pop-up 접점을 측정 가능한 CRM 진입으로 바꿨다.
+              e-commerce가 없는 리테일러에게 · 이건 매장 구매 의도와 직접
+              연결되는 드문 디지털 시그널이다 · CTA 우선순위 리디자인이 주된
+              동력이었음을 검증한다.
+            </p>
+          </div>
+        </div>
+
+        <span class="cs-subsection__label" style="margin-top: var(--space-6);">Qualitative · QA-validated</span>
+        <div class="cs-findings">
+          <div class="cs-finding">
+            <span class="cs-finding__title">리테일 환경에서의 견고함</span>
+            <p class="cs-finding__text">
+              추운 날씨와 하루 후반부 대기 시간에도 대부분의 사용자가 quiz를
+              완료했다 · 원래 브리프가 예상하지 못한 조건에서도 플로우가 버텼다.
+            </p>
+          </div>
+          <div class="cs-finding">
+            <span class="cs-finding__title">불안 해소</span>
+            <p class="cs-finding__text">
+              QA 피드백이 "뒤로 갈 수 있나요?"에서 "뒤로 갈 수 있어서 좋다"로
+              바뀌었다 · 진행 바와 뒤로가기가 지목된 마찰을 직접 해소했다.
+            </p>
+          </div>
+        </div>
+        <div class="cs-image-placeholder cs-image-placeholder--wide">
+          <img class="cs-placeholder-img" src="../../assets/images/bbb-outcome.png"
+               alt="Final flow and brand world"
+               onload="this.parentElement.classList.add('has-image')"
+               onerror="this.style.display='none'" />
+          <span class="cs-image-placeholder__label">Outcome · Final Flow</span>
+          <span class="cs-image-placeholder__sub">As-Is (6단계) → To-Be (5단계) 전체 플로우 비교</span>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <!-- What I'd Test Next -->
+      <section>
+        <span class="cs-section__label">What I'd Test Next</span>
+        <h2 class="cs-section__heading">2일짜리 pop-up에서 학습하는 시스템으로</h2>
+        <div class="cs-callout">
+          <p class="cs-callout__text">
+            25% 이메일 opt-in은 CRM 숫자일 뿐이 아니다 ·
+            한 번의 캠페인 사이클 안에서 모델이 학습할 수 있는 피드백 루프다.
+          </p>
+        </div>
+        <p class="cs-section__text">
+          <strong>quiz 로직에 AI 기반 개인화 결합 ·</strong>
+          제품 추천을 실시간 재고와 시즌 성과 데이터로 동적 랭킹 ·
+          고정 규칙이 아니라. 세션 하나하나가 다음 세션을 먹인다.
+        </p>
+        <p class="cs-section__text">
+          <strong>물리-디지털 여정 확장.</strong> 퀴즈 직후 순간이 기회다 ·
+          25% 이메일 opt-in이 가치 교환이 이뤄졌다는 신호다.
+          다음 이터레이션은 사용자를 매장 kiosk → 이메일 → 매장 방문까지
+          따라가면서 · 완료율에서 멈추지 않고 전체 루프를 측정한다.
+        </p>
+        <p class="cs-section__text">
+          <strong>애널리틱스 구조를 먼저 설계.</strong>
+          pop-up 환경이 측정 가능한 범위를 제한했다 · 가장 강한 행동 시그널
+          일부는 현장 관찰로만 드러났다. 다음 버전 · 단계별 이탈 추적 ·
+          동의 기반 세션 리플레이 · 커버 화면 카피 A/B 테스트.
+        </p>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <!-- Reflection -->
+      <section>
+        <span class="cs-section__label">Reflection</span>
+        <div class="cs-reflect">
+          <div>
+            <h3 class="cs-reflect__heading">다시 한다면 다르게 할 것</h3>
+            <p class="cs-reflect__text">
+              첫 화면 디자인 전에 디자인 시스템을 먼저 정의한다 ·
+              kiosk · 모바일 · 웹 각각 다른 컴포넌트 구조가 필요했고 ·
+              이걸 제작 중간에 해결하느라 · 경험의 섬세한 부분(마이크로 인터랙션 ·
+              이중 언어 카피 뉘앙스 · 결과 화면 마감)에 쓸 수 있었던 시간을 썼다.
+            </p>
+          </div>
+          <div>
+            <h3 class="cs-reflect__heading">배운 것</h3>
+            <ul class="cs-reflect__list">
+              <li>
+                <strong>물리적 제약이 브리프였다.</strong>
+                Kiosk 하드웨어 · 짧은 체류 시간 · 이중 언어 요구는 제약이자
+                곧 디자인 브리프였다 · 시스템은 시각적 선호가 아니라 ·
+                환경이 불가능하게 만든 것에 의해 형성됐다.
+              </li>
+              <li>
+                <strong>어려움이 아니라 불안이 이탈을 만든다.</strong>
+                사용자는 quiz가 어려워서 헤맨 게 아니었다 · 끝을 모르는 플로우에
+                갇힐까 봐 두려워했다. 해결책은 단순화가 아니라 통제(진행 · 뒤로가기)였다.
+              </li>
+              <li>
+                <strong>비즈니스 목표끼리 경쟁하면 · 사용자는 아무것도 선택하지 않는다.</strong>
+                동등한 무게의 CTA 세 개는 마비를 만들었다 · 사용자 니즈를 먼저 ·
+                비즈니스 목표를 그다음으로 순서 잡으니 · 결과 화면이 메뉴가 아니라
+                퍼널이 됐다.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">Tools Used</span>
+        <div class="cs-tags">
+          <span class="cs-tag">Figma</span>
+          <span class="cs-tag">Interactive Prototyping</span>
+          <span class="cs-tag">On-site Observation</span>
+          <span class="cs-tag">Internal QA</span>
+          <span class="cs-tag">Bilingual UX Writing</span>
+        </div>
+      </section>
+
+      <nav class="cs-pagination">
+        <a href="reels-content-strategy.html">← Reels Content Strategy</a>
+        <a href="samsung-engagement.html">다음: Samsung.com →</a>
+      </nav>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <span class="footer__copy">© 2026 Judy Lee</span>
+    <div class="footer__links">
+      <a href="https://linkedin.com/in/judyleedesign" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="mailto:jihyunlee719@gmail.com">Email ↗</a>
+    </div>
+  </footer>
+
+</body>
+</html>

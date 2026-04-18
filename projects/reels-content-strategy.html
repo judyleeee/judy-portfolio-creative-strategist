@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reels Content Strategy — Judy Lee</title>
+  <title>Reels Content Strategy · Judy Lee</title>
 
   <link rel="stylesheet" href="../styles/tokens.css" />
 
   <style>
     /* ============================================
-       Case Study — Reels Content Strategy
+       Case Study · Reels Content Strategy
        ============================================ */
 
     /* ─── Nav ─────────────────────────────────── */
@@ -718,11 +718,18 @@
     .cs-image-placeholder.has-image {
       border: none;
       background-color: var(--color-bg);
-      aspect-ratio: 16 / 9;
+      aspect-ratio: unset;
+      height: auto;
+      overflow: visible;
+      display: block;
     }
 
     .cs-image-placeholder.has-image .cs-placeholder-img {
-      object-fit: contain;
+      position: static;
+      inset: auto;
+      width: 100%;
+      height: auto;
+      object-fit: unset;
     }
 
     .cs-image-placeholder.has-image .cs-image-placeholder__label,
@@ -981,6 +988,11 @@
     <div class="nav__inner">
       <a href="../index.html" class="nav__logo">Judy Lee</a>
       <div class="nav__links">
+        <div class="nav__lang">
+          <a href="/projects/reels-content-strategy.html" class="nav__lang-btn is-active">EN</a>
+          <span class="nav__lang-divider">·</span>
+          <a href="/kr/projects/reels-content-strategy.html" class="nav__lang-btn">KR</a>
+        </div>
         <a href="../about.html">About</a>
         <a href="mailto:jihyunlee719@gmail.com">Contact</a>
       </div>
@@ -1083,7 +1095,10 @@
             <span class="cs-layer__tag">Layer 2 · Strategic (the real question)</span>
             <p class="cs-layer__text">
               How much of a content studio can one person run with AI as leverage?
-              If the pipeline works for 5 Reels in 30 days · it works for a team of one at scale.
+              30 days, 5 Reels · but the headline understates the flow.
+              Most of those 30 days went into setup and learning. Once the flow was running,
+              it sustains ~1 Reel/day. What's proven is that a 1-person content studio can
+              actually ship with AI in the loop.
             </p>
           </div>
         </div>
@@ -1329,6 +1344,7 @@ one list-led, one number-led. Isolates variable 1.</div>
             <video
               class="cs-reel-player"
               src="../assets/videos/reels-show-discounts.mp4#t=0.1"
+              poster="../assets/images/reels-show-discounts-poster.jpg"
               preload="auto" muted loop playsinline
               onloadeddata="this.classList.add('is-loaded')">
             </video>
@@ -1427,6 +1443,7 @@ one list-led, one number-led. Isolates variable 1.</div>
                 <div class="cs-reel-strip__placeholder">Reel 01<br>Canada Holidays<br>video pending</div>
                 <video class="cs-reel-strip__video"
                        src="../assets/videos/reels-canada-holidays.mp4#t=0.1"
+                       poster="../assets/images/reels-canada-holidays-poster.jpg"
                        preload="auto" muted loop playsinline
                        onloadeddata="this.classList.add('is-loaded')"></video>
                 <button class="cs-play-btn" type="button" aria-label="Play video">
@@ -1446,6 +1463,7 @@ one list-led, one number-led. Isolates variable 1.</div>
                 <div class="cs-reel-strip__placeholder">Reel 02<br>Show Discounts<br>video pending</div>
                 <video class="cs-reel-strip__video"
                        src="../assets/videos/reels-show-discounts.mp4#t=0.1"
+                       poster="../assets/images/reels-show-discounts-poster.jpg"
                        preload="auto" muted loop playsinline
                        onloadeddata="this.classList.add('is-loaded')"></video>
                 <button class="cs-play-btn" type="button" aria-label="Play video">
@@ -1465,6 +1483,7 @@ one list-led, one number-led. Isolates variable 1.</div>
                 <div class="cs-reel-strip__placeholder">Reel 03<br>Benefits $6K<br>video pending</div>
                 <video class="cs-reel-strip__video"
                        src="../assets/videos/reels-benefits.mp4#t=0.1"
+                       poster="../assets/images/reels-benefits-poster.jpg"
                        preload="auto" muted loop playsinline
                        onloadeddata="this.classList.add('is-loaded')"></video>
                 <button class="cs-play-btn" type="button" aria-label="Play video">
@@ -1631,7 +1650,7 @@ one list-led, one number-led. Isolates variable 1.</div>
       <!-- Pagination -->
       <nav class="cs-pagination">
         <span></span>
-        <a href="samsung-engagement.html">Next: Samsung.com →</a>
+        <a href="big-black-bag.html">Next: Winners Big Black Bag →</a>
       </nav>
 
     </div>

@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reels Content Strategy · Judy Lee</title>
+
+  <link rel="stylesheet" href="../../styles/tokens.css" />
+
+  <style>
+    /* Case Study · Reels Content Strategy (KR) */
+
+    .nav { position: sticky; top: 0; z-index: 100; height: var(--nav-height); background-color: var(--color-bg); border-bottom: 1px solid var(--color-border); }
+    .nav__inner { display: flex; align-items: center; justify-content: space-between; height: 100%; max-width: var(--content-max-width); margin: 0 auto; padding: 0 var(--content-padding-x); }
+    .nav__logo { font-size: var(--text-small); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-primary); }
+    .nav__links { display: flex; gap: var(--space-6); align-items: center; }
+    .nav__links > a { font-size: var(--text-small); font-weight: var(--weight-medium); color: var(--color-text-secondary); transition: color var(--transition-fast); }
+    .nav__links > a:hover { color: var(--color-text-primary); }
+
+    .cs-page { max-width: var(--content-max-width); margin: 0 auto; padding: 0 var(--content-padding-x); }
+    .cs-header { padding: var(--space-10) 0 var(--space-8); border-bottom: 1px solid var(--color-border); }
+    .cs-header__back { display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--text-small); color: var(--color-text-tertiary); margin-bottom: var(--space-6); transition: color var(--transition-fast); }
+    .cs-header__back:hover { color: var(--color-text-primary); }
+    .cs-header__label { display: block; font-size: var(--text-caption); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: var(--space-4); }
+    .cs-header__title { font-size: var(--text-display); font-weight: var(--weight-light); line-height: var(--leading-tight); letter-spacing: var(--tracking-tight); color: var(--color-text-primary); max-width: 800px; margin-bottom: var(--space-5); }
+    .cs-header__title em { font-style: italic; }
+    .cs-header__description { font-size: var(--text-body); line-height: var(--leading-loose); color: var(--color-text-secondary); max-width: 600px; }
+
+    .cs-impact { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); padding: var(--space-8) 0; border-bottom: 1px solid var(--color-border); }
+    .cs-impact__number { display: block; font-size: clamp(36px, 4vw, 52px); font-weight: var(--weight-light); letter-spacing: var(--tracking-tight); color: var(--color-text-primary); line-height: 1; }
+    .cs-impact__label { display: block; margin-top: var(--space-2); font-size: var(--text-small); color: var(--color-text-secondary); line-height: var(--leading-normal); }
+
+    .cs-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-5); padding: var(--space-6) 0; border-bottom: 1px solid var(--color-border); }
+    .cs-meta__label { display: block; font-size: var(--text-caption); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: var(--space-2); }
+    .cs-meta__value { font-size: var(--text-small); color: var(--color-text-primary); line-height: var(--leading-normal); }
+
+    .cs-body { padding: var(--space-9) 0; display: flex; flex-direction: column; gap: var(--space-9); }
+    .cs-section__label { display: block; font-size: var(--text-caption); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: var(--space-4); }
+    .cs-section__heading { font-size: var(--text-h2); font-weight: var(--weight-medium); color: var(--color-text-primary); margin-bottom: var(--space-4); letter-spacing: var(--tracking-tight); }
+    .cs-section__text { font-size: var(--text-body); line-height: var(--leading-loose); color: var(--color-text-secondary); max-width: 680px; }
+    .cs-section__text + .cs-section__text { margin-top: var(--space-4); }
+    .cs-section__text strong { color: var(--color-text-primary); font-weight: var(--weight-medium); }
+
+    .cs-table { width: 100%; border-collapse: collapse; margin-top: var(--space-5); }
+    .cs-table th { font-size: var(--text-caption); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-tertiary); text-align: left; padding: var(--space-3) var(--space-4) var(--space-3) 0; border-bottom: 1px solid var(--color-border); }
+    .cs-table td { font-size: var(--text-small); color: var(--color-text-primary); padding: var(--space-3) var(--space-4) var(--space-3) 0; border-bottom: 1px solid var(--color-border); line-height: var(--leading-normal); }
+    .cs-table tr:last-child td { border-bottom: none; }
+    .cs-table tr.highlight td { color: var(--color-text-primary); font-weight: var(--weight-medium); }
+
+    .cs-callout { padding: var(--space-6); background-color: var(--color-bg-subtle); border-left: 2px solid var(--color-text-primary); margin-top: var(--space-5); }
+    .cs-callout__text { font-size: var(--text-body); line-height: var(--leading-loose); color: var(--color-text-primary); }
+    .cs-callout__text strong { font-weight: var(--weight-medium); }
+
+    .cs-tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
+    .cs-tag { font-size: var(--text-caption); color: var(--color-text-secondary); border: 1px solid var(--color-border); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); }
+    .cs-divider { border: none; border-top: 1px solid var(--color-border); }
+    .cs-pagination { display: flex; justify-content: space-between; align-items: center; padding: var(--space-7) 0; border-top: 1px solid var(--color-border); }
+    .cs-pagination a { font-size: var(--text-small); font-weight: var(--weight-medium); color: var(--color-text-secondary); transition: color var(--transition-fast); }
+    .cs-pagination a:hover { color: var(--color-text-primary); }
+    .footer { max-width: var(--content-max-width); margin: 0 auto; padding: var(--space-7) var(--content-padding-x); display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--color-border); }
+    .footer__copy { font-size: var(--text-caption); color: var(--color-text-tertiary); }
+    .footer__links { display: flex; gap: var(--space-5); }
+    .footer__links a { font-size: var(--text-caption); color: var(--color-text-tertiary); transition: color var(--transition-fast); }
+    .footer__links a:hover { color: var(--color-text-primary); }
+
+    .cs-pipeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--space-3); margin-top: var(--space-5); }
+    .cs-pipeline__step { padding: var(--space-4); background-color: var(--color-bg-subtle); border-radius: var(--radius-sm); display: flex; flex-direction: column; gap: var(--space-2); }
+    .cs-pipeline__num { font-size: var(--text-caption); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); color: var(--color-text-tertiary); }
+    .cs-pipeline__title { font-size: var(--text-small); font-weight: var(--weight-semibold); color: var(--color-text-primary); line-height: var(--leading-normal); }
+    .cs-pipeline__desc { font-size: var(--text-caption); color: var(--color-text-secondary); line-height: var(--leading-normal); }
+    .cs-pipeline__tool { display: inline-block; margin-top: auto; padding: 2px var(--space-2); background-color: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-full); font-size: 10px; letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-tertiary); }
+
+    .cs-layer-stack { display: flex; flex-direction: column; gap: var(--space-4); margin-top: var(--space-5); max-width: 680px; }
+    .cs-layer { padding: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
+    .cs-layer--strategic { border-color: var(--color-text-primary); background-color: var(--color-bg-subtle); }
+    .cs-layer__tag { display: block; font-size: var(--text-caption); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: var(--space-2); }
+    .cs-layer__text { font-size: var(--text-body); line-height: var(--leading-loose); color: var(--color-text-primary); }
+
+    .cs-reel-showcase { display: grid; grid-template-columns: 280px 1fr; gap: var(--space-6); align-items: start; margin-top: var(--space-5); padding: var(--space-6); background-color: var(--color-bg-subtle); border-radius: var(--radius-sm); }
+    .cs-reel-player-wrap { position: relative; width: 100%; aspect-ratio: 9 / 16; background-color: var(--color-text-primary); border-radius: var(--radius-sm); overflow: hidden; cursor: pointer; }
+    .cs-reel-player { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 2; opacity: 0; transition: opacity 0.3s; }
+    video.cs-reel-player.is-loaded { opacity: 1; }
+    .cs-reel-player--placeholder { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--color-bg); font-size: var(--text-caption); letter-spacing: var(--tracking-wide); text-transform: uppercase; text-align: center; padding: var(--space-5); line-height: var(--leading-normal); opacity: 1; }
+
+    .cs-play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3; width: 56px; height: 56px; padding: 0; background: rgba(255, 255, 255, 0.95); border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform var(--transition-fast), opacity var(--transition-fast), background-color var(--transition-fast); box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25); }
+    .cs-play-btn:hover { transform: translate(-50%, -50%) scale(1.08); background: #ffffff; }
+    .cs-play-btn svg { display: block; fill: #1a1a1a; }
+    .cs-play-btn__pause { display: none; }
+    .is-playing .cs-play-btn__play { display: none; }
+    .is-playing .cs-play-btn__pause { display: block; }
+    .is-playing .cs-play-btn { opacity: 0; pointer-events: none; }
+    .is-playing:hover .cs-play-btn { opacity: 1; pointer-events: auto; }
+    .cs-reel-strip__item .cs-play-btn { width: 40px; height: 40px; }
+    .cs-reel-strip__item .cs-play-btn svg { width: 14px; height: 14px; }
+
+    .cs-reel-caption__tag { display: inline-block; font-size: var(--text-caption); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: var(--space-3); }
+    .cs-reel-caption__title { font-size: var(--text-h2); font-weight: var(--weight-medium); color: var(--color-text-primary); margin-bottom: var(--space-3); letter-spacing: var(--tracking-tight); }
+    .cs-reel-caption__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--color-border); }
+    .cs-reel-caption__stat-num { display: block; font-size: var(--text-h2); font-weight: var(--weight-light); color: var(--color-text-primary); line-height: 1; }
+    .cs-reel-caption__stat-label { display: block; margin-top: var(--space-1); font-size: var(--text-caption); color: var(--color-text-secondary); }
+
+    .cs-reel-strip { margin-top: var(--space-7); }
+    .cs-reel-strip__title { display: block; font-size: var(--text-caption); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: var(--space-4); }
+    .cs-reel-strip__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+    .cs-reel-strip__item { display: flex; flex-direction: column; gap: var(--space-3); }
+    .cs-reel-strip__video-wrap { position: relative; width: 100%; aspect-ratio: 9 / 16; background-color: var(--color-text-primary); border-radius: var(--radius-sm); overflow: hidden; }
+    .cs-reel-strip__placeholder { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-2); padding: var(--space-4); color: var(--color-bg); font-size: var(--text-caption); letter-spacing: var(--tracking-wide); text-transform: uppercase; text-align: center; line-height: var(--leading-normal); }
+    .cs-reel-strip__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 2; opacity: 0; transition: opacity 0.3s; }
+    .cs-reel-strip__video.is-loaded { opacity: 1; }
+    .cs-reel-strip__meta { display: flex; flex-direction: column; gap: var(--space-1); }
+    .cs-reel-strip__order { font-size: var(--text-caption); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-tertiary); }
+    .cs-reel-strip__name { font-size: var(--text-small); font-weight: var(--weight-semibold); color: var(--color-text-primary); line-height: var(--leading-normal); }
+    .cs-reel-strip__format { font-size: var(--text-caption); color: var(--color-text-secondary); line-height: var(--leading-normal); }
+
+    .cs-image-placeholder { position: relative; width: 100%; aspect-ratio: 16 / 9; margin-top: var(--space-5); background-color: var(--color-bg-subtle); border: 1px dashed var(--color-border-strong); border-radius: var(--radius-sm); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-2); overflow: hidden; }
+    .cs-image-placeholder--wide { aspect-ratio: 16 / 7; }
+    .cs-placeholder-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .cs-image-placeholder.has-image { border: none; background-color: var(--color-bg); aspect-ratio: unset; height: auto; overflow: visible; display: block; }
+    .cs-image-placeholder.has-image .cs-placeholder-img { position: static; inset: auto; width: 100%; height: auto; object-fit: unset; }
+    .cs-image-placeholder.has-image .cs-image-placeholder__label,
+    .cs-image-placeholder.has-image .cs-image-placeholder__sub { display: none; }
+    .cs-image-placeholder__label { font-size: var(--text-caption); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-tertiary); }
+    .cs-image-placeholder__sub { font-size: var(--text-caption); color: var(--color-text-tertiary); max-width: 80%; text-align: center; line-height: var(--leading-normal); }
+
+    .cs-pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-top: var(--space-5); }
+    .cs-pillar-card { padding: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius-sm); display: flex; flex-direction: column; gap: var(--space-2); }
+    .cs-pillar-card--core { border-color: var(--color-text-primary); background-color: var(--color-bg-subtle); }
+    .cs-pillar-card__num { font-size: var(--text-caption); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); color: var(--color-text-tertiary); }
+    .cs-pillar-card__name { font-size: var(--text-h2); font-weight: var(--weight-medium); color: var(--color-text-primary); letter-spacing: var(--tracking-tight); }
+    .cs-pillar-card__role { display: inline-block; align-self: flex-start; font-size: 10px; font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-tertiary); padding: 2px var(--space-2); background-color: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-full); margin-top: var(--space-1); }
+    .cs-pillar-card--core .cs-pillar-card__role { background-color: var(--color-text-primary); color: var(--color-bg); border-color: var(--color-text-primary); }
+    .cs-pillar-card__desc { font-size: var(--text-small); line-height: var(--leading-loose); color: var(--color-text-secondary); margin-top: var(--space-2); }
+
+    .cs-snippet { margin-top: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius-sm); overflow: hidden; background-color: var(--color-bg); }
+    .cs-snippet__header { padding: var(--space-3) var(--space-4); background-color: var(--color-bg-subtle); border-bottom: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; }
+    .cs-snippet__header-title { font-size: var(--text-caption); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-primary); }
+    .cs-snippet__header-meta { font-size: var(--text-caption); color: var(--color-text-tertiary); letter-spacing: var(--tracking-wide); }
+    .cs-snippet__body { padding: 0; }
+    .cs-snippet__turn { display: grid; grid-template-columns: 64px 1fr; gap: var(--space-4); padding: var(--space-5); border-bottom: 1px solid var(--color-border); }
+    .cs-snippet__turn:last-child { border-bottom: none; }
+    .cs-snippet__turn--me { background-color: var(--color-bg); }
+    .cs-snippet__turn--ai { background-color: var(--color-bg-subtle); }
+    .cs-snippet__role { font-size: var(--text-caption); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-tertiary); line-height: 1.4; }
+    .cs-snippet__content { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 13px; line-height: 1.7; color: var(--color-text-primary); white-space: pre-wrap; }
+    .cs-snippet__data { display: inline-block; padding: 2px 8px; background-color: var(--color-bg-subtle); border-radius: var(--radius-sm); font-size: 12px; margin: 2px 0; }
+    .cs-snippet__turn--ai .cs-snippet__data { background-color: var(--color-bg); }
+
+    .cs-efficiency { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); margin-top: var(--space-5); padding: var(--space-6); background-color: var(--color-bg-subtle); border-radius: var(--radius-sm); }
+    .cs-efficiency__item { display: flex; flex-direction: column; gap: var(--space-2); }
+    .cs-efficiency__num { font-size: var(--text-h1); font-weight: var(--weight-light); color: var(--color-text-primary); line-height: 1; letter-spacing: var(--tracking-tight); }
+    .cs-efficiency__label { font-size: var(--text-small); color: var(--color-text-primary); font-weight: var(--weight-medium); line-height: var(--leading-normal); }
+    .cs-efficiency__note { font-size: var(--text-caption); color: var(--color-text-secondary); line-height: var(--leading-normal); }
+    .cs-efficiency__note--wip::before { content: "·"; color: var(--color-text-tertiary); margin-right: var(--space-1); }
+
+    @media (max-width: 768px) {
+      .cs-header { padding-top: var(--space-8); }
+      .cs-impact { grid-template-columns: 1fr 1fr; }
+      .cs-impact .cs-impact__item:last-child { grid-column: 1 / -1; }
+      .cs-meta { grid-template-columns: 1fr 1fr; }
+      .cs-pipeline { grid-template-columns: 1fr; }
+      .cs-pillar-grid { grid-template-columns: 1fr; }
+      .cs-reel-showcase { grid-template-columns: 1fr; }
+      .cs-reel-player-wrap { max-width: 280px; margin: 0 auto; }
+      .cs-efficiency { grid-template-columns: 1fr; }
+      .cs-reel-caption__stats { grid-template-columns: 1fr 1fr; }
+      .cs-reel-strip__grid { grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+      .cs-snippet__turn { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__logo">Judy Lee</a>
+      <div class="nav__links">
+        <div class="nav__lang">
+          <a href="/projects/reels-content-strategy.html" class="nav__lang-btn">EN</a>
+          <span class="nav__lang-divider">·</span>
+          <a href="/kr/projects/reels-content-strategy.html" class="nav__lang-btn is-active">KR</a>
+        </div>
+        <a href="../about.html">About</a>
+        <a href="mailto:jihyunlee719@gmail.com">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="cs-page">
+
+    <header class="cs-header">
+      <a href="../index.html" class="cs-header__back">← All Work</a>
+      <span class="cs-header__label">Case Study 01 · AI-Native Content Strategy</span>
+      <h1 class="cs-header__title">30일 동안,<br><em>AI-native 콘텐츠 스튜디오를 혼자 운영했다.</em></h1>
+      <p class="cs-header__description">
+        혼자 돌린 작은 실험이다 · 규모를 자랑하려는 케이스가 아니다.
+        보여주고 싶은 건 흐름이다 · 팔로워 181명으로 30일 만에
+        69K 조회수 · unique 시청자 34K · 도달은 ~188배 ·
+        Claude와 Meta Edits로 내가 쓴 시간은 총 ~10시간.
+      </p>
+    </header>
+
+    <div class="cs-impact">
+      <div class="cs-impact__item">
+        <span class="cs-impact__number">69K</span>
+        <span class="cs-impact__label">30일 총 조회수</span>
+      </div>
+      <div class="cs-impact__item">
+        <span class="cs-impact__number">~188x</span>
+        <span class="cs-impact__label">Unique 도달 배수<br>(34K unique / 181 followers)</span>
+      </div>
+      <div class="cs-impact__item">
+        <span class="cs-impact__number">4.9%</span>
+        <span class="cs-impact__label">최고 engagement rate (평균 0.9% 대비)</span>
+      </div>
+    </div>
+
+    <div class="cs-meta">
+      <div>
+        <span class="cs-meta__label">Role</span>
+        <span class="cs-meta__value">Solo · AI workflow design · content strategy · hook engineering</span>
+      </div>
+      <div>
+        <span class="cs-meta__label">Stack</span>
+        <span class="cs-meta__value">Claude (Obsidian-linked CLAUDE.md) · Meta Edits · Figma</span>
+      </div>
+      <div>
+        <span class="cs-meta__label">Timeline</span>
+        <span class="cs-meta__value">30-day personal experiment · Mar 2026 – ongoing</span>
+      </div>
+      <div>
+        <span class="cs-meta__label">Budget</span>
+        <span class="cs-meta__value">$0 · 100% organic</span>
+      </div>
+    </div>
+
+    <div class="cs-body">
+
+      <section>
+        <span class="cs-section__label">Background</span>
+        <p class="cs-section__text">
+          AI가 크리에이티브 작업에 실제로 얼마나 힘이 되는지 알고 싶었다 ·
+          막연하게가 아니라 · 진짜 오디언스와 숫자가 있는 플랫폼 위에서.
+        </p>
+        <p class="cs-section__text">
+          <strong>한국에서 배운 인사이트를 해외 한인 니치에 적용했다.</strong>
+          캐나다의 working-holiday · 이민 전문직 한국인 커뮤니티가 타겟이다.
+          이 오디언스는 스크롤 전에 일단 save부터 하는 · 한국 정보 탐색자
+          특유의 행동을 공유한다. 나도 이 커뮤니티 안에 있어서 · 어떤 단어를
+          쓰는지 · 어떤 질문을 하는지 · save한 콘텐츠를 언제 꺼내 쓰는지까지
+          안에서 볼 수 있었다.
+        </p>
+        <p class="cs-section__text">
+          계정에는 총 Reel 8개가 있다 · 앞선 3개는 AI 없이 만들었고 ·
+          뒤 5개는 AI 흐름으로 만들었다. 이 케이스는 뒤 5개에 집중한다 ·
+          흐름이 제대로 돌아가고 반복이 쌓이기 시작한 구간이다.
+        </p>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">Problem</span>
+        <p class="cs-section__text">
+          이 실험이 답해야 할 질문은 두 가지였다.
+        </p>
+        <div class="cs-layer-stack">
+          <div class="cs-layer">
+            <span class="cs-layer__tag">Layer 1 · Tactical</span>
+            <p class="cs-layer__text">
+              예산 0 · 팔로워 181명 · 아주 좁은 타겟.
+              Instagram Reels에서 의미 있는 도달을 어떻게 만들까?
+            </p>
+          </div>
+          <div class="cs-layer cs-layer--strategic">
+            <span class="cs-layer__tag">Layer 2 · Strategic (the real question)</span>
+            <p class="cs-layer__text">
+              AI를 도구 삼아 한 사람이 콘텐츠 스튜디오를 얼마나 돌릴 수 있을까?
+              30일 동안 Reel 5개 · 다만 이 숫자는 내 한계가 아니다.
+              초반 세팅과 학습에 시간이 가장 많이 들었고 · 흐름이 자리 잡은 뒤로는
+              하루 1 Reel도 가능한 속도였다. 증명된 건 흐름 자체가 1인 팀으로
+              돌아간다는 점이다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">Audience Insight</span>
+        <p class="cs-section__text">
+          <strong>출처 · Instagram Insights.</strong>
+          초기 Reels의 save 대 like 비율이 플랫폼 평균보다 높았다 ·
+          이 오디언스가 목적을 가지고 움직인다는 조용한 시그널이다.
+          나중에 써먹으려고 save한다 · 그냥 스크롤하지 않는다.
+        </p>
+        <p class="cs-section__text">
+          이민 · 세금 시즌 · 구직 정보는 즉흥적으로 보는 콘텐츠가 아니다.
+          저장해뒀다가 때 되면 꺼내 쓰는 결정들이다.
+        </p>
+        <div class="cs-callout">
+          <p class="cs-callout__text">
+            목적이 분명한 오디언스라면 봐야 할 시그널은 <strong>save rate과 share rate</strong>이다 ·
+            like가 아니다. save는 하나의 결정이다. 알고리즘은 결정을 보상한다.
+          </p>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">Hypothesis</span>
+        <p class="cs-section__text">
+          두 가설을 병렬로 테스트했다.
+        </p>
+        <p class="cs-section__text" style="margin-top: var(--space-5);">
+          <strong>H1 · 흐름 가설.</strong>
+          계속 유지되는 컨텍스트(내 톤 · 배경 · 콘텐츠 pillar를 담은 CLAUDE.md 파일)에
+          분야별 프롬프트를 얹으면 일반적인 프롬프팅보다 훨씬 효율이 좋다 ·
+          한 사람이 30일 안에 5개 Reel 테스트를 돌릴 수 있을 정도로.
+        </p>
+        <p class="cs-section__text">
+          <strong>H2 · 크리에이티브 가설.</strong>
+          Utility-first hook(처음 3초에 구체적 혜택 · 예: "놓치고 있는 연간 $6,000 혜택")이
+          comparison hook(예: "Canada vs Korea")보다 save rate · share rate가 높을 것이다 ·
+          utility는 바로 행동을 부르고 · curiosity는 스크롤로 끝나기 때문이다.
+        </p>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">Approach · AI Pipeline</span>
+        <p class="cs-section__text">
+          5단계 흐름이다 · 사람과 AI가 두 번 주고받고 · 모두 Obsidian vault의
+          CLAUDE.md 파일 하나로 엮는다.
+        </p>
+
+        <div class="cs-pipeline">
+          <div class="cs-pipeline__step">
+            <span class="cs-pipeline__num">01</span>
+            <span class="cs-pipeline__title">Context setup</span>
+            <span class="cs-pipeline__desc">Obsidian vault의 CLAUDE.md에 내 스토리 · 톤 · 도메인 지식을 정리 · AI가 계속 참고할 컨텍스트로 세팅.</span>
+            <span class="cs-pipeline__tool">Claude · Obsidian</span>
+          </div>
+          <div class="cs-pipeline__step">
+            <span class="cs-pipeline__num">02</span>
+            <span class="cs-pipeline__title">Content pillars</span>
+            <span class="cs-pipeline__desc">Claude에 content strategist 역할을 주고 · CLAUDE.md에서 3개 pillar를 뽑아냈다. 모든 Reel이 pillar 하나에 맞춰진다. pillar 없으면 안 올린다.</span>
+            <span class="cs-pipeline__tool">Claude</span>
+          </div>
+          <div class="cs-pipeline__step">
+            <span class="cs-pipeline__num">03</span>
+            <span class="cs-pipeline__title">Script generation</span>
+            <span class="cs-pipeline__desc">Claude가 CLAUDE.md + 포지셔닝 리서치로 스크립트를 썼다 · 내 톤에 맞게 내가 다시 썼다.</span>
+            <span class="cs-pipeline__tool">Claude</span>
+          </div>
+          <div class="cs-pipeline__step">
+            <span class="cs-pipeline__num">04</span>
+            <span class="cs-pipeline__title">Production · KR/EN captions</span>
+            <span class="cs-pipeline__desc">Meta Edits에서 편집 · 한/영 SRT는 Claude 스크립트에서 자동 생성.</span>
+            <span class="cs-pipeline__tool">Meta Edits</span>
+          </div>
+          <div class="cs-pipeline__step">
+            <span class="cs-pipeline__num">05</span>
+            <span class="cs-pipeline__title">Post-mortem analysis</span>
+            <span class="cs-pipeline__desc">Insights 숫자를 Claude에 다시 넣는다 · 다음 가설 · 다음 hook을 뽑아낸다.</span>
+            <span class="cs-pipeline__tool">Claude · Insights</span>
+          </div>
+        </div>
+
+        <p class="cs-section__text" style="margin-top: var(--space-7);">
+          <strong>Step 02에서 나온 3개 pillar.</strong>
+          모든 Reel이 pillar 하나에 맞춰진다. Core pillar는 계정의 심장이다 ·
+          성장과 정체성이 쌓이는 곳. Entry와 Utility는 새 시청자를 Core로
+          끌어오는 gateway다.
+        </p>
+        <div class="cs-pillar-grid">
+          <div class="cs-pillar-card">
+            <span class="cs-pillar-card__num">Pillar 01</span>
+            <span class="cs-pillar-card__name">Entry</span>
+            <span class="cs-pillar-card__role">Gateway · awareness</span>
+            <span class="cs-pillar-card__desc">
+              한국인의 해외 취업 · 밖의 사람을 끌어당기는 토픽.
+              검색 의도 높고 · 도달 넓고 · 팔로우 부담은 낮다.
+            </span>
+          </div>
+          <div class="cs-pillar-card cs-pillar-card--core">
+            <span class="cs-pillar-card__num">Pillar 02</span>
+            <span class="cs-pillar-card__name">Core</span>
+            <span class="cs-pillar-card__role">Growth · the heart</span>
+            <span class="cs-pillar-card__desc">
+              해외에 사는 한국인의 자기계발 · 개인 성장.
+              계정 톤이 살아있는 곳 · 진짜 오디언스가 만들어지는 곳.
+            </span>
+          </div>
+          <div class="cs-pillar-card">
+            <span class="cs-pillar-card__num">Pillar 03</span>
+            <span class="cs-pillar-card__name">Utility</span>
+            <span class="cs-pillar-card__role">Save-bait · retention</span>
+            <span class="cs-pillar-card__desc">
+              프리랜서 수입 · 이민자 혜택 · 세금 시즌 대응.
+              나중에 꺼내 쓰려고 save하는 정보. save rate 시그널을 만든다.
+            </span>
+          </div>
+        </div>
+
+        <div class="cs-image-placeholder cs-image-placeholder--wide">
+          <img class="cs-placeholder-img" src="../../assets/images/reels-ai-obsidian.png"
+               alt="CLAUDE.md in Obsidian vault · persistent context file"
+               onload="this.parentElement.classList.add('has-image')"
+               onerror="this.style.display='none'" />
+          <span class="cs-image-placeholder__label">Evidence · CLAUDE.md in Obsidian</span>
+          <span class="cs-image-placeholder__sub">계속 유지되는 컨텍스트 파일 · 흐름의 첫 AI 단계</span>
+        </div>
+
+        <p class="cs-section__text" style="margin-top: var(--space-7);">
+          <strong>Step 05 실제 사용 방식.</strong>
+          Reel이 올라간 뒤 Insights 숫자를 Claude 세션에 다시 붙여넣는다 ·
+          모델은 이미 CLAUDE.md를 가지고 있어서 · 내 톤 · 내 pillar ·
+          직전 가설에 맞춰 데이터를 읽는다. 프롬프트 패턴은 이런 모양이다.
+        </p>
+
+        <div class="cs-snippet">
+          <div class="cs-snippet__header">
+            <span class="cs-snippet__header-title">Post-mortem session · Reel 02 → Reel 03</span>
+            <span class="cs-snippet__header-meta">Claude · CLAUDE.md loaded</span>
+          </div>
+          <div class="cs-snippet__body">
+            <div class="cs-snippet__turn cs-snippet__turn--me">
+              <span class="cs-snippet__role">Me</span>
+              <div class="cs-snippet__content">Using CLAUDE.md as context.
+Here are the Insights from the last two Reels ·
+
+<span class="cs-snippet__data">Reel 02 · "Show Discounts" · Utility-first</span>
+18.4K views · 438 saves · 252 shares · 4.9% eng
+
+<span class="cs-snippet__data">Reel 03 · "Benefits $6K" · Utility-first</span>
+29.3K views · 293 saves · 174 shares · 2.1% eng
+
+Both utility-first. The save rate gap is ~4x when normalized.
+Give me your read · using what you know about this account's
+audience and pillars. What's the cleanest next hypothesis to test?</div>
+            </div>
+            <div class="cs-snippet__turn cs-snippet__turn--ai">
+              <span class="cs-snippet__role">Claude</span>
+              <div class="cs-snippet__content">Three candidate variables, ranked by explanatory weight ·
+
+1. Script specificity. Reel 02 opened with a stackable list of
+   usable stores · save-then-act. Reel 03 opened with an abstract
+   annual figure that needed context before action.
+
+2. Target fit. Reel 02 stayed inside the core niche. Reel 03
+   traveled on the algorithm · wider reach, but non-target viewers
+   watched without saving.
+
+3. Algorithmic dilution. Eng rate drops mechanically as reach
+   grows beyond intent-density.
+
+Cleanest next test · hold target and reach constant, vary only
+script architecture. Two Reels · same audience, same length,
+one list-led, one number-led. Isolates variable 1.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">Approach · Hook Engineering</span>
+        <p class="cs-section__text">
+          AI-native Reel 5개에 걸쳐 hook 포맷 2개를 테스트했다.
+          아래 Results 섹션은 최근 3개를 시간 순으로 본다 ·
+          흐름이 어떻게 배워나갔는지가 평균에 묻히지 않도록.
+        </p>
+
+        <table class="cs-table" style="margin-top: var(--space-6);">
+          <thead>
+            <tr>
+              <th>Format</th>
+              <th>Hook Type</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>A · Utility-first</strong></td>
+              <td>Number-led · actionable takeaway</td>
+              <td>"$6,000 in benefits" · "30–50% show discounts"</td>
+            </tr>
+            <tr>
+              <td>B · Comparison</td>
+              <td>Cultural contrast</td>
+              <td>"Canada vs Korea holidays"</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="cs-tags">
+          <span class="cs-tag">Video length · 28–46 sec</span>
+          <span class="cs-tag">Bilingual KR/EN overlay</span>
+          <span class="cs-tag">100% organic distribution</span>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">Results · Layer A · Content Performance</span>
+
+        <div class="cs-reel-showcase">
+          <div class="cs-reel-player-wrap" onclick="togglePlay(this)">
+            <div class="cs-reel-player cs-reel-player--placeholder">Winning Reel<br>Show Discounts<br>video pending</div>
+            <video
+              class="cs-reel-player"
+              src="../../assets/videos/reels-show-discounts.mp4#t=0.1"
+              preload="auto" muted loop playsinline
+              onloadeddata="this.classList.add('is-loaded')">
+            </video>
+            <button class="cs-play-btn" type="button" aria-label="Play video">
+              <svg class="cs-play-btn__play" width="20" height="20" viewBox="0 0 20 20"><path d="M6 4l10 6-10 6V4z"/></svg>
+              <svg class="cs-play-btn__pause" width="18" height="18" viewBox="0 0 18 18"><path d="M4 3h4v12H4V3zm6 0h4v12h-4V3z"/></svg>
+            </button>
+          </div>
+          <div>
+            <span class="cs-reel-caption__tag">Winning creative · Utility-first hook</span>
+            <h3 class="cs-reel-caption__title">"30–50% show discounts you can actually use."</h3>
+            <p class="cs-section__text">
+              숫자가 앞에 오는 hook · curiosity가 아니라 바로 쓸 수 있는 가치를
+              첫 3초에 전달. 5개 Reel 중 save · share rate 최고.
+            </p>
+            <div class="cs-reel-caption__stats">
+              <div>
+                <span class="cs-reel-caption__stat-num">438</span>
+                <span class="cs-reel-caption__stat-label">Saves</span>
+              </div>
+              <div>
+                <span class="cs-reel-caption__stat-num">252</span>
+                <span class="cs-reel-caption__stat-label">Shares</span>
+              </div>
+              <div>
+                <span class="cs-reel-caption__stat-num">4.9%</span>
+                <span class="cs-reel-caption__stat-label">Eng. rate</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="cs-section__text" style="margin-top: var(--space-7);">
+          발행 순서대로 Reel 3개 · 흐름이 한 번씩 반복될 때마다
+          어떻게 배웠는지 보인다.
+        </p>
+
+        <table class="cs-table">
+          <thead>
+            <tr>
+              <th>Order</th>
+              <th>Content</th>
+              <th>Format</th>
+              <th>Views</th>
+              <th>Saves</th>
+              <th>Shares</th>
+              <th>Eng. Rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>01 · earliest</td>
+              <td>Canada Holidays</td>
+              <td>Comparison</td>
+              <td>6.1K</td>
+              <td>9</td>
+              <td>11</td>
+              <td>0.9%</td>
+            </tr>
+            <tr class="highlight">
+              <td>02 · middle</td>
+              <td>Show Discounts</td>
+              <td>Utility-first</td>
+              <td>18.4K</td>
+              <td><strong>438</strong></td>
+              <td><strong>252</strong></td>
+              <td><strong>4.9%</strong></td>
+            </tr>
+            <tr>
+              <td>03 · most recent</td>
+              <td>Benefits $6,000</td>
+              <td>Utility-first</td>
+              <td>29.3K</td>
+              <td>293</td>
+              <td>174</td>
+              <td>2.1%</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="cs-callout" style="margin-top: var(--space-6);">
+          <p class="cs-callout__text">
+            <strong>흐름 · Reel 01에서 03까지.</strong>
+            Comparison hook은 save rate이 낮았다 (0.9%).
+            Reel 02에서 utility-first로 바꿨다 · save 48배 · engagement 4.9%.
+            Reel 03은 같은 포맷으로 더 멀리 갔다 · 대신 알고리즘이
+            core 니치 바깥까지 밀어내면서 engagement가 내려갔다.
+            흐름이 배웠다. 나도 배웠다.
+          </p>
+        </div>
+
+        <div class="cs-reel-strip">
+          <span class="cs-reel-strip__title">시간 순 비교 · 흐름이 어떻게 배워나갔나</span>
+          <div class="cs-reel-strip__grid">
+            <div class="cs-reel-strip__item">
+              <div class="cs-reel-strip__video-wrap" onclick="togglePlay(this)">
+                <div class="cs-reel-strip__placeholder">Reel 01<br>Canada Holidays<br>video pending</div>
+                <video class="cs-reel-strip__video"
+                       src="../../assets/videos/reels-canada-holidays.mp4#t=0.1"
+                       preload="auto" muted loop playsinline
+                       onloadeddata="this.classList.add('is-loaded')"></video>
+                <button class="cs-play-btn" type="button" aria-label="Play video">
+                  <svg class="cs-play-btn__play" width="14" height="14" viewBox="0 0 20 20"><path d="M6 4l10 6-10 6V4z"/></svg>
+                  <svg class="cs-play-btn__pause" width="14" height="14" viewBox="0 0 18 18"><path d="M4 3h4v12H4V3zm6 0h4v12h-4V3z"/></svg>
+                </button>
+              </div>
+              <div class="cs-reel-strip__meta">
+                <span class="cs-reel-strip__order">01 · Earliest</span>
+                <span class="cs-reel-strip__name">Canada Holidays</span>
+                <span class="cs-reel-strip__format">Comparison · 6.1K views · 0.9% eng</span>
+              </div>
+            </div>
+
+            <div class="cs-reel-strip__item">
+              <div class="cs-reel-strip__video-wrap" onclick="togglePlay(this)">
+                <div class="cs-reel-strip__placeholder">Reel 02<br>Show Discounts<br>video pending</div>
+                <video class="cs-reel-strip__video"
+                       src="../../assets/videos/reels-show-discounts.mp4#t=0.1"
+                       preload="auto" muted loop playsinline
+                       onloadeddata="this.classList.add('is-loaded')"></video>
+                <button class="cs-play-btn" type="button" aria-label="Play video">
+                  <svg class="cs-play-btn__play" width="14" height="14" viewBox="0 0 20 20"><path d="M6 4l10 6-10 6V4z"/></svg>
+                  <svg class="cs-play-btn__pause" width="14" height="14" viewBox="0 0 18 18"><path d="M4 3h4v12H4V3zm6 0h4v12h-4V3z"/></svg>
+                </button>
+              </div>
+              <div class="cs-reel-strip__meta">
+                <span class="cs-reel-strip__order">02 · Pivot · Winning</span>
+                <span class="cs-reel-strip__name">Show Discounts</span>
+                <span class="cs-reel-strip__format">Utility-first · 18.4K views · 4.9% eng</span>
+              </div>
+            </div>
+
+            <div class="cs-reel-strip__item">
+              <div class="cs-reel-strip__video-wrap" onclick="togglePlay(this)">
+                <div class="cs-reel-strip__placeholder">Reel 03<br>Benefits $6K<br>video pending</div>
+                <video class="cs-reel-strip__video"
+                       src="../../assets/videos/reels-benefits.mp4#t=0.1"
+                       preload="auto" muted loop playsinline
+                       onloadeddata="this.classList.add('is-loaded')"></video>
+                <button class="cs-play-btn" type="button" aria-label="Play video">
+                  <svg class="cs-play-btn__play" width="14" height="14" viewBox="0 0 20 20"><path d="M6 4l10 6-10 6V4z"/></svg>
+                  <svg class="cs-play-btn__pause" width="14" height="14" viewBox="0 0 18 18"><path d="M4 3h4v12H4V3zm6 0h4v12h-4V3z"/></svg>
+                </button>
+              </div>
+              <div class="cs-reel-strip__meta">
+                <span class="cs-reel-strip__order">03 · Most recent</span>
+                <span class="cs-reel-strip__name">Benefits $6K</span>
+                <span class="cs-reel-strip__format">Utility-first · 29.3K views · 2.1% eng</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--space-7);">
+          <span style="display:block; font-size: var(--text-caption); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: var(--space-3);">Secondary analysis · the 4x save gap</span>
+          <p class="cs-section__text">
+            <strong>Reel 02 (Show Discounts · 438 saves) vs Reel 03 (Benefits $6K · 293 saves).</strong>
+            둘 다 utility-first인데 조회수 대비로 보면 save rate가 4배 차이다.
+            지금까지 세운 가설은 변수 3개 ·
+          </p>
+          <p class="cs-section__text">
+            <strong>① 스크립트 접근.</strong>
+            Show Discounts는 실제로 쓸 수 있는 가게 리스트로 시작했다 ·
+            빠르게 훑고 저장하기 좋게 쓴 스크립트다. Benefits $6K는 막연한
+            달러 금액으로 시작해서 · 쓸 수 있게 되려면 설명이 더 필요했다.
+          </p>
+          <p class="cs-section__text">
+            <strong>② 타겟 적합도.</strong>
+            Reel 02는 core 니치 안에 들어갔다 · 이미 생활비를 고민하던 사람들.
+            Reel 03은 알고리즘으로 더 멀리 갔지만 · 니치 바깥 시청자는
+            타겟이 아니었다 · 보긴 했지만 save하지 않았다.
+          </p>
+          <p class="cs-section__text">
+            <strong>③ 알고리즘 희석.</strong>
+            도달이 넓어지면 engagement rate는 자연히 낮아진다 · 분모(전체 시청자)가
+            의도 있는 시청자보다 빠르게 늘어난다. 이건 알고리즘이 만드는
+            tradeoff지 · hook이 실패한 게 아니다.
+          </p>
+          <p class="cs-section__text">
+            다음 테스트는 변수 ①만 따로 본다 · 타겟과 도달을 고정하고 ·
+            같은 오디언스 · 다른 script 구조. What's Next 섹션에 있다.
+          </p>
+        </div>
+
+        <div class="cs-impact" style="padding-top: var(--space-7); border-bottom: none;">
+          <div class="cs-impact__item">
+            <span class="cs-impact__number">909</span>
+            <span class="cs-impact__label">총 save · AI-native Reel 5개</span>
+          </div>
+          <div class="cs-impact__item">
+            <span class="cs-impact__number">483</span>
+            <span class="cs-impact__label">총 share · AI-native Reel 5개</span>
+          </div>
+          <div class="cs-impact__item">
+            <span class="cs-impact__number">34K</span>
+            <span class="cs-impact__label">도달한 unique 시청자</span>
+          </div>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">Results · Layer B · Workflow Efficiency</span>
+        <p class="cs-section__text">
+          AI 흐름이 실제로 효과를 본 지점 · Reel 하나당 내가 쓴 시간으로 측정.
+        </p>
+
+        <div class="cs-efficiency">
+          <div class="cs-efficiency__item">
+            <span class="cs-efficiency__num">1–3h</span>
+            <span class="cs-efficiency__label">Reel 1개당 제작 시간</span>
+            <span class="cs-efficiency__note">아이디어 · 스크립트 · 편집 · 자막 다 합친 시간.</span>
+          </div>
+          <div class="cs-efficiency__item">
+            <span class="cs-efficiency__num">~10–15h</span>
+            <span class="cs-efficiency__label">내가 쓴 총 시간</span>
+            <span class="cs-efficiency__note">5 Reels · 30일 · 1인 · 외주 없음.</span>
+          </div>
+          <div class="cs-efficiency__item">
+            <span class="cs-efficiency__num">3–8h</span>
+            <span class="cs-efficiency__label">톤 다듬기</span>
+            <span class="cs-efficiency__note cs-efficiency__note--wip">Reel 1개당 · 아직 완벽하지 않다. AI가 아직 따라오지 못하는 단계.</span>
+          </div>
+        </div>
+
+        <div class="cs-image-placeholder cs-image-placeholder--wide">
+          <img class="cs-placeholder-img" src="../../assets/images/reels-thumbnails.png"
+               alt="@in2weeks.ca profile grid · recent Reels"
+               onload="this.parentElement.classList.add('has-image')"
+               onerror="this.style.display='none'" />
+          <span class="cs-image-placeholder__label">Account · @in2weeks.ca</span>
+          <span class="cs-image-placeholder__sub">프로필 그리드 · 30일 결과물</span>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">Key Learning</span>
+        <p class="cs-section__text">
+          <strong>1 · AI는 크리에이티브 4단계 중 3개를 빠르게 만든다.</strong>
+          아이디어 · 제작 · 분석 모두 AI가 처음부터 다시 설명 듣지 않고
+          유지되는 컨텍스트를 읽을 때 시간이 크게 줄어든다.
+        </p>
+        <p class="cs-section__text">
+          <strong>2 · 톤은 AI가 가장 늦게 따라오는 영역이다.</strong>
+          "이게 내가 쓴 것 같다"는 여전히 Reel 하나당 3–8시간 걸린다 ·
+          아직 만족스럽지 않다. 작업이 끝난 게 아니다. 이걸 솔직히 인정하는 게
+          AI를 맹신하는 사람이 아니라 · 진지하게 쓰는 사람의 태도다.
+        </p>
+        <p class="cs-section__text">
+          <strong>3 · 유지되는 컨텍스트가 가장 효율 좋았다.</strong>
+          CLAUDE.md를 세팅한 첫 1시간이 뒤에서 20시간 이상을 아꼈다 ·
+          두 번째 Reel부터 흐름은 내가 누구인지 · 누구에게 쓰는지
+          다시 설명 안 해도 돌아갔다.
+        </p>
+        <p class="cs-section__text">
+          <strong>4 · 알고리즘은 스크롤이 아니라 결정을 보상한다.</strong>
+          Utility-first hook이 comparison hook을 save에서 <strong>4배</strong> ·
+          share에서 <strong>23배</strong> 앞섰다. save와 share는 의도가 분명한
+          시그널이다 · like는 수동적 노이즈다.
+        </p>
+        <div class="cs-callout">
+          <p class="cs-callout__text">
+            즉시 적용 · 이후 모든 스크립트는 첫 3초에 구체적 가치 hook으로
+            시작한다. 포맷보다 · 오프닝에서 약속하는 가치가 더 중요하다.
+          </p>
+        </div>
+      </section>
+
+      <hr class="cs-divider" />
+
+      <section>
+        <span class="cs-section__label">What I'd Test Next</span>
+        <p class="cs-section__text">
+          <strong>1 · 톤 피드백 루프 닫기.</strong>
+          내가 내 톤으로 다시 쓴 Reel 하나하나가 CLAUDE.md의 새 샘플이 된다 ·
+          이 피드백 루프가 쌓여야 한다. 다음 30일 목표 · 3–8시간 걸리는
+          톤 다듬기 단계를 1–2시간까지 줄인다.
+        </p>
+        <p class="cs-section__text">
+          <strong>2 · Utility hook 위에 개인 이야기 얹기.</strong>
+          가설 · 정보 콘텐츠에 사람 정체성을 더하면 · 팔로우 안 한 시청자의
+          팔로우 전환율이 올라갈 것이다. Utility hook이 클릭을 벌고 ·
+          identity가 follow를 번다.
+        </p>
+        <p class="cs-section__text">
+          <strong>3 · Meta 전체 surface로 흐름 확장.</strong>
+          CLAUDE.md + 5단계 루프는 포맷에 상관없이 돌아간다. 다음 실험은
+          같은 흐름을 Stories(15초 짧은 포맷) · Feed 캐러셀(여러 슬라이드 save 유도)에
+          적용한다 · 오디언스는 고정해서 · 채널 자체의 효과가 아니라
+          surface-hook 적합도만 본다.
+        </p>
+      </section>
+
+      <nav class="cs-pagination">
+        <span></span>
+        <a href="samsung-engagement.html">다음: Samsung.com →</a>
+      </nav>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <span class="footer__copy">© 2026 Judy Lee</span>
+    <div class="footer__links">
+      <a href="https://linkedin.com/in/judyleedesign" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="mailto:jihyunlee719@gmail.com">Email ↗</a>
+    </div>
+  </footer>
+
+  <script>
+    function togglePlay(wrap) {
+      const v = wrap.querySelector('video');
+      if (!v) return;
+      if (v.paused) {
+        const playPromise = v.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => wrap.classList.add('is-playing')).catch(() => {});
+        } else {
+          wrap.classList.add('is-playing');
+        }
+      } else {
+        v.pause();
+        wrap.classList.remove('is-playing');
+      }
+    }
+  </script>
+
+</body>
+</html>

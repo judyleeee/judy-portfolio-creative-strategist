@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PTKorea Rebranding · Judy Lee · 한글판 준비 중</title>
+
+  <link rel="stylesheet" href="../../styles/tokens.css" />
+
+  <style>
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      height: var(--nav-height);
+      background-color: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .nav__inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 100%; max-width: var(--content-max-width);
+      margin: 0 auto; padding: 0 var(--content-padding-x);
+    }
+    .nav__logo {
+      font-size: var(--text-small); font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-wide); text-transform: uppercase;
+      color: var(--color-text-primary);
+    }
+    .nav__links { display: flex; gap: var(--space-6); align-items: center; }
+    .nav__links > a {
+      font-size: var(--text-small); font-weight: var(--weight-medium);
+      color: var(--color-text-secondary);
+      transition: color var(--transition-fast);
+    }
+    .nav__links > a:hover { color: var(--color-text-primary); }
+
+    .placeholder {
+      max-width: 680px;
+      margin: var(--space-10) auto var(--space-9);
+      padding: 0 var(--content-padding-x);
+    }
+    .placeholder__label {
+      display: block; font-size: var(--text-caption);
+      font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide);
+      text-transform: uppercase; color: var(--color-text-tertiary);
+      margin-bottom: var(--space-4);
+    }
+    .placeholder__title {
+      font-size: var(--text-h1); font-weight: var(--weight-light);
+      color: var(--color-text-primary); margin-bottom: var(--space-4);
+      line-height: var(--leading-tight);
+    }
+    .placeholder__body {
+      font-size: var(--text-body); color: var(--color-text-secondary);
+      line-height: var(--leading-loose);
+    }
+    .placeholder__link {
+      display: inline-block; margin-top: var(--space-5);
+      font-size: var(--text-small); color: var(--color-text-primary);
+      border-bottom: 1px solid currentColor; padding-bottom: 2px;
+      transition: opacity var(--transition-fast);
+    }
+    .placeholder__link:hover { opacity: 0.6; }
+  </style>
+</head>
+
+<body>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="/kr/" class="nav__logo">Judy Lee</a>
+      <div class="nav__links">
+        <div class="nav__lang">
+          <a href="/projects/ptkorea.html" class="nav__lang-btn">EN</a>
+          <span class="nav__lang-divider">·</span>
+          <a href="/kr/projects/ptkorea.html" class="nav__lang-btn is-active">KR</a>
+        </div>
+        <a href="/kr/about.html">About</a>
+        <a href="mailto:jihyunlee719@gmail.com">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="placeholder">
+    <span class="placeholder__label">Case Study · 한글판</span>
+    <h1 class="placeholder__title">PTKorea Rebranding · 한글판 준비 중</h1>
+    <p class="placeholder__body">
+      PT Korea 리브랜딩 · 웹사이트 시스템 케이스스터디의 한글판이 곧 공개된다.
+    </p>
+    <a class="placeholder__link" href="/projects/ptkorea.html">← 영문판으로 이동</a>
+  </main>
+
+</body>
+</html>

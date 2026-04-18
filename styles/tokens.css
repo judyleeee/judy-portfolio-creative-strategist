@@ -1,10 +1,11 @@
 /* ============================================
-   Judy Lee Portfolio — Design Tokens
-   Font: Plus Jakarta Sans
+   Judy Lee Portfolio · Design Tokens
+   Font: Plus Jakarta Sans · Pretendard (한글)
    Style: Minimal Editorial Light
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css');
 
 :root {
 
@@ -26,7 +27,7 @@
 
   /* ─── Typography ──────────────────────────── */
 
-  --font-family: 'Plus Jakarta Sans', sans-serif;
+  --font-family: 'Plus Jakarta Sans', 'Pretendard Variable', 'Pretendard', -apple-system, system-ui, 'Noto Sans KR', sans-serif;
 
   --text-display:  clamp(36px, 5vw, 56px);
   --text-h1:       clamp(24px, 3vw, 36px);
@@ -103,6 +104,8 @@ body {
   line-height: var(--leading-normal);
   color: var(--color-text-primary);
   background-color: var(--color-bg);
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 a {
@@ -123,4 +126,33 @@ img {
   :root {
     --content-padding-x: 24px;
   }
+}
+
+/* ─── Language Toggle (Nav) ───────────────── */
+
+.nav__lang {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.nav__links .nav__lang-btn {
+  font-size: var(--text-small);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-tertiary);
+  transition: color var(--transition-fast);
+}
+
+.nav__links .nav__lang-btn:hover {
+  color: var(--color-text-primary);
+}
+
+.nav__links .nav__lang-btn.is-active {
+  color: var(--color-text-primary);
+}
+
+.nav__lang-divider {
+  font-size: var(--text-small);
+  color: var(--color-text-tertiary);
+  user-select: none;
 }

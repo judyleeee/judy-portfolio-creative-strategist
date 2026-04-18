@@ -1,5 +1,5 @@
 // ============================================
-// Judy Lee Portfolio — Main Script
+// Judy Lee Portfolio · Main Script
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -61,12 +61,12 @@ function createProjectCard(project) {
     {
       id: `context-${project.id}`,
       label: 'Context',
-      content: `<span class="accordion-value">${project.context || '—'}</span>`
+      content: `<span class="accordion-value">${project.context || '·'}</span>`
     },
     {
       id: `timeline-${project.id}`,
       label: 'Timeline',
-      content: `<span class="accordion-value">${project.timeline || '—'}</span>`
+      content: `<span class="accordion-value">${project.timeline || '·'}</span>`
     }
   ];
 
@@ -104,7 +104,7 @@ function createProjectCard(project) {
     </div>
   `;
 
-  // 아코디언 이벤트 — 다른 탭 클릭 시 이전 탭 자동 닫힘
+  // 아코디언 이벤트 · 다른 탭 클릭 시 이전 탭 자동 닫힘
   const rows = card.querySelectorAll('.accordion-row');
   rows.forEach(row => {
     row.addEventListener('click', () => {

@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About · Judy Lee</title>
 
-  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
 
   <style>
     /* ============================================
-       about.html · Page Styles
+       about.html · Page Styles (KR)
        ============================================ */
 
     /* ─── Nav ─────────────────────────────────── */
@@ -44,17 +44,18 @@
     .nav__links {
       display: flex;
       gap: var(--space-6);
+      align-items: center;
     }
 
-    .nav__links a {
+    .nav__links > a {
       font-size: var(--text-small);
       font-weight: var(--weight-medium);
       color: var(--color-text-secondary);
       transition: color var(--transition-fast);
     }
 
-    .nav__links a:hover,
-    .nav__links a.is-active {
+    .nav__links > a:hover,
+    .nav__links > a.is-active {
       color: var(--color-text-primary);
     }
 
@@ -338,12 +339,12 @@
   <!-- ─── Nav ──────────────────────────────────── -->
   <nav class="nav">
     <div class="nav__inner">
-      <a href="index.html" class="nav__logo">Judy Lee</a>
+      <a href="/kr/" class="nav__logo">Judy Lee</a>
       <div class="nav__links">
         <div class="nav__lang">
-          <a href="/about.html" class="nav__lang-btn is-active">EN</a>
+          <a href="/about.html" class="nav__lang-btn">EN</a>
           <span class="nav__lang-divider">·</span>
-          <a href="/kr/about.html" class="nav__lang-btn">KR</a>
+          <a href="/kr/about.html" class="nav__lang-btn is-active">KR</a>
         </div>
         <a href="about.html" class="is-active">About</a>
         <a href="mailto:jihyunlee719@gmail.com">Contact</a>
@@ -358,28 +359,27 @@
       <!-- Left: Bio -->
       <div class="about__left">
         <span class="about__label">About</span>
-        <h1 class="about__headline">The best creative isn't the most beautiful.<br><em>It's the most strategically inevitable.</em></h1>
+        <h1 class="about__headline">최고의 크리에이티브는 가장 아름다운 것이 아니다.<br><em>가장 전략적으로 필연적인 것이다.</em></h1>
 
         <div class="about__bio">
           <p>
-            I'm a <strong>Creative Strategist</strong> with 8 years of brand and UX
-            experience across Samsung and Edelman · working at the intersection of
-            audience behavior, creative execution, and AI-native workflows.
+            <strong>Creative Strategist</strong>로 8년 넘게 일하면서, 행동 인사이트를
+            UX · brand · content 영역의 성과 높은 크리에이티브로 바꿔왔다.
           </p>
           <p>
-            At <strong>Edelman</strong>, I contributed design execution to campaigns
-            reaching <strong>20M+</strong> across Novartis, Hellmann's, and Magnum ·
-            working alongside strategy, PR, and production teams on global brand work.
+            오디언스 행동 · 숏폼 크리에이티브 · 데이터가 만나는 지점에서 일한다.
+            가설을 세우고, 포맷을 테스트하고, 시그널을 읽고, 빠르게 반복한다.
+            AI는 지름길이 아니라 사고 파트너로 전 과정에 쓴다.
           </p>
           <p>
-            More recently, I owned <strong>Winners Big Black Bag</strong> end-to-end
-            (46% completion · 25% email opt-in) and now run a self-directed AI-native
-            Reels lab · hypothesis-driven hook engineering with Claude and Meta Edits.
+            최근에는 니치 Instagram 채널을 키웠다.
+            <strong>총 Reels 조회수 69K · unique reach 34K · 181 followers 기준</strong> · 오가닉 리치 ~188배를
+            가설 기반 A/B 테스트와 save-rate 최적화로 달성했다.
           </p>
           <p>
-            Previously · <strong>Cheil Worldwide Pengtai</strong> on Samsung.com global
-            redesign (~$1M revenue impact contributed). <strong>Red Dot Design Award</strong>
-            winner for PTKorea rebranding. 8 years in Seoul, now based in Toronto.
+            앞서 <strong>Edelman</strong>에서 20M+ 임프레션과 Novartis · Hellmann's · Magnum
+            등 글로벌 브랜드를 담당했고, <strong>Cheil Worldwide Pengtai</strong>에서
+            Samsung.com 글로벌 리디자인으로 ~$1M 매출 임팩트를 냈다. Red Dot Design Award 수상.
           </p>
         </div>
 
@@ -389,7 +389,7 @@
               <rect x="2" y="4" width="20" height="16" rx="2"/>
               <polyline points="2,4 12,13 22,4"/>
             </svg>
-            Get in touch
+            연락하기
           </a>
           <a href="https://www.linkedin.com/in/jihyun0719" target="_blank" rel="noopener" class="btn--ghost">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -459,8 +459,8 @@
         </span>
         <span class="personal-tile__title">Seoul → Toronto</span>
         <p class="personal-tile__desc">
-          Spent 8 years working in Seoul's design industry · agencies, global brands, Red Dot wins.
-          Moved to Toronto to start fresh, think bigger, and build something of my own.
+          Seoul에서 8년간 디자인 업계에서 일했다 · 에이전시 · 글로벌 브랜드 · Red Dot 수상.
+          새로 시작하고, 더 크게 생각하고, 내 것을 만들기 위해 Toronto로 왔다.
         </p>
       </div>
 
@@ -476,7 +476,8 @@
         </span>
         <span class="personal-tile__title">Coffee Chat Enthusiast</span>
         <p class="personal-tile__desc">
-          I love picking people's brains. Strategy, career pivots, creative process · I'm always down for a good conversation over coffee.
+          사람들 생각을 듣는 걸 좋아한다.
+          전략 · 커리어 전환 · 크리에이티브 프로세스 · 커피 한잔 대화에 늘 열려있다.
         </p>
       </div>
 
@@ -493,7 +494,8 @@
         </span>
         <span class="personal-tile__title">AI-Native & Curious Explorer</span>
         <p class="personal-tile__desc">
-          I use AI as a thinking partner, not just a shortcut. From Claude for strategy to Midjourney for concepts · I'm always experimenting with what's next.
+          AI를 지름길이 아니라 사고 파트너로 쓴다.
+          전략은 Claude로, 컨셉은 Midjourney로 · 늘 다음 단계를 실험하고 있다.
         </p>
       </div>
 

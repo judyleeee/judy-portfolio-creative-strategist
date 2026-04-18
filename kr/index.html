@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Judy Lee · Creative Strategist</title>
 
   <!-- 디자인 토큰 (폰트 포함) -->
-  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
 
   <style>
     /* ============================================
-       index.html · Page Styles
+       index.html · Page Styles (KR)
        ============================================ */
 
     /* ─── Nav ─────────────────────────────────── */
@@ -45,16 +45,17 @@
     .nav__links {
       display: flex;
       gap: var(--space-6);
+      align-items: center;
     }
 
-    .nav__links a {
+    .nav__links > a {
       font-size: var(--text-small);
       font-weight: var(--weight-medium);
       color: var(--color-text-secondary);
       transition: color var(--transition-fast);
     }
 
-    .nav__links a:hover {
+    .nav__links > a:hover {
       color: var(--color-text-primary);
     }
 
@@ -156,8 +157,6 @@
     .project-card:first-child {
       padding-top: var(--space-8);
     }
-
-    /* ─── Card Left ───────────────────────────── */
 
     .project-card__left {
       display: flex;
@@ -270,8 +269,6 @@
     .plus-btn.is-open .icon-minus {
       display: block;
     }
-
-    /* 아코디언 패널 */
 
     .accordion-content {
       display: grid;
@@ -404,7 +401,6 @@
         gap: var(--space-5);
       }
 
-      /* 모바일에서 이미지가 텍스트 위로 */
       .project-card__right {
         order: -1;
         aspect-ratio: 16 / 9;
@@ -428,12 +424,12 @@
   <!-- ─── Nav ──────────────────────────────────── -->
   <nav class="nav">
     <div class="nav__inner">
-      <a href="/" class="nav__logo">Judy Lee</a>
+      <a href="/kr/" class="nav__logo">Judy Lee</a>
       <div class="nav__links">
         <div class="nav__lang">
-          <a href="/" class="nav__lang-btn is-active">EN</a>
+          <a href="/" class="nav__lang-btn">EN</a>
           <span class="nav__lang-divider">·</span>
-          <a href="/kr/" class="nav__lang-btn">KR</a>
+          <a href="/kr/" class="nav__lang-btn is-active">KR</a>
         </div>
         <a href="about.html">About</a>
         <a href="mailto:jihyunlee719@gmail.com">Contact</a>
@@ -444,27 +440,27 @@
   <!-- ─── Hero ─────────────────────────────────── -->
   <header class="hero">
     <span class="hero__label">Creative Strategist</span>
-    <h1 class="hero__title">Turning behavioral insights into<br><em>creative that performs.</em></h1>
-    <p class="hero__sub">8 years across Samsung and Edelman · built on brand and UX rigor · now scaling creative performance through data-driven experimentation and AI-native workflows.</p>
+    <h1 class="hero__title">행동 인사이트를<br><em>성과 내는 크리에이티브로 바꾼다.</em></h1>
+    <p class="hero__sub">데이터 기반 실험과 AI 워크플로우로 글로벌 브랜드의 social · brand · product 전반에서 크리에이티브 성과를 키운다.</p>
   </header>
 
   <!-- ─── Impact Numbers ───────────────────────── -->
   <div class="impact-strip">
     <div class="impact-item">
       <span class="impact-item__number">69K</span>
-      <span class="impact-item__label">Total Reels views<br>from 181 followers</span>
+      <span class="impact-item__label">총 Reels 조회수<br>181 followers 기준</span>
     </div>
     <div class="impact-item">
       <span class="impact-item__number">20M+</span>
-      <span class="impact-item__label">Impressions contributed<br>at Edelman</span>
+      <span class="impact-item__label">Edelman에서 이끈<br>총 임프레션</span>
     </div>
     <div class="impact-item">
       <span class="impact-item__number">~$1M</span>
-      <span class="impact-item__label">Revenue impact contributed<br>Samsung global campaigns</span>
+      <span class="impact-item__label">Samsung 글로벌 캠페인<br>매출 임팩트</span>
     </div>
     <div class="impact-item">
       <span class="impact-item__number">46%</span>
-      <span class="impact-item__label">Quiz completion rate<br>Winners Big Black Bag</span>
+      <span class="impact-item__label">Winners Big Black Bag<br>quiz 완료율</span>
     </div>
   </div>
 
@@ -486,9 +482,9 @@
 
   <!-- ─── Scripts ──────────────────────────────── -->
   <script src="projects/data.js"></script>
-  <script src="scripts/main.js"></script>
+  <script src="../scripts/main.js"></script>
 
-  <!-- 카드 렌더링 후 "View Case Study" CTA 주입 -->
+  <!-- 카드 렌더링 후 "케이스스터디 보기" CTA 주입 -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.project-card').forEach(card => {
@@ -499,7 +495,7 @@
         const cta = document.createElement('a');
         cta.href = `projects/${project.caseStudyUrl}`;
         cta.className = 'project-card__cta';
-        cta.textContent = 'View Case Study →';
+        cta.textContent = '케이스스터디 보기 →';
 
         card.querySelector('.project-card__left').appendChild(cta);
       });
