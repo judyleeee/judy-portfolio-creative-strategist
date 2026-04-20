@@ -76,6 +76,15 @@
 
     /* ─── Left: Bio ───────────────────────────── */
 
+    .about__photo {
+      width: 112px;
+      height: 112px;
+      object-fit: cover;
+      border-radius: var(--radius-full);
+      margin-bottom: var(--space-5);
+      display: block;
+    }
+
     .about__label {
       display: block;
       font-size: var(--text-caption);
@@ -358,6 +367,7 @@
 
       <!-- Left: Bio -->
       <div class="about__left">
+        <img class="about__photo" src="../assets/images/profile.png" alt="Judy Lee" />
         <span class="about__label">About</span>
         <h1 class="about__headline">최고의 크리에이티브는 가장 아름다운 것이 아니다.<br><em>가장 전략적으로 필연적인 것이다.</em></h1>
 
