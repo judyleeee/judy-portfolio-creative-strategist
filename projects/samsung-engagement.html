@@ -497,6 +497,16 @@
       aspect-ratio: 16 / 7;
     }
 
+    /* 특정 이미지 · 높이 550px로 고정 */
+    .cs-image-placeholder--h550.has-image .cs-placeholder-img {
+      height: 550px;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+      margin: 0 auto;
+      display: block;
+    }
+
     .cs-image-placeholder--tall {
       aspect-ratio: 4 / 5;
       max-width: 360px;
@@ -842,7 +852,7 @@
           <span class="cs-image-placeholder__sub">Manuals &amp; Downloads → Enter model code → Select category → Step 2 select product → Additional Information</span>
         </div>
 
-        <div class="cs-image-placeholder cs-image-placeholder--wide">
+        <div class="cs-image-placeholder cs-image-placeholder--wide cs-image-placeholder--h550">
           <img class="cs-placeholder-img" src="../assets/images/samsung-engagement-pattern-search.png"
                alt="Pattern 01 + 02 · Simplified Search and Hierarchical Category Selection"
                onload="this.parentElement.classList.add('has-image')"
