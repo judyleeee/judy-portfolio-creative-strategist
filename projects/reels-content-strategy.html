@@ -465,12 +465,11 @@
       object-fit: cover;
       display: block;
       z-index: 2;
-      opacity: 0;
-      transition: opacity 0.3s;
     }
 
-    video.cs-reel-player.is-loaded {
-      opacity: 1;
+    /* video shows its own poster immediately · no opacity delay */
+    video.cs-reel-player {
+      background-color: var(--color-text-primary);
     }
 
     .cs-reel-player--placeholder {
@@ -651,12 +650,7 @@
       object-fit: cover;
       display: block;
       z-index: 2;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .cs-reel-strip__video.is-loaded {
-      opacity: 1;
+      background-color: var(--color-text-primary);
     }
 
     .cs-reel-strip__meta {
