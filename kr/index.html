@@ -484,7 +484,7 @@
   <script src="projects/data.js"></script>
   <script src="../scripts/main.js"></script>
 
-  <!-- 카드 렌더링 후 "케이스스터디 보기" CTA 주입 -->
+  <!-- 카드 렌더링 후 "View Case Study" CTA 주입 -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.project-card').forEach(card => {
@@ -495,7 +495,7 @@
         const cta = document.createElement('a');
         cta.href = `projects/${project.caseStudyUrl}`;
         cta.className = 'project-card__cta';
-        cta.textContent = '케이스스터디 보기 →';
+        cta.textContent = 'View Case Study →';
 
         card.querySelector('.project-card__left').appendChild(cta);
       });
