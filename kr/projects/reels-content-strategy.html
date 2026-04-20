@@ -112,6 +112,7 @@
 
     .cs-image-placeholder { position: relative; width: 100%; aspect-ratio: 16 / 9; margin-top: var(--space-5); background-color: var(--color-bg-subtle); border: 1px dashed var(--color-border-strong); border-radius: var(--radius-sm); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-2); overflow: hidden; }
     .cs-image-placeholder--wide { aspect-ratio: 16 / 7; }
+    @media (min-width: 769px) { .cs-image-placeholder--half.has-image { max-width: 50%; margin-left: auto; margin-right: auto; } }
     .cs-placeholder-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
     .cs-image-placeholder.has-image { border: none; background-color: var(--color-bg); aspect-ratio: unset; height: auto; overflow: visible; display: block; }
     .cs-image-placeholder.has-image .cs-placeholder-img { position: static; inset: auto; width: 100%; height: auto; object-fit: unset; }
@@ -514,7 +515,7 @@ one list-led, one number-led. Isolates variable 1.</div>
             <div class="cs-reel-player cs-reel-player--placeholder">Winning Reel<br>Show Discounts<br>video pending</div>
             <video
               class="cs-reel-player"
-              src="../../assets/videos/reels-show-discounts.mp4#t=0.1"
+              src="../../assets/videos/reels-show-discounts.mp4"
               poster="../../assets/images/reels-show-discounts-poster.jpg"
               preload="auto" muted loop playsinline>
             </video>
@@ -613,9 +614,9 @@ one list-led, one number-led. Isolates variable 1.</div>
               <div class="cs-reel-strip__video-wrap" onclick="togglePlay(this)">
                 <div class="cs-reel-strip__placeholder">Reel 01<br>Canada Holidays<br>video pending</div>
                 <video class="cs-reel-strip__video"
-                       src="../../assets/videos/reels-canada-holidays.mp4#t=0.1"
+                       src="../../assets/videos/reels-canada-holidays.mp4"
                        poster="../../assets/images/reels-canada-holidays-poster.jpg"
-                       preload="auto" muted loop playsinline></video>
+                       preload="none" muted loop playsinline></video>
                 <button class="cs-play-btn" type="button" aria-label="Play video">
                   <svg class="cs-play-btn__play" width="14" height="14" viewBox="0 0 20 20"><path d="M6 4l10 6-10 6V4z"/></svg>
                   <svg class="cs-play-btn__pause" width="14" height="14" viewBox="0 0 18 18"><path d="M4 3h4v12H4V3zm6 0h4v12h-4V3z"/></svg>
@@ -632,9 +633,9 @@ one list-led, one number-led. Isolates variable 1.</div>
               <div class="cs-reel-strip__video-wrap" onclick="togglePlay(this)">
                 <div class="cs-reel-strip__placeholder">Reel 02<br>Show Discounts<br>video pending</div>
                 <video class="cs-reel-strip__video"
-                       src="../../assets/videos/reels-show-discounts.mp4#t=0.1"
+                       src="../../assets/videos/reels-show-discounts.mp4"
                        poster="../../assets/images/reels-show-discounts-poster.jpg"
-                       preload="auto" muted loop playsinline></video>
+                       preload="none" muted loop playsinline></video>
                 <button class="cs-play-btn" type="button" aria-label="Play video">
                   <svg class="cs-play-btn__play" width="14" height="14" viewBox="0 0 20 20"><path d="M6 4l10 6-10 6V4z"/></svg>
                   <svg class="cs-play-btn__pause" width="14" height="14" viewBox="0 0 18 18"><path d="M4 3h4v12H4V3zm6 0h4v12h-4V3z"/></svg>
@@ -651,9 +652,9 @@ one list-led, one number-led. Isolates variable 1.</div>
               <div class="cs-reel-strip__video-wrap" onclick="togglePlay(this)">
                 <div class="cs-reel-strip__placeholder">Reel 03<br>Benefits $6K<br>video pending</div>
                 <video class="cs-reel-strip__video"
-                       src="../../assets/videos/reels-benefits.mp4#t=0.1"
+                       src="../../assets/videos/reels-benefits.mp4"
                        poster="../../assets/images/reels-benefits-poster.jpg"
-                       preload="auto" muted loop playsinline></video>
+                       preload="none" muted loop playsinline></video>
                 <button class="cs-play-btn" type="button" aria-label="Play video">
                   <svg class="cs-play-btn__play" width="14" height="14" viewBox="0 0 20 20"><path d="M6 4l10 6-10 6V4z"/></svg>
                   <svg class="cs-play-btn__pause" width="14" height="14" viewBox="0 0 18 18"><path d="M4 3h4v12H4V3zm6 0h4v12h-4V3z"/></svg>
@@ -741,7 +742,7 @@ one list-led, one number-led. Isolates variable 1.</div>
           </div>
         </div>
 
-        <div class="cs-image-placeholder cs-image-placeholder--wide">
+        <div class="cs-image-placeholder cs-image-placeholder--wide cs-image-placeholder--half">
           <img class="cs-placeholder-img" src="../../assets/images/reels-thumbnails.png"
                alt="@in2weeks.ca profile grid · recent Reels"
                onload="this.parentElement.classList.add('has-image')"

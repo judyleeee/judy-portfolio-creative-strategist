@@ -119,12 +119,71 @@
       border-bottom: 1px solid var(--color-border);
     }
 
+    /* ─── Accent Point Color (Samsung) ───────── */
+    .cs-samsung { --color-accent: #2563eb; }
+
+    /* ─── User Population Split (Research) ───── */
+
+    .cs-user-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin-top: var(--space-5);
+      max-width: 680px;
+    }
+
+    .cs-user-group {
+      padding: var(--space-5);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      border-top: 2px solid #2563eb;
+    }
+
+    .cs-user-group__tag {
+      display: block;
+      font-size: var(--text-caption);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: #2563eb;
+      margin-bottom: var(--space-3);
+    }
+
+    .cs-user-group__title {
+      display: block;
+      font-size: var(--text-body);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-3);
+      line-height: var(--leading-normal);
+    }
+
+    .cs-user-group__example {
+      display: inline-block;
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      padding: 2px var(--space-2);
+      background-color: var(--color-bg-subtle);
+      border-radius: var(--radius-sm);
+      margin-bottom: var(--space-3);
+    }
+
+    .cs-user-group__behavior {
+      font-size: var(--text-small);
+      line-height: var(--leading-loose);
+      color: var(--color-text-secondary);
+    }
+
+    /* ─── Painpoints ──────────────────────────── */
+
     .cs-painpoints {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--space-3);
       margin-top: var(--space-5);
       max-width: 680px;
+      counter-reset: painpoint;
     }
 
     .cs-painpoint {
@@ -134,6 +193,20 @@
       font-size: var(--text-small);
       color: var(--color-text-primary);
       line-height: var(--leading-normal);
+      counter-increment: painpoint;
+      position: relative;
+      padding-left: var(--space-6);
+    }
+
+    .cs-painpoint::before {
+      content: "0" counter(painpoint);
+      position: absolute;
+      top: var(--space-4);
+      left: var(--space-4);
+      font-size: var(--text-caption);
+      font-weight: var(--weight-semibold);
+      color: #2563eb;
+      letter-spacing: var(--tracking-wide);
     }
 
     .cs-quote {
@@ -174,6 +247,10 @@
       border-radius: var(--radius-sm);
     }
 
+    .cs-approach-card--pattern {
+      border-left: 2px solid #2563eb;
+    }
+
     .cs-approach-card__label {
       display: block;
       font-size: var(--text-caption);
@@ -182,6 +259,11 @@
       text-transform: uppercase;
       color: var(--color-text-tertiary);
       margin-bottom: var(--space-3);
+    }
+
+    .cs-approach-card--pattern .cs-approach-card__label {
+      color: #2563eb;
+      font-weight: var(--weight-semibold);
     }
 
     .cs-approach-card__title {
@@ -634,10 +716,30 @@
           </p>
         </div>
         <p class="cs-section__text" style="margin-top: var(--space-5);">
-          This split ran deeper across product lines: mobile users typically arrived
-          with a product name ("Flip4", "A53") and could search directly.
-          TV and appliance users often arrived with only a category name ("Smart TV", "fridge"). The existing UI didn't provide a guided selection path.
-          Both populations were failing, but for structurally different reasons.
+          The gap broke along product lines · two user populations failing for
+          structurally different reasons.
+        </p>
+
+        <div class="cs-user-split">
+          <div class="cs-user-group">
+            <span class="cs-user-group__tag">Population A · Mobile</span>
+            <span class="cs-user-group__title">Arrives knowing a product name</span>
+            <span class="cs-user-group__example">"Flip4" · "A53"</span>
+            <p class="cs-user-group__behavior">
+              Could search directly · but near-identical variants broke confidence at the last step.
+            </p>
+          </div>
+          <div class="cs-user-group">
+            <span class="cs-user-group__tag">Population B · TV &amp; Appliances</span>
+            <span class="cs-user-group__title">Arrives with a category only</span>
+            <span class="cs-user-group__example">"Smart TV" · "fridge"</span>
+            <p class="cs-user-group__behavior">
+              Needed guided selection · no path existed from category to model.
+            </p>
+          </div>
+        </div>
+
+        <p class="cs-section__text" style="margin-top: var(--space-6);">
           Four recurring failure modes mapped to this gap:
         </p>
         <div class="cs-painpoints">
@@ -692,7 +794,7 @@
           a specific failure mode uncovered in research.
         </p>
         <div class="cs-approach-grid">
-          <div class="cs-approach-card">
+          <div class="cs-approach-card cs-approach-card--pattern">
             <span class="cs-approach-card__label">Pattern 01 · Fast path</span>
             <span class="cs-approach-card__title">Simplified Search &amp; Predictive Hints</span>
             <p class="cs-approach-card__desc">
@@ -700,7 +802,7 @@
               cutting trial-and-error for users who know what they own.
             </p>
           </div>
-          <div class="cs-approach-card">
+          <div class="cs-approach-card cs-approach-card--pattern">
             <span class="cs-approach-card__label">Pattern 02 · Guided path</span>
             <span class="cs-approach-card__title">Hierarchical Category Selection</span>
             <p class="cs-approach-card__desc">
@@ -708,7 +810,7 @@
               Samsung's full global catalog without custom work per product line.
             </p>
           </div>
-          <div class="cs-approach-card">
+          <div class="cs-approach-card cs-approach-card--pattern">
             <span class="cs-approach-card__label">Pattern 03 · Verification</span>
             <span class="cs-approach-card__title">Quick-Verify UI</span>
             <p class="cs-approach-card__desc">
