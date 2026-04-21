@@ -57,7 +57,8 @@
     .cs-pagination { display: flex; justify-content: space-between; align-items: center; padding: var(--space-7) 0; border-top: 1px solid var(--color-border); }
     .cs-pagination a { font-size: var(--text-small); font-weight: var(--weight-medium); color: var(--color-text-secondary); transition: color var(--transition-fast); }
     .cs-pagination a:hover { color: var(--color-text-primary); }
-    .footer { max-width: var(--content-max-width); margin: 0 auto; padding: var(--space-7) var(--content-padding-x); display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--color-border); }
+    .footer { max-width: var(--content-max-width); margin: 0 auto; padding: var(--space-7) var(--content-padding-x); display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; border-top: 1px solid var(--color-border); }
     .footer__copy { font-size: var(--text-caption); color: var(--color-text-tertiary); }
     .footer__links { display: flex; gap: var(--space-5); }
     .footer__links a { font-size: var(--text-caption); color: var(--color-text-tertiary); transition: color var(--transition-fast); }
@@ -826,6 +827,7 @@ one list-led, one number-led. Isolates variable 1.</div>
       <a href="https://www.linkedin.com/in/jihyun0719/" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a href="mailto:jihyunlee719@gmail.com">Email ↗</a>
     </div>
+    <span class="footer__meta" style="flex-basis: 100%; font-size: var(--text-caption); color: var(--color-text-tertiary); padding-top: var(--space-3); margin-top: var(--space-3); border-top: 1px solid var(--color-border); text-align: center;">Built with Claude as a design partner · Vanilla HTML + CSS + JS</span>
   </footer>
 
   <script>
@@ -848,5 +850,6 @@ one list-led, one number-led. Isolates variable 1.</div>
 
   <script src="../../scripts/lang-scroll.js"></script>
   <script src="../../scripts/scroll-reveal.js"></script>
+  <script src="../../scripts/lightbox.js"></script>
 </body>
 </html>
