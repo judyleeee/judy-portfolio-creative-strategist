@@ -367,6 +367,24 @@
       color: var(--color-text-primary);
     }
 
+    /* Subsection label · 섹션 안의 구역 타이틀 */
+    .cs-subsection__label {
+      display: block;
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-4);
+    }
+
+    /* 콘텐츠 블록 뒤에 새 subsection label이 올 때 · 호흡 추가 */
+    .cs-findings + .cs-subsection__label,
+    .cs-image-placeholder + .cs-subsection__label,
+    p + .cs-subsection__label {
+      margin-top: var(--space-7);
+    }
+
     /* Outcome findings */
     .cs-findings {
       display: grid;
@@ -936,7 +954,7 @@
           </div>
         </div>
 
-        <span class="cs-subsection__label" style="margin-top: var(--space-6);">Qualitative · QA-validated</span>
+        <span class="cs-subsection__label">Qualitative · QA-validated</span>
         <div class="cs-findings">
           <div class="cs-finding">
             <span class="cs-finding__title">Resilience in retail</span>

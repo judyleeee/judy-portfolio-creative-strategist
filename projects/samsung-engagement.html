@@ -235,8 +235,8 @@
 
     .cs-approach-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-5);
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
       margin-top: var(--space-5);
       max-width: 680px;
     }
@@ -249,6 +249,44 @@
 
     .cs-approach-card--pattern {
       border-left: 2px solid #2563eb;
+    }
+
+    /* Constraint block · 패턴 카드와 구분되는 주석 스타일 */
+    .cs-constraint-note {
+      margin-top: var(--space-5);
+      padding: var(--space-5);
+      background-color: var(--color-bg-subtle);
+      border-radius: var(--radius-sm);
+      max-width: 680px;
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: var(--space-5);
+      align-items: start;
+    }
+
+    .cs-constraint-note__label {
+      font-size: var(--text-caption);
+      font-weight: var(--weight-medium);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      line-height: var(--leading-normal);
+    }
+
+    .cs-constraint-note__body {
+      font-size: var(--text-small);
+      line-height: var(--leading-loose);
+      color: var(--color-text-secondary);
+    }
+
+    .cs-constraint-note__body strong {
+      color: var(--color-text-primary);
+      font-weight: var(--weight-medium);
+    }
+
+    @media (max-width: 768px) {
+      .cs-approach-grid { grid-template-columns: 1fr; }
+      .cs-constraint-note { grid-template-columns: 1fr; gap: var(--space-3); }
     }
 
     .cs-approach-card__label {
@@ -326,7 +364,8 @@
 
     .cs-hero-image {
       width: 100%;
-      aspect-ratio: 16 / 8.5;
+      max-height: 500px;
+      height: auto;
       object-fit: contain;
       border-radius: var(--radius-sm);
       background-color: var(--color-bg-subtle);
@@ -498,11 +537,14 @@
       aspect-ratio: 16 / 7;
     }
 
-    /* 특정 이미지 · 높이 550px로 고정 */
-    .cs-image-placeholder--h550.has-image .cs-placeholder-img {
-      height: 550px;
+    /* Samsung 전체 · 모든 이미지 높이 최대 500px로 축소 */
+    .cs-image-placeholder.has-image .cs-placeholder-img {
+      position: static;
+      inset: auto;
       width: auto;
       max-width: 100%;
+      height: auto;
+      max-height: 500px;
       object-fit: contain;
       margin: 0 auto;
       display: block;
@@ -531,13 +573,7 @@
       display: block;
     }
 
-    .cs-image-placeholder.has-image .cs-placeholder-img {
-      position: static;
-      inset: auto;
-      width: 100%;
-      height: auto;
-      object-fit: unset;
-    }
+    /* 이미지 스타일은 위쪽 통합 규칙에서 처리 (max-height: 500px) */
 
     .cs-image-placeholder.has-image .cs-image-placeholder__label,
     .cs-image-placeholder.has-image .cs-image-placeholder__sub {
@@ -829,14 +865,15 @@
               before the user commits · resolving near-identical variants at point of decision.
             </p>
           </div>
-          <div class="cs-approach-card">
-            <span class="cs-approach-card__label">Constraint</span>
-            <span class="cs-approach-card__title">Samsung Design Guidelines compliance</span>
-            <p class="cs-approach-card__desc">
-              Reused existing components wherever possible · kept implementation consistent
-              and minimized dev overhead while introducing the new interaction patterns.
-            </p>
-          </div>
+        </div>
+
+        <div class="cs-constraint-note">
+          <span class="cs-constraint-note__label">Constraint</span>
+          <p class="cs-constraint-note__body">
+            <strong>Samsung Design Guidelines compliance.</strong>
+            Reused existing components wherever possible · kept implementation consistent
+            and minimized dev overhead while introducing the new interaction patterns.
+          </p>
         </div>
         <p class="cs-section__text" style="margin-top: var(--space-5);">
           <strong>Collaboration:</strong> partnered with the UX Research team on discovery
@@ -853,7 +890,7 @@
           <span class="cs-image-placeholder__sub">Manuals &amp; Downloads → Enter model code → Select category → Step 2 select product → Additional Information</span>
         </div>
 
-        <div class="cs-image-placeholder cs-image-placeholder--wide cs-image-placeholder--h550">
+        <div class="cs-image-placeholder cs-image-placeholder--wide">
           <img class="cs-placeholder-img" src="../assets/images/samsung-engagement-pattern-search.png"
                alt="Pattern 01 + 02 · Simplified Search and Hierarchical Category Selection"
                onload="this.parentElement.classList.add('has-image')"
