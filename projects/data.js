@@ -17,7 +17,7 @@ const projects = [
     timeline: "Ongoing (Mar 2026 – Present)",
     year: "2026",
     tags: ["Content Strategy", "Experimentation", "Social"],
-    image: null,
+    image: "assets/images/reels-main.png",
     caseStudyUrl: "reels-content-strategy.html",
     visible: true
   },
