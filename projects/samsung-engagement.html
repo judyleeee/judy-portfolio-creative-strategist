@@ -194,19 +194,19 @@
       color: var(--color-text-primary);
       line-height: var(--leading-normal);
       counter-increment: painpoint;
-      position: relative;
-      padding-left: var(--space-6);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
     }
 
     .cs-painpoint::before {
       content: "0" counter(painpoint);
-      position: absolute;
-      top: var(--space-4);
-      left: var(--space-4);
+      flex-shrink: 0;
       font-size: var(--text-caption);
       font-weight: var(--weight-semibold);
       color: #2563eb;
       letter-spacing: var(--tracking-wide);
+      line-height: var(--leading-normal);
     }
 
     .cs-quote {

@@ -57,6 +57,14 @@
     .cs-pagination { display: flex; justify-content: space-between; align-items: center; padding: var(--space-7) 0; border-top: 1px solid var(--color-border); }
     .cs-pagination a { font-size: var(--text-small); font-weight: var(--weight-medium); color: var(--color-text-secondary); transition: color var(--transition-fast); }
     .cs-pagination a:hover { color: var(--color-text-primary); }
+
+    .cs-live-cta { margin-top: var(--space-8); padding: var(--space-6); border: 1px solid var(--color-border); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: space-between; gap: var(--space-5); flex-wrap: wrap; }
+    .cs-live-cta__inner { display: flex; flex-direction: column; gap: var(--space-2); }
+    .cs-live-cta__label { font-size: var(--text-caption); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-text-tertiary); }
+    .cs-live-cta__handle { font-size: var(--text-h2); font-weight: var(--weight-medium); color: var(--color-text-primary); letter-spacing: var(--tracking-tight); }
+    .cs-live-cta__link { font-size: var(--text-small); font-weight: var(--weight-medium); color: var(--color-text-primary); text-decoration: none; border-bottom: 1px solid var(--color-text-primary); padding-bottom: 2px; transition: opacity var(--transition-fast); white-space: nowrap; }
+    .cs-live-cta__link:hover { opacity: 0.6; }
+    @media (max-width: 768px) { .cs-live-cta { flex-direction: column; align-items: flex-start; } }
     .footer { max-width: var(--content-max-width); margin: 0 auto; padding: var(--space-7) var(--content-padding-x); display: flex; align-items: center; justify-content: space-between;
       flex-wrap: wrap; border-top: 1px solid var(--color-border); }
     .footer__copy { font-size: var(--text-caption); color: var(--color-text-tertiary); }
@@ -812,6 +820,16 @@ one list-led, one number-led. Isolates variable 1.</div>
           surface-hook 적합도만 본다.
         </p>
       </section>
+
+      <div class="cs-live-cta">
+        <div class="cs-live-cta__inner">
+          <span class="cs-live-cta__label">See it live</span>
+          <span class="cs-live-cta__handle">@in2weeks.ca</span>
+        </div>
+        <a href="https://www.instagram.com/in2weeks.ca/" target="_blank" rel="noopener" class="cs-live-cta__link">
+          View on Instagram →
+        </a>
+      </div>
 
       <nav class="cs-pagination">
         <span></span>
